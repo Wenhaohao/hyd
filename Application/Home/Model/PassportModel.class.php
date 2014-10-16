@@ -36,15 +36,15 @@ class PassportModel extends Model{
 		}
 		
 		// 获取数据 添加数据
-		dump($dataRegister);
-		exit();
+// 		dump($dataRegister);
+// 		exit();
 		$data['account_name'] = $dataRegister['name'];
 		$data['passwd'] = md5($dataRegister['password']);
-		$data['eamil'] = $dataRegister['email'];
+		$data['email'] = $dataRegister['email'];
 		
 		$a = M('users')->data($data)->add();
-		
-		echo M('users')->getLastsql(M('users')->data($data)->add());
+		echo $a;
+// 		echo M('users')->getLastsql(M('users')->data($data)->add());
 		exit();
 		if(M('users')->add($data) > 0){
 			return "注册成功！";
