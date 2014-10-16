@@ -8,20 +8,11 @@
 // +----------------------------------------------------------------------
 
 /**
- * 首页控制器
+ * 用户中心模型
  */
-namespace Home\Controller;	//表示当前类是Home模块下的控制器类
-use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
+namespace Home\Model;
+use Think\Model;
 
-class IndexController extends Controller {
+class UsersModel extends Model {
 	
-    /**
-     * 首页输出
-     * @param 
-     * @return 
-     */
-    public function index(){
-    	$this->display();
-    }
-    
 }

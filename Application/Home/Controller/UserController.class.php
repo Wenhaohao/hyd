@@ -8,20 +8,15 @@
 // +----------------------------------------------------------------------
 
 /**
- * 首页控制器
+ * 用户中心控制器
  */
-namespace Home\Controller;	//表示当前类是Home模块下的控制器类
-use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
+namespace Home\Controller;
+use Think\Controller;
 
-class IndexController extends Controller {
+class UserController extends Controller {
 	
-    /**
-     * 首页输出
-     * @param 
-     * @return 
-     */
-    public function index(){
-    	$this->display();
-    }
-    
+	public function index(){
+		echo "user";
+	}
+	
 }

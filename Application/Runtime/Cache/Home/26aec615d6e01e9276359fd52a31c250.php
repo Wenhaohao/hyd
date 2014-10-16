@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>两次密码不一致,或者所填密码为空

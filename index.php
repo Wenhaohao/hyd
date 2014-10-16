@@ -20,6 +20,9 @@ define('APP_PATH','./Application/');
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 
+// 生成Admin模块
+// define('BIND_MODULE','Admin');
+
 //s亲^_^ 后面不需要任何代码了 就是如此简单
 ?>
 
