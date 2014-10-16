@@ -440,3 +440,80 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000535s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000639s ]
 
+[ 2014-10-16T19:52:28+08:00 ] 127.0.0.1 /passport/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000797s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000192s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010903s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011068s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000417s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000564s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000656s ]
+
+[ 2014-10-16T19:52:54+08:00 ] 127.0.0.1 /index.php/Home/Passport/checkRegister
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000581s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000803s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000925s ]
+SQL: SHOW COLUMNS FROM `hyd_passport` [ RunTime:0.015289s ]
+ERR: 1146:Table 'hyd_share.hyd_passport' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `hyd_passport`
+SQL: SHOW COLUMNS FROM `hyd_users` [ RunTime:0.116111s ]
+SQL: SELECT * FROM `hyd_users` WHERE ( account_name="ssssss" )  [ RunTime:0.022468s ]
+
+[ 2014-10-16T19:53:25+08:00 ] 127.0.0.1 /index.php/Home/Passport/checkRegister
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000374s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000439s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000559s ]
+SQL: SHOW COLUMNS FROM `hyd_passport` [ RunTime:0.004431s ]
+ERR: 1146:Table 'hyd_share.hyd_passport' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `hyd_passport`
+SQL: SHOW COLUMNS FROM `hyd_users` [ RunTime:0.016007s ]
+SQL: SELECT * FROM `hyd_users` WHERE ( account_name="ssssss" )  [ RunTime:0.000622s ]
+ERR: 非法数据对象！:[eamil=>397173001@qq.com]
+
+[ 2014-10-16T20:06:05+08:00 ] 127.0.0.1 /index.php/Home/Passport/checkRegister
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000783s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000979s ]
+SQL: SHOW COLUMNS FROM `hyd_passport` [ RunTime:0.003915s ]
+ERR: 1146:Table 'hyd_share.hyd_passport' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `hyd_passport`
+SQL: SHOW COLUMNS FROM `hyd_users` [ RunTime:0.010450s ]
+SQL: SELECT * FROM `hyd_users` WHERE ( account_name="ssssss" )  [ RunTime:0.000455s ]
+ERR: 非法数据对象！:[eamil=>397173001@qq.com]
+
+[ 2014-10-16T20:48:38+08:00 ] 127.0.0.1 /index.php/Home/Passport/checkRegister
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000591s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000705s ]
+SQL: SHOW COLUMNS FROM `hyd_passport` [ RunTime:0.005664s ]
+ERR: 1146:Table 'hyd_share.hyd_passport' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `hyd_passport`
+SQL: SHOW COLUMNS FROM `hyd_users` [ RunTime:0.009348s ]
+SQL: SELECT * FROM `hyd_users` WHERE ( account_name="ssssss" )  [ RunTime:0.000432s ]
+SQL: INSERT INTO `hyd_users` (`account_name`,`passwd`,`email`) VALUES ('ssssss','3691308f2a4c2f6983f2880d32e29c84','397173001@qq.com') [ RunTime:0.149483s ]
+ERR: 1062:Duplicate entry '397173001@qq.com' for key 'email'
+ [ SQL语句 ] : INSERT INTO `hyd_users` (`account_name`,`passwd`,`email`) VALUES ('ssssss','3691308f2a4c2f6983f2880d32e29c84','397173001@qq.com')
+

@@ -9,6 +9,7 @@
 	用户名：<input type="text" name="name">
 	密码：<input type="password" name="password">
 	确认密码：<input type="password" name="password2">
+	邮箱：<input type="text" name="email">
 	<input type="submit">
 </form>
 </body>
