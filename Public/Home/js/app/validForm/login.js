@@ -5,9 +5,13 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 	var action   = "checkCode";
 	$("#"+formName).attr("action",action);
 	var validatorForm = $("form[name="+formName+"]").validate({
-			debug: true, // 开启debug 模式
+		//	debug: true, // 开启debug 模式
 			errorElement :"span",
 			validClass: "success",
+			submitHandler:function(form){
+				console.log("提交表单");
+				form.submit();
+			},
 			//文本提示
 			errorPlacement: function(error, element) { 	
 			 	error.addClass("help-inline"); //添加到 表单尾部

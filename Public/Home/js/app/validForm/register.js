@@ -6,7 +6,7 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 	
 	$("#"+formName).attr("action",action);
 	var validatorForm = $("form[name="+formName+"]").validate({
-			debug: true, // 开启debug 模式
+		//	debug: true, // 开启debug 模式
 			errorElement :"span",
 			validClass: "success",
 			//文本提示
