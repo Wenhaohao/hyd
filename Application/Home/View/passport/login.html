@@ -10,9 +10,9 @@
 
 
 	<!-- 网站logo -->
-	<link rel="Bookmark" href="favicon_x16.png" />
-	<link rel="shortcut icon" href="favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="favicon_x16.ico" type="image/x-icon" />
+	<link rel="Bookmark" href="../../../../Public/Static/img/favicon_x16.ico" />
+	<link rel="shortcut icon" href="../../../../Public/Static/img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="icon" href="../../../../Public/Static/img/favicon_x16.ico" type="image/x-icon" />
 
 	<link rel="stylesheet" href="../../../../Public/Home/css/common/style.css">
 	<script data-main="../../../../Public/Home/js/main" type="text/javascript" src="../../../../Public/Static/js/require.js"></script>
@@ -48,18 +48,16 @@
 					 <span class="head-tool head-tool-search"></span>
 					</form>
 				</li>
-				<li><div class="head-tool head-tool-config"></div></li>
-				<li class="dropdown dropdown-head">
-					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="../../../../Public/Home/images/default-user.png" alt="头像" > 
+				<li>
+					<div class="">
+						<a  class="head-tool head-tool-register" href="#">注册</a>
+					</div>
+				</li>
+				<li class="">
+					<div>
+						<a href="#" class="head-tool head-tool-login">登录</a>
 					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
-						<li><a tabindex="-1" href="#">个人中心</a></li>
-						<li><a tabindex="-1" href="#">消息</a></li>
-						<li><a tabindex="-1" href="#">意见反馈</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" href="#">退出</a></li>
-					</ul>
+					</div>
 					
 				</li>
 				
@@ -139,7 +137,8 @@
 			加载 登录验证插件
 		*/
 		require(["jquery","validForm/login"],function($,v){	
-		
+
+			
 		});
 	};
 </script>
