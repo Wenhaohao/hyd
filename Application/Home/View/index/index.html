@@ -16,16 +16,20 @@
 
 	<link rel="stylesheet" href="../../../../Public/Home/css/common/style.css">
 	<script data-main="../../../../Public/Home/js/main" type="text/javascript" src="../../../../Public/Static/js/require.js"></script>
+	
 
+	
+	<link href="../../../../Public/Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
+		<!-- HOME  -->
+	<link rel="stylesheet" href="../../../../Public/Home/css/common/main.css">
 </head>
 <body>
 <div class="navbar">
-		
-	
+
+
 	<div class="navbar-fixed-top">
 		 <div class="navbar-inner">    
 		 	<div class="container nav-collapse" >
-
 		 		<div class="brand">
 		 			<a class="logo"></a>
 		 			<span>运动健康分享平台</span>
@@ -71,13 +75,79 @@
 	</div>
 </div>
 <div id="pagewrap">
+	<div class="container">
+			<!-- 功能模块 展示 -->
+			<ul class="row row-fluid">
 
- 
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <img src="" style="width: 260px; height: 180px;" data-src="holder.js/260x180" alt="260x180">
+                </a>
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <img src="" data-src="holder.js/260x180" alt="260x180">
+                </a>
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <img src="" style="width: 260px; height: 180px;" data-src="holder.js/260x180" alt="260x180">
+                </a>
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <img src="" data-src="holder.js/260x180" alt="260x180">
+                </a>
+              </li>
+            </ul>
+	</div>
+
+	<div class="container">
+    	<div class="hero-unit">
+			<div class="flicker-example" style="display:none;" data-block-text="false" id="flicker-tool">
+			<ul>
+			   			 <li data-background="http://bcscdn.baidu.com/resource/fFhOZUCaZUsYBICSlpP_XWRLlp0_NFVOZUhbZmkaZmCbZh.jpg">
+			          	<h1>运动&健康</h1>
+			    			<p>给大家提供一个运动健康的分享平台</p>
+			    		<p>
+			   	 			<a class="btn btn-primary btn-large">
+			  					查看更多
+					    	</a>
+			    		</p>
+			    		</li>
+			    <li data-background="img/forest.jpg">
+			          	<h1 >运动&健康</h1>
+			    			<p>给大家提供一个运动健康的分享平台</p>
+			    			<p>
+			   	 			<a class="btn btn-primary btn-large">
+			  					查看更多
+					    	</a>
+			    		</p>	
+			    </li>
+			    <li data-background="img/frozen-water.jpg">
+			      
+			    </li>
+			  </ul>
+			</div>	
+    	</div>
+	</div>
+
+	
+
 </div>
  <footer id="footer">
   	<i class="icon-search"></i>
   		<div class="container">footer</div>
   </footer>
 </body>
+<script type="text/javascript">
+	window.onload = function(){
+		require(["jquery","flicker/headUnit"],function($,obj){
+			
+			$(obj.selector).flicker(obj.config);
+			$(obj.selector).show();
+		});
 
+	};
+</script>
 </html>

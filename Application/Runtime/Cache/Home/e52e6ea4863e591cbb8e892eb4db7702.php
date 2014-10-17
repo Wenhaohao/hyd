@@ -1,1 +1,0 @@
-<?php if (!defined('THINK_PATH')) exit();?>您的用户名已经存在

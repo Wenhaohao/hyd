@@ -23,7 +23,7 @@ return array(
    		
 	// 绑定URL模板相关配置
 	'TMPL_PARSE_STRING'  =>array(
-			'__PUBLIC__' => __ROOT__ . '/Public',
+			'__PUBLIC__' => __ROOT__ . '/Public/',
 			'__STATIC__' => '/Public/static/',
 	),
 	
