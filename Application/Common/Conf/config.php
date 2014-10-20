@@ -1,9 +1,8 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
+	'URL_MODEL' => 2,  // URL重写  去掉中间的index.php
 	
-	
-		
 	// 数据库配置信息
 	'DB_TYPE'      =>  'mysql',     // 数据库类型
 	'DB_HOST'      =>  '127.0.0.1',     // 服务器地址
@@ -24,7 +23,7 @@ return array(
 	// 绑定URL模板相关配置
 	'TMPL_PARSE_STRING'  =>array(
 			'__PUBLIC__' => __ROOT__ . '/Public/',
-			'__STATIC__' => '/Public/static/',
+			'__STATIC__' => __ROOT__ . '/Public/static/',
 	),
 	
 );
