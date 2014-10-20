@@ -32,7 +32,7 @@
 		 		</div>
 		 	<ul class="nav " id="nav">  
 		 		<li>
-		 			<a href="#">首页</a>
+		 			<a href="http://www.hyd.com">首页</a>
 		 		</li>  
 		 		<li>
 					<a  href="#">运动分享 </a>
@@ -48,18 +48,16 @@
 					 <span class="head-tool head-tool-search"></span>
 					</form>
 				</li>
-				<li><div class="head-tool head-tool-config"></div></li>
-				<li class="dropdown dropdown-head">
-					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="Public/images/default-user.png" alt="头像" > 
+				<li>
+					<div >
+						<a  class="head-tool head-tool-register" href="/passport/register">注册</a>
+					</div>
+				</li>
+				<li >
+					<div>
+						<a href="/passport/login" class="head-tool head-tool-login">登录</a>
 					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
-						<li><a tabindex="-1" href="#">个人中心</a></li>
-						<li><a tabindex="-1" href="#">消息</a></li>
-						<li><a tabindex="-1" href="#">意见反馈</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" href="#">退出</a></li>
-					</ul>
+					</div>
 					
 				</li>
 				
@@ -74,7 +72,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group">
+  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="__URL__/checkRegister" method="post">
     <fieldset>
       <div id="legend" class="">
         <legend class="">
@@ -147,7 +145,6 @@
  
 </div>
  <footer id="footer">
-  	<i class="icon-search"></i>
   		<div class="container">footer</div>
   </footer>
 </body>
@@ -156,8 +153,10 @@
 		/*
 			加载 注册插件
 		*/
-		require(["jquery","validForm/register"],function($,v){	
-			console.log(v.valid());
+		var form ={ name:"registerForm"};
+		require(["jquery","validForm/register"],function($,config){	
+
+			 $("form[name="+form.name+"]").validate(config);
 		});
 	};
 </script>
