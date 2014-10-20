@@ -6,25 +6,25 @@
 	<!--  css 浏览器标准化 -->
 		<link rel="stylesheet" href="/Public/static/css/normalize.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="/Public/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/Public/static/css/bootstrap.css">   
 
 
-	<!-- 网站logo -->
+	<!-- 网站logo --> 
 	<link rel="Bookmark" href="/Public/static/img/favicon_x16.ico" />
 	<link rel="shortcut icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
 	<link rel="icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
 
 	<link rel="stylesheet" href="/Public/Home/css/common/style.css">
-	<script data-main="/Public/Home/js/main" type="text/javascript" src="/Public/static/js/require.js"></script>
+	<script data-main="/Public/Home/js/main.js" type="text/javascript" src="/Public/Home/js/require.js"></script>
 
-</head>
+</head>  
 <body>
 <div class="navbar">
 		
 	
 	<div class="navbar-fixed-top">
 		 <div class="navbar-inner">    
-		 	<div class="container nav-collapse" >
+		 	<div class="container nav-collapse" >    
 
 		 		<div class="brand">
 		 			<a class="logo"></a>
@@ -51,7 +51,7 @@
 				<li><div class="head-tool head-tool-config"></div></li>
 				<li class="dropdown dropdown-head">
 					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="Public/images/default-user.png" alt="头像" > 
+						 <img  src="/Public/home/images/default-user.png" alt="头像" > 
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
 						<li><a tabindex="-1" href="#">个人中心</a></li>
@@ -74,7 +74,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group">
+  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="/Home/Passport/checkRegister" method="post">
     <fieldset>
       <div id="legend" class="">
         <legend class="">
@@ -157,7 +157,6 @@
 			加载 注册插件
 		*/
 		require(["jquery","validForm/register"],function($,v){	
-			console.log(v.valid());
 		});
 	};
 </script>

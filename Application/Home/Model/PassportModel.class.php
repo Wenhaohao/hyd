@@ -17,27 +17,34 @@ class PassportModel extends Model{
 	
 	// 验证用户登录
 	public function checkLogin($dataLogin){
-		
+		$data['account_name'] = $dataLogin['uid_name'];
+		$data['passwd'] = md5($dataLogin['passwd']);
+		$result = M('users')->where($data)->find();
+		if($result){
+			$_SESSION['name'] = $data['account_name'];
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	// 验证用户注册
 	public function checkRegister($dataRegister){
 		
 		// 判断两次密码是否一致 或是否为空
-		if($dataRegister['password'] != $dataRegister['password2'] || '' == $dataRegister['password']){
+		if($dataRegister['passwd'] != $dataRegister['confirm_password'] || '' == $dataRegister['passwd']){
 			return "两次密码不一致,或者所填密码为空";
 		}
 		
 		// 判断用户名是否存在
-		$count = count(M('users')->where('account_name='.'"'.$dataRegister['name'].'"')->select());
-		if($count>0){
+		$count = count(M('users')->where('account_name='.'"'.$dataRegister['uid_name'].'"')->select());
+		if($count > 0){
 			return "您的用户名已经存在";
 		}
 		
 		// 获取数据 添加数据
-
-		$data['account_name'] = $dataRegister['name'];
-		$data['passwd'] = md5($dataRegister['password']);
+		$data['account_name'] = $dataRegister['uid_name'];
+		$data['passwd'] = md5($dataRegister['passwd']);
 		$data['email'] = $dataRegister['email'];
 		
 		if(M('users')->add($data)){
@@ -46,5 +53,16 @@ class PassportModel extends Model{
 			return "注册失败!";
 		}
 	}
+	
+	// 验证用户名
+	public function checkUsername($dataUsername){
+		$count = count(M('users')->where('account_name='.'"'.$dataUsername.'"')->select());
+		if($count > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	
 }

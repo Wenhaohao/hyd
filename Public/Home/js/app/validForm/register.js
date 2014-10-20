@@ -2,7 +2,7 @@
 define(["jquery","jquery.validate","validForm/validMethod"],function(){
 
 	var formName = "registerForm";
-	var action   = "checkUserName";
+	var action   = "checkUsername";
 	
 	$("#"+formName).attr("action",action);
 	var validatorForm = $("form[name="+formName+"]").validate({
@@ -14,18 +14,18 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 			 	error.addClass("help-inline"); //添加到 表单尾部
 				error.insertAfter( element );
 			},
-			rules: {
+			rules: { 
 						uid_name:{
 							required:true,
 							login:true,
 							remote:{
-								url:"checkUserName",
+								url:"checkUsername",
 								type:"post",
 								dataType:"json",
 								data:{
-									username:function(){
-										 console.log("send ajax to checkUserName");
-										 return $("#uid_name").val();
+									username:function(result){   
+											return $("#uid_name").val();
+										}    
 									}
 								}
 							}

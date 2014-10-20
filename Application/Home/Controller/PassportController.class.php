@@ -34,24 +34,39 @@ class PassportController extends Controller{
 		if(IS_POST){
 			$dataLogin = I('post.');
 			$checkLogin = D('Passport')->checkLogin($dataLogin);  
-			$this->show($checkLogin);
+			if($checkLogin){
+				$this->success('登陆成功','/Index/index');
+			}else{
+				$this->error('用户名或密码错误','__URL__/login');
+			}
 		}
 	}
 	
 	// 验证用户注册信息
 	public function checkRegister(){
 		if(IS_POST){
-			
 			$dataRegister = I('post.');
 			$checkRegister = D('Passport')->checkRegister($dataRegister);
 			$this->show($checkRegister);
 		}
 	}
-	
+	 
 	// 验证注册用户名是否存在
 	public function checkUsername(){
-		
+		if(IS_POST){
+			$dataUsername = I("post.username");
+ 			$checkUsername = D('Passport')->checkUsername($dataUsername);
+ 			$this->ajaxReturn($checkUsername);
+		}
 	}
 	
+	// 退出登录
+	public function logout(){
+		$value = $_SESSION['name'];
+		echo $value;
+		exit();
+		unset($_SESSION['name']);
+		$this->success('退出成功，返回首页','/Index/index');
+	}
 	
 }

@@ -17,7 +17,7 @@ var requirejs, require, define;
         cjsRequireRegExp = /[^.]\s*require\s*\(\s*["']([^'"\s]+)["']\s*\)/g,
         jsSuffixRegExp = /\.js$/,
         currDirRegExp = /^\.\//,
-        op = Object.prototype,
+        op = Object.prototype, 
         ostring = op.toString,
         hasOwn = op.hasOwnProperty,
         ap = Array.prototype,
@@ -26,7 +26,7 @@ var requirejs, require, define;
         isWebWorker = !isBrowser && typeof importScripts !== 'undefined',
         //PS3 indicates loaded and complete, but need to wait for complete
         //specifically. Sequence is 'loading', 'loaded', execution,
-        // then 'complete'. The UA check is unfortunate, but not sure how
+        // then 'complete'. The UA check is unfortunate, but not sure how    
         //to feature test w/o causing perf issues.
         readyRegExp = isBrowser && navigator.platform === 'PLAYSTATION 3' ?
                       /^complete$/ : /^(complete|loaded)$/,

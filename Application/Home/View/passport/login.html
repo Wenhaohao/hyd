@@ -15,7 +15,7 @@
 	<link rel="icon" href="favicon_x16.ico" type="image/x-icon" />
 
 	<link rel="stylesheet" href="__PUBLIC__Home/css/common/style.css">
-	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__STATIC__js/require.js"></script>
+	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__PUBLIC__Home/js/require.js"></script>
 
 </head>
 <body>
@@ -74,7 +74,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group">
+  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="{:U('Passport/login')}" method="post">
     <fieldset>
       <div id="legend" >
         <legend>
@@ -98,21 +98,20 @@
             <p class="help-block">长度在6~18之间，只能包含字符、数字和下划线</p>
           </div>
         </div>
-    	<div class="control-group">
-          <!-- Text input-->
-          <label class="control-label" >验证码</label>
-          <div class="controls">
-            <input  class="input-small" type="text" name="confirm_code" id="confirm_code">
-            <a href="javascript:void(0)"><img  class="confirm-img" src="../../../../Public/Home/images/get_img.jpg" alt=""></a>
-            <p class="help-block">请输入右图验证码</p>
-          </div>
-        </div>
+<!--     	<div class="control-group"> -->
+<!--           Text input -->
+<!--           <label class="control-label" >验证码</label> -->
+<!--           <div class="controls"> -->
+<!--             <input  class="input-small" type="text" name="confirm_code" id="confirm_code"> -->
+<!--             <a href="javascript:void(0)"><img  class="confirm-img" src="../../../../Public/Home/images/get_img.jpg" alt=""></a> -->
+<!--             <p class="help-block">请输入右图验证码</p> -->
+<!--           </div> -->
+<!--         </div> -->
    
     	<div class="control-group">
-          
           <!-- Button -->
           <div class="controls">
-            <button class="btn btn-primary"     type="submit" form="loginForm" >登录</button>
+         	 <button class="btn btn-primary"  type="submit" form="loginForm" >登录</button>
              <button class="btn" type="reset" form="loginForm" id="reset">重置</button>
           </div>
         </div>
