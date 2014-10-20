@@ -1,10 +1,7 @@
 // 加载 自定义 扩展设置 validMethod
 define(["jquery","jquery.validate","validForm/validMethod"],function(){
 
-	var formName = "loginForm";
-	var action   = "checkCode";
-	$("#"+formName).attr("action",action);
-	var validatorForm = $("form[name="+formName+"]").validate({
+	return {
 		//	debug: true, // 开启debug 模式
 			errorElement :"span",
 			validClass: "success",
@@ -74,6 +71,6 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 					$(element).parentsUntil(".control-group").parent().removeClass(errorClass).addClass(validClass);
 			}
 
-		});
-	return validatorForm;
+		}
+	
 });

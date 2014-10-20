@@ -1,11 +1,7 @@
 	// 加载 自定义 扩展设置 validMethod
 define(["jquery","jquery.validate","validForm/validMethod"],function(){
-
-	var formName = "registerForm";
-	var action   = "checkUserName";
-	
-	$("#"+formName).attr("action",action);
-	var validatorForm = $("form[name="+formName+"]").validate({
+	console.log("register");
+return {
 		//	debug: true, // 开启debug 模式
 			errorElement :"span",
 			validClass: "success",
@@ -46,12 +42,15 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 							required:true
 						}
 						
-					},
+			},
 			messages :{
 						    uid_name: {
 									
-									login:"输入的用户名有误"
+									login:"输入的用户名有误",
+									remote:"用户已经存在,请重新输入"
+
 							},
+
 							email: {
 									required: "请输入邮箱地址",
 									email: "邮箱格式必须满足example@xxx.com"
@@ -74,7 +73,6 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 					$(element).removeClass(errorClass).addClass(validClass);
 					$(element).parentsUntil(".control-group").parent().removeClass(errorClass).addClass(validClass);
 			}
+};
 
-		});
-	return validatorForm;
 });

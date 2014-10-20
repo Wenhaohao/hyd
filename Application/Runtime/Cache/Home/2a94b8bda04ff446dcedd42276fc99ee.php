@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>运动健康分享平台--首页</title>
 	<!--  css 浏览器标准化 -->
-		<link rel="stylesheet" href="__STATIC__css/normalize.css">
+		<link rel="stylesheet" href="/Public/static/css/normalize.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="__STATIC__css/bootstrap.css">
+	<link rel="stylesheet" href="/Public/static/css/bootstrap.css">
 
 
 	<!-- 网站logo -->
-	<link rel="Bookmark" href="__STATIC__img/favicon_x16.ico" />
-	<link rel="shortcut icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="Bookmark" href="/Public/static/img/favicon_x16.ico" />
+	<link rel="shortcut icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
 
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/style.css">
-	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__STATIC__js/require.js"></script>
+	<link rel="stylesheet" href="/Public/Home/css/common/style.css">
+	<script data-main="/Public/Home/js/main" type="text/javascript" src="/Public/static/js/require.js"></script>
 	
 
 	
-	<link href="__PUBLIC__Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
+	<link href="/Public/Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
 		<!-- HOME  -->
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/main.css">
+	<link rel="stylesheet" href="/Public/Home/css/common/main.css">
 </head>
 <body>
 <div class="navbar">
