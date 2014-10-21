@@ -237,7 +237,7 @@
 				    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
     		</ul>
     		<div class="tab-content module-app-rank">
-			<section class="tab-pane  active" id="new"><ul>
+			<section class="tab-pane   active" id="new"><ul>
 				<li>
 					<span class="rank rank-top">1</span>
 					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
@@ -271,7 +271,7 @@
 				
 			</ul>
 			</section>
-			<section class="tab-pane" id="hot">
+			<section class="tab-pane " id="hot">
 				<ul>
 				<li>
 					<span class="rank rank-top">1</span>
