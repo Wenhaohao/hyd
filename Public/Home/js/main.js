@@ -4,10 +4,11 @@ require.config({
 		validForm:"../app/validForm",
 		flicker:"../app/flicker",
 	}
-}); 
-// 加载必要 js 文件 
-require(["jquery","bootstrap"]);
+});
+// 加载必要 js 文件
+require(["jquery","bootstrap"],function (){
+
+});
 
 
-  
-       
+

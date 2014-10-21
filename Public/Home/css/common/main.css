@@ -1,0 +1,18 @@
+/* reset bootstrap stylesheet */
+.hero-unit{border-color:#DDD;padding: 0px;}
+
+#flicker-tool{height: 240px !important;}
+
+.flickerplate ul{margin: 0px;}
+.flickerplate ul.flicks > li{
+background-repeat: no-repeat;
+background-position: right center;
+background-size: 64% 108%;
+}
+.flickerplate ul.flicks > li .flick-inner .flick-content{
+max-width: 36%;
+margin-right: 5px;
+text-align: right;
+float: left;
+}
+

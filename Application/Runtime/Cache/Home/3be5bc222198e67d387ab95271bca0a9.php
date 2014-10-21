@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>运动健康分享平台--首页</title>
 	<!--  css 浏览器标准化 -->
-	<link rel="stylesheet" href="__STATIC__css/normalize.css">
+	<link rel="stylesheet" href="/Public/static/css/normalize.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="__STATIC__css/bootstrap.css">
+	<link rel="stylesheet" href="/Public/static/css/bootstrap.css">
 
 
 	<!-- 网站logo -->
-	<link rel="Bookmark" href="__STATIC__img/favicon_x16.ico" />
-	<link rel="shortcut icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="Bookmark" href="/Public/static/img/favicon_x16.ico" />
+	<link rel="shortcut icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
 
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/style.css">
-	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__PUBLIC__Home/js/require.js"></script>
+	<link rel="stylesheet" href="/Public/Home/css/common/style.css">
+	<script data-main="/Public/Home/js/main" type="text/javascript" src="/Public/static/js/require.js"></script>
 
 </head>
 <body>
@@ -72,7 +72,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="{:U('Passport/login')}" method="post">
+  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group">
     <fieldset>
       <div id="legend" >
         <legend>
@@ -96,20 +96,21 @@
             <p class="help-block">长度在6~18之间，只能包含字符、数字和下划线</p>
           </div>
         </div>
-<!--     	<div class="control-group"> -->
-<!--           Text input -->
-<!--           <label class="control-label" >验证码</label> -->
-<!--           <div class="controls"> -->
-<!--             <input  class="input-small" type="text" name="confirm_code" id="confirm_code"> -->
-<!--             <a href="javascript:void(0)"><img  class="confirm-img" src="../../../../Public/Home/images/get_img.jpg" alt=""></a> -->
-<!--             <p class="help-block">请输入右图验证码</p> -->
-<!--           </div> -->
-<!--         </div> -->
+    	<div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" >验证码</label>
+          <div class="controls">
+            <input  class="input-small" type="text" name="confirm_code" id="confirm_code">
+            <a href="javascript:void(0)"><img  class="confirm-img" src="../../../../Public/Home/images/get_img.jpg" alt=""></a>
+            <p class="help-block">请输入右图验证码</p>
+          </div>
+        </div>
    
     	<div class="control-group">
+          
           <!-- Button -->
           <div class="controls">
-         	 <button class="btn btn-primary"  type="submit" form="loginForm" >登录</button>
+            <button class="btn btn-primary"     type="submit" form="loginForm" >登录</button>
              <button class="btn" type="reset" form="loginForm" id="reset">重置</button>
           </div>
         </div>

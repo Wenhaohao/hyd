@@ -9,9 +9,10 @@ body{
 height: 100%;
 font-family: tahoma,"Hiragino Sans GB","microsoft yahei",sans-serif !important;
 /* position */
-background: #373737;
-}
-
+FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=##15A216,endColorStr=#fafafa); /*IE*/   
+background:#fafafa;}
+li{list-style-type: none;}
+img{border-width:0px;border-style:none;outline: none;}
 
 /*
 	alter bootstrap nav
@@ -39,7 +40,7 @@ background: #373737;
 
 /*  .head-tool .head-tool-config  .head-tool-user .dropdown-head .dropdown-menu */
 .head-tool{width: 28px;height: 28px;background-image:url('tools/index.png');  background-repeat: none;}
-.head-tool-search{position: absolute;margin-right:6px;width: 28px;height: 28px; display: inline-block;right: 0px;cursor:pointer; background-position: 6px 4px;}
+.head-tool-search{position: absolute;margin-right:6px;width: 28px;height: 28px; display: inline-block;right: 0px;top:0px;cursor:pointer; background-position: 6px 4px;}
 .head-tool-search:hover{background-position: 6px -20px;}
 .head-tool-config{background-position: 6px -146px;cursor: pointer; }
 .head-tool-config:hover{background-position: 6px -170px;}
@@ -56,11 +57,7 @@ background: #373737;
 
 .dropdown-head .dropdown-menu{min-width: 80px !important;}
 /* pagewrap main content */
-#pagewrap{
-	padding-top: 20px;
-	background: #FEFEFE;
-	min-height: 500px;
-}
+#pagewrap{margin-top: 20px;min-height: 500px;}
 .p-wrap{ padding:10px 0px;display:block;}
 /* set form  help-block  confim-img */
 
@@ -75,21 +72,82 @@ height: 30px;
 border: 1px solid #CCC;
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
+.module-show{
+padding-top: 10px;
+}
+.module-show .thumbnail {background: #fff;position: relative;
+}
+.module-show  .thumbnail:hover{
+text-decoration: none;
+}
 
+.module-show  .thumbnail .badge{position:absolute;right:-15px;top:-10px;}
 
+/* module content */
+.module-left{width: 629px;}
+.module-aside{width:270px;}
+.module-left  .module-app-list{margin-left: -20px;}
+.module-left  .module-app-list > li{margin-left: 20px;min-height: 128px;box-sizing: border-box;}
+.module-left  .module-app-list > li{background-color: #fefefe;padding:11px 20px;}
+.module-left  .module-app-list > li:hover{background-color: #FFF;border-color: #08C;box-shadow:0px 0px 1px #08E;transition: all 0.2s ease-in-out 0s;}
 
+.module-left  .module-app-list > .item{border:1px solid #DDD; border-radius:5px;}
 
+.item .media-heading a{color: #333;cursor: pointer;}
+.item .media-heading a:hover{color:#B94A48;text-decoration:none;transition: all 0.3s linear 0s;}
+.item .item-nav{margin-top: 10px;width:100%;vertical-align: middle;}
+
+.item-nav > a:hover{text-decoration: none;}
+.item .item-img{width: 128px;height: 128px;}
+
+.module-app{margin-bottom: 20px;}
+.module-app .pagination a{color: #333;}
+.module-app-rank{
+border-sizing:border-box;
+border: 1px solid #ddd;
+border-top:none;
+margin-top: -20px;
+padding:15px 0px 0px 10px;
+background-color: #fff;
+}
+.module-app-rank a{color:#333;}
+.module-app-rank a:hover{text-decoration: ;color:#B94A48; }
+.module-app-rank  ul { margin-left: 0px;}
+.module-app-rank   ul > li{line-height: 21px;padding:6px 2px;}
+.rank{vertical-align: middle; width: 18px;height: 18px;padding:1px;font-size:12px;line-height:18px;text-align:center;border-radius: 50%;display: inline-block;background-color: #999;color: #FFF;}
+.rank-top{background-color: #C33;}
+.rank-middle{background-color:#39C;}
+.rank-third{background-color:#693;}
 /* footer bar #fotter #footer  */
 #footer{
-position: absolute;
-bottom: 0px;
 padding-top: 20px;
 /* size width height */
-
 width: 100%;
 min-height: 35px;
+
 /* background color */
-background-color: #333;
-color:#f5f5f5;
+color:#333;
 text-align: center;
+}
+
+
+/* head  app icons */
+.head-app-name{margin-left: 6px;}
+.head-app-icon{
+background: url('tools/header_app_icon.png') no-repeat;
+width: 25px;
+height: 25px;
+display:inline-block;
+vertical-align: middle;
+background-position:2px 1px ;
+}
+
+.head-app-sys{
+background-position: 3px -319px;
+}
+.head-app-sns{
+background-position: 2px -79px;
+}
+.head-app-sport{
+background-position: 2px -239px;
 }
