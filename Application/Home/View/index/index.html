@@ -101,9 +101,9 @@
                 </a>
               </li>
               <li class="span3">
-                <a href="#" class="thumbnail">
+                <a href="/share/index" class="thumbnail">
                   <span class="head-app-icon head-app-sns"></span>
-                  <span class="head-app-name">运动计划分享</span>
+                  <span class="head-app-name">运动健康分享</span>
                    <span class="badge badge-important ">100</span>
                 </a>
               </li>
