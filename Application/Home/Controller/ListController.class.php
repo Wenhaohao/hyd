@@ -18,5 +18,10 @@ class ListController extends Controller {
 	public function index(){
 		$this->display();
 	}
+
+	public function article(){
+
+		$this->display();
+	}
 	
 }

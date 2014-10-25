@@ -72,7 +72,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="" method="post">
+  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="/Home/Passport/checkRegister" method="post">
     <fieldset>
       <div id="legend" class="">
         <legend class="">

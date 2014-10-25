@@ -1,6 +1,6 @@
 	// 加载 自定义 扩展设置 validMethod
 define(["jquery","jquery.validate","validForm/validMethod"],function(){
-	console.log("register");
+	
 return {
 		//	debug: true, // 开启debug 模式
 			errorElement :"span",
@@ -15,9 +15,9 @@ return {
 							required:true,
 							login:true,
 							remote:{
-								url:"checkUserName",
+								url:"/passport/checkusername",
 								type:"post",
-								dataType:"json",
+								
 								data:{
 									username:function(){
 										 console.log("send ajax to checkUserName");

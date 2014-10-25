@@ -23,7 +23,7 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 						passwd:{
 							required:true,
 							password:true
-						},
+						},/*
 						confirm_code:{
 							required:true,
 							minlength:4,
@@ -39,22 +39,21 @@ define(["jquery","jquery.validate","validForm/validMethod"],function(){
 									}
 								}
 							}
-						}
+						}*/
 
 						
 					},
 			messages :{
 
 							passwd: {
-									required: "请输入邮箱地址",
-									email: "邮箱格式必须满足example@xxx.com"
+									required: "请输入密码"
+									
 							},
-							confirm_code:{
+							/*confirm_code:{
 									minlength:"长度不得小于指定长度",
 									maxlength:"长度不得超于指定长度",
-
 									remote:"验证码有误"
-							},
+							},*/
 
 			},
 			 //高亮警告提示

@@ -31,6 +31,7 @@ class PassportController extends Controller{
 	
 	// 验证用户登录信息
 	public function checkLogin(){
+
 		if(IS_POST){
 			$dataLogin = I('post.');
 			$checkLogin = D('Passport')->checkLogin($dataLogin);  
@@ -56,8 +57,10 @@ class PassportController extends Controller{
 		if(IS_POST){
 			$dataUsername = I("post.username");
  			$checkUsername = D('Passport')->checkUsername($dataUsername);
- 			$this->ajaxReturn($checkUsername);
+ 			//$this->ajaxReturn($checkUsername);
+ 			echo ($checkUsername==true)?'true':'false';
 		}
+		return;
 	}
 	
 	// 退出登录

@@ -152,12 +152,16 @@ background-color: #fff;
 .module-app-rank .rank-middle{background-color:#39C;}
 .module-app-rank .rank-third{background-color:#693;}
 
-.module-app-share {background: #ffffff; border: 1px solid #ddd;border-radius: 4px;box-sizing: border-box;padding: 4px 12px;}
+.module-app-share {position:relative;background: #ffffff; border: 1px solid #ddd;border-radius: 4px;box-sizing: border-box;padding: 4px 12px;}
 .module-app-share .form-horizontal .control-label {text-align: right;width:100px;}
 .module-app-share .form-horizontal .controls {margin-left: 120px;}
 .module-app-share  .tags .label{position: relative;padding: 5px 10px;font-size: 14px;margin-right: 10px;}
 .module-app-share  .tags .tag-close{opacity:0.8;position: absolute;right: -6px; top:-6px; width: 16px;height: 16px;display: block;background: url('tools/closed.png') no-repeat;cursor: pointer;}
 .module-app-share  .tags .tag-close:hover{opacity: 1;}
+.module-app-share  .textarea{width: 90%;height: 100px;resize:none;}
+.module-app-share  .upload{position: absolute;right:20px;top:65px;width: 128px;overflow: hidden;}
+.module-app-share  .upload-img{width: 128px;height: 128px;}
+.module-app-share  .upload-click{position: absolute;left: 0px;bottom: 0px;width:100%;background: #FF0000; opacity: 0.8;}
 /* footer bar #fotter #footer  */
 #footer{
 padding-top: 20px;

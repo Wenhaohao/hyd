@@ -72,7 +72,7 @@
 
   <div  class="container" >
   	
-  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="<?php echo U('Passport/login');?>" method="post">
+  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="<?php echo U('Passport/checkLogin');?>" method="post">
     <fieldset>
       <div id="legend" >
         <legend>
