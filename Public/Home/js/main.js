@@ -9,9 +9,6 @@ require.config({
 	}
 });
 // 加载必要 js 文件
-require(["jquery","bootstrap"],function (){
-
-});
 
 
 
