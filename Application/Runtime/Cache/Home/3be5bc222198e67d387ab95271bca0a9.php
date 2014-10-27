@@ -4,27 +4,33 @@
 	<meta charset="UTF-8">
 	<title>运动健康分享平台--首页</title>
 	<!--  css 浏览器标准化 -->
-	<link rel="stylesheet" href="/Public/static/css/normalize.css">
+	<link rel="stylesheet" href="/Public/Static/css/normalize.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="/Public/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/Public/Static/css/bootstrap.css">
 
 
 	<!-- 网站logo -->
-	<link rel="Bookmark" href="/Public/static/img/favicon_x16.ico" />
-	<link rel="shortcut icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="/Public/static/img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="Bookmark" href="/Public/Static/img/favicon_x16.ico" />
+	<link rel="shortcut icon" href="/Public/Static/img/favicon_x16.ico" type="image/x-icon" />
+	<link rel="icon" href="/Public/Static/img/favicon_x16.ico" type="image/x-icon" />
 
 	<link rel="stylesheet" href="/Public/Home/css/common/style.css">
+	<script data-main="/Public/Home/js/main" type="text/javascript" src="/Public/Static/js/require.js"></script>
+
+	<script type="text/javascript" src="/Public/Static/js/jquery.js"></script>
+	<script type="text/javascript" src="/Public/Static/js/bootstrap.js"></script>
+	
+	<link href="/Public/Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
+
 
 </head>
 <body>
 <div class="navbar">
-		
-	
+
+
 	<div class="navbar-fixed-top">
 		 <div class="navbar-inner">    
 		 	<div class="container nav-collapse" >
-
 		 		<div class="brand">
 		 			<a class="logo"></a>
 		 			<span>运动健康分享平台</span>
@@ -49,15 +55,28 @@
 				</li>
 				<li>
 					<div >
-						<a  class="head-tool head-tool-register" href="#">注册</a>
+						<a  class="head-tool head-tool-register" href="/passport/register">注册</a>
 					</div>
+					<!--<div class="head-tool head-tool-config"></div> -->
 				</li>
-				<li class="">
+				<li >
+
 					<div>
-						<a href="#" class="head-tool head-tool-login">登录</a>
+						<a href="/passport/login" class="head-tool head-tool-login">登录</a>
 					</a>
 					</div>
-					
+					<!--
+					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
+						 <img  src="/Public/HOME/images/default-user.png" alt="头像" > 
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
+						<li><a tabindex="-1" href="#">个人中心</a></li>
+						<li><a tabindex="-1" href="#">消息</a></li>
+						<li><a tabindex="-1" href="#">意见反馈</a></li>
+						<li class="divider"></li>
+						<li><a tabindex="-1" href="#">退出</a></li>
+					</ul>
+					 -->
 				</li>
 				
 			</ul>
@@ -70,8 +89,8 @@
 <div id="pagewrap">
 
   <div  class="container" >
-  	
-  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="<?php echo U('Passport/checkLogin');?>" method="post">
+   <div class="p-wrap"></div>	
+  <form class="form-horizontal" name="loginForm" id="loginForm"  data-error="control-group" action="/Passport/checkLogin" method="post">
     <fieldset>
       <div id="legend" >
         <legend>

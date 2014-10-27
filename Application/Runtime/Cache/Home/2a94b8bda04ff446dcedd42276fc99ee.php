@@ -93,14 +93,12 @@
 	<div class=" module-show">
 			<!-- 功能模块 展示 -->
 			<ul class="row">
-
               <li class="span3">
                 <a href="#" class="thumbnail">
                   <span class="head-app-icon head-app-sys"></span>
                   <span class="head-app-name">网站公告</span>
                    <span class="badge badge-important ">100</span>
                 </a>
-
               </li>
               <li class="span3">
                 <a href="/list/article" class="thumbnail">
