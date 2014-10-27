@@ -1,0 +1,10 @@
+.module-app .module-app-categorys{background-color: #fff;padding:0px 15px;box-sizing: border-box;border: 1px solid #DDD;border-radius: 5px;}
+.module-app .module-app-category{position: relative;padding:5px 5px;line-height: 20px;padding: 5px; border-bottom: 1px dashed #eee;}
+.module-app .module-app-category:last-child{border-bottom: none;}
+.module-app-category .category-head{position: absolute;left: 0px; top:auto;}
+.module-app-category .category-head h4{font-size: 14px;color: #666;margin: 4px 15px 10px 5px;padding: 4px;}
+.module-app-category .category-list{padding-left:80px;}
+.module-app-category .category-list > a{font-size:13px;margin: 4px 10px 6px 5px;padding:4px;display: inline-block; cursor: pointer;}
+
+.module-app-category .category-list > .active{}
+.module-app-category .category-more{}
