@@ -1,8 +1,9 @@
 <include file="Public:header" />
 
 <!-- 个人空间 -->
+<link rel="stylesheet" href="__PUBLIC__HOME/css/common/share.css">
 <div class="container" id="pagewrap">
-	<div class=" module-show">
+	<div class="module-show">
 			<!-- 功能模块 展示 -->
 			<ul class="row">
 
@@ -42,9 +43,9 @@
 	
 	<!-- 文章内容  -->
 	<div class="container">
-
-		<div class="clearfix"></div>
-		<section class="module-left pull-left">
+		<div class="row">
+	
+		<section class="module-left pull-left span9">
 
 	
 			<ul class="breadcrumb">
@@ -163,22 +164,53 @@
 		</section>
 	
 			<!-- 网站旁白 -->
-		<aside class="module-aside pull-right">
-			<div class="module-app">
-				
-
-			
-			<ul class="nav nav-tabs ">
-				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
-				    <li><a href="#hot" data-toggle="tab">热门文章</a></li>
-				    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
+		<aside class="module-aside pull-right span3">
+			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
+	
+			<ul class="nav nav-list">
+				    <li class="active">
+				    	<a href="#">
+							<i class="icon-chevron-left"></i>
+				    		个人资料
+				    		<i class="icon-user"></i>
+				    	</a>
+				    </li>
+				    <li><a href="#hot">
+						<i class="icon-chevron-left"></i>
+				    	关注好友</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="#recommend">
+				    	<i class="icon-chevron-left"></i>
+				    	分享文章</a>
+				    </li>
+				    <li>
+				    	<a href="#recommend">
+				    	<i class="icon-chevron-left"></i>
+				    	文章收藏</a>
+				    </li>
+				     <li>
+				    	<a href="#recommend">
+				    	<i class="icon-chevron-left"></i>
+				    	文章留言</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="#recommend">
+				    	<i class="icon-chevron-left"></i>
+				    	运动说说</a>
+				    </li>
+				    <li>
+				    	<a href="#recommend">
+				    	<i class="icon-chevron-left"></i>
+				    	运动说说</a>
+				    </li>
     		</ul>
-    		<div class="tab-content module-app-rank">
-					
-			</div>
+    		
 			</div>
 		</aside>
-	
+	    </div>
 	</div>
 
 </div>
