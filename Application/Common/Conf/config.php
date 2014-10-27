@@ -8,7 +8,7 @@ return array(
 	'DB_HOST'      =>  '127.0.0.1',     // 服务器地址
 	'DB_NAME'      =>  'hyd_share',     // 数据库名
 	'DB_USER'      =>  'root',     // 用户名
-	'DB_PWD'       =>  'liyanlong',     // 输入安装MySQL时设置的密码
+	'DB_PWD'       =>  'wenhao',     // 输入安装MySQL时设置的密码
 	'DB_PORT'      =>  '3306',     // 端口
 	'DB_PREFIX'    =>  'hyd_',     // 数据库表前缀
 	'DB_CHARSET'=> 'utf8', 		// 数据库编码默认采用utf8

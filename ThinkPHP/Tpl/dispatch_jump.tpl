@@ -1,38 +1,54 @@
-<?php
-    if(C('LAYOUT_ON')) {
-        echo '{__NOLAYOUT__}';
-    }
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>跳转提示</title>
-<style type="text/css">
-*{ padding: 0; margin: 0; }
-body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
-.system-message{ padding: 24px 48px; }
-.system-message h1{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }
-.system-message .jump{ padding-top: 10px}
-.system-message .jump a{ color: #333;}
-.system-message .success,.system-message .error{ line-height: 1.8em; font-size: 36px }
-.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
+<style>
+.smessage {
+	width:580px;
+	margin:100px auto;
+	border:1px solid #ddd;
+	/*background:#fff;*/
+	border-radius:5px;
+	box-shadow:3px 5px 3px rgba(0,0,0,0.1);
+}
+.smessage .sheader {
+	border-radius:5px 5px 0px 0px;
+	padding:6px 10px;
+	font-size:14px;
+	border-bottom:1px solid #ddd;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#f5f5f5',GradientType='0');
+	background-image:-ms-linear-gradient(top,#ffffff,#f5f5f5);
+	background-image:-moz-linear-gradient(top,#ffffff,#f5f5f5);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#ffffff),color-stop(1,#f5f5f5));
+}
+.smessage .scontent {
+	padding:20px;
+	overflow:hidden;
+	color:#666;
+	background:#fff;
+}
+.smessage .scontent .success,.smessage .scontent .error {
+	font-size:25px;
+	text-indent:10px;
+}
+.smessage .scontent .jump {
+	color:#999;
+	font-size:12px;
+	padding:10px;
+	padding-left:70px;
+}
+.smessage .scontent .jump a {
+	color:#00c;
+}
 </style>
-</head>
-<body>
-<div class="system-message">
-<?php if(isset($message)) {?>
-<h1>:)</h1>
-<p class="success"><?php echo($message); ?></p>
-<?php }else{?>
-<h1>:(</h1>
-<p class="error"><?php echo($error); ?></p>
-<?php }?>
-<p class="detail"></p>
-<p class="jump">
-页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
-</p>
+<div class="smessage">
+	<div class="sheader">系统提示</div>
+	<div class="scontent">
+		<present name="message">
+		<p class="success"><span class="AI-Succ"></span><?php echo($message); ?></p>
+		<else/>
+		<p class="error"><span class="AI-Err"></span><?php echo($error); ?></p>
+		</present>
+		<p class="jump">页面将在 <b id="wait"><?php echo($waitSecond); ?></b> 秒后自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a></p>
+	</div>
 </div>
+
 <script type="text/javascript">
 (function(){
 var wait = document.getElementById('wait'),href = document.getElementById('href').href;
@@ -45,5 +61,3 @@ var interval = setInterval(function(){
 }, 1000);
 })();
 </script>
-</body>
-</html>
