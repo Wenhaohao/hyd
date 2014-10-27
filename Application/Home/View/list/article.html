@@ -1,81 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>运动健康分享平台--发表文章</title>
-	<!--  css 浏览器标准化 -->
-		<link rel="stylesheet" href="__STATIC__css/normalize.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="__STATIC__css/bootstrap.css">
-
-
-	<!-- 网站logo -->
-	<link rel="Bookmark" href="__STATIC__img/favicon_x16.ico" />
-	<link rel="shortcut icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/style.css">
-	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__STATIC__js/require.js"></script>
-	
-
-	
-	<link href="__PUBLIC__Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
-		<!-- HOME  -->
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/main.css">
-</head>
-<body>
-<div class="navbar">
-
-
-	<div class="navbar-fixed-top">
-		 <div class="navbar-inner">    
-		 	<div class="container nav-collapse" >
-		 		<div class="brand">
-		 			<a class="logo"></a>
-		 			<span>运动健康分享平台</span>
-		 		</div>
-		 	<ul class="nav " id="nav">  
-		 		<li>
-		 			<a href="http://www.hyd.com">首页</a>
-		 		</li>  
-		 		<li>
-					<a  href="#">运动分享 </a>
-		 		</li>
-		 		<li><a href="#">专家指导</a></li>
-		 		
-		 		<li><a href="#">健康指南</a></li>
-		 	</ul>
-			<ul class="nav pull-right" id="nav-right">
-				<li>
-					<form class="navbar-search pull-left"> 
-					 <input type="text" class="search-query"  placeholder="Search">
-					 <span class="head-tool head-tool-search"></span>
-					</form>
-				</li>
-				<!-- 网站配置选项 -->
-				<li><div class="head-tool head-tool-config"></div></li>
-				<!-- 个人选项  -->
-				<li class="dropdown dropdown-head">
-					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="__PUBLIC__HOME/images/default-user.png" alt="头像" > 
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
-						<li><a tabindex="-1" href="#">个人中心</a></li>
-						<li><a tabindex="-1" href="#">消息</a></li>
-						<li><a tabindex="-1" href="#">意见反馈</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" href="#">退出</a></li>
-					</ul>
-					
-				</li>
-				
-			</ul>
-
-		 	
-		 	</div> 
-		 </div>
-	</div>
-</div>
+<include file="Public:header" />
+<!-- list 页面 指定 css -->
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/category.css">
 <div class="container" id="pagewrap">
 	<div class=" module-show">
 			<!-- 功能模块 展示 -->
@@ -104,9 +29,9 @@
                 </a>
               </li>
               <li class="span3">
-                <a href="#" class="thumbnail">
+                <a href="/share/index" class="thumbnail">
                   <span class="head-app-icon head-app-sns"></span>
-                  <span class="head-app-name">运动计划分享</span>
+                  <span class="head-app-name">个人社区</span>
                    <span class="badge badge-important ">100</span>
                 </a>
               </li>
@@ -120,23 +45,69 @@
 		
 		<section class="module-left pull-left">
 			<!-- 网站 导航  -->
-			<div data-spy="affix" data-offset-top="60"  id="navbar">
-				    <ul class="breadcrumb">
-   					 <li><a href="#">首页</a> <span class="divider">/</span></li>
-  					  <li><a href="#">Library</a> <span class="divider">/</span></li>
-    					<li class="active">Data</li>
-   					 </ul>
+			<div id="navbar">
+		    	<ul class="breadcrumb">
+				 <li><a href="#">首页</a> <span class="divider">/</span></li>
+				  <li><a href="#">运动健康分享</a> <span class="divider">/</span></li>
+				<li class="active">文章</li>
+				</ul>
 			</div>
-	
+			<!-- 分类 -->			
 			<div class="module-app">
-				
-			<!-- 分类 -->
+				<div class="module-app-categorys">
+				<div class="module-app-category">
+					<div class="category-head"><h4>运动分类</h4></div>
+					<div class="category-list" >
+						<a class="active label label-info" >室内运动</a><a href="#">户外运动</a>
+					</div>
+						
+				</div>
+				<div class="module-app-category">
+					<div class="category-head"><h4>室内运动</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+							<a  class="active" href="#">户外攀岩</a>
+						<a href="#">其他</a>
+					</div>
+				</div>
+				<div class="module-app-category">
+					<div class="category-head"><h4>运动目的</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">不限</a>
+						<a href="#">健身</a>
+					</div>
+				</div>
+				<div class="module-app-category">
+					<div class="category-head"><h4>针对人群</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">老年人</a>
+						<a href="#">中年人</a>
+					</div>
+				</div>
+					<div class="module-app-category">
+					<div class="category-head"><h4>筛选条件</h4></div>
+					<div class="category-list" >
+						<a  class="active  label label-info" href="#">最新</a>
+						<a href="#">最热</a>
 
+					</div>
+				</div>
+				</div>
+			</div>
+
+
+			<!-- 列表 -->
+			<div class="module-app">
 
 			<ul class="media-list module-app-list">
 				<li class="media item"> 
 					<a class="pull-left thumbnail" href="#">
-					<img  class="media-object item-img" alt="128x128" data-src="">
+					<img  class="media-object item-img img-rounded" alt="128x128" data-src="">
 					</a>
 					<div class="media-body">
 					<h4 class="media-heading page-header">
@@ -397,12 +368,6 @@
 <script type="text/javascript">
 	window.onload = function(){
 
-		require(["jquery","flicker/headUnit"],function(J,obj){
-			
-			$(obj.selector).flicker(obj.config);
-			$(obj.selector).show();
-			$('#navbar').affix()
-		});
 
 	};
 </script>

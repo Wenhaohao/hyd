@@ -1,82 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>运动健康分享平台--发表文章</title>
-	<!--  css 浏览器标准化 -->
-		<link rel="stylesheet" href="__STATIC__css/normalize.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="__STATIC__css/bootstrap.css">
-	
-
-	<!-- 网站logo -->
-	<link rel="Bookmark" href="__STATIC__img/favicon_x16.ico" />
-	<link rel="shortcut icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-	<link rel="icon" href="__STATIC__img/favicon_x16.ico" type="image/x-icon" />
-
-	<link rel="stylesheet" href="__PUBLIC__Home/css/common/style.css">
-
-	
-	<link href="__PUBLIC__Home/css/libs/flickerplate/flickerplate.css"  type="text/css" rel="stylesheet">
-	<!-- 图片上传  -->
-	<link href="__STATIC__css/croppic.css" rel="stylesheet" />
-	<script type="text/javascript" src="__PUBLIC__Home/js/lib/jquery.js"></script>
-	<script data-main="__PUBLIC__Home/js/main" type="text/javascript" src="__STATIC__js/require.js"></script>
-
-</head>
-<body>
-<div class="navbar">
-
-
-	<div class="navbar-fixed-top">
-		 <div class="navbar-inner">    
-		 	<div class="container nav-collapse" >
-		 		<div class="brand">
-		 			<a class="logo"></a>
-		 			<span>运动健康分享平台</span>
-		 		</div>
-		 	<ul class="nav " id="nav">  
-		 		<li>
-		 			<a href="http://www.hyd.com">首页</a>
-		 		</li>  
-		 		<li>
-					<a  href="#">运动分享 </a>
-		 		</li>
-		 		<li><a href="#">专家指导</a></li>
-		 		
-		 		<li><a href="#">健康指南</a></li>
-		 	</ul>
-			<ul class="nav pull-right" id="nav-right">
-				<li>
-					<form class="navbar-search pull-left"> 
-					 <input type="text" class="search-query"  placeholder="Search">
-					 <span class="head-tool head-tool-search"></span>
-					</form>
-				</li>
-				<!-- 网站配置选项 -->
-				<li><div class="head-tool head-tool-config"></div></li>
-				<!-- 个人选项  -->
-				<li class="dropdown dropdown-head">
-					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="__PUBLIC__HOME/images/default-user.png" alt="头像" > 
-					</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
-						<li><a tabindex="-1" href="#">个人中心</a></li>
-						<li><a tabindex="-1" href="#">消息</a></li>
-						<li><a tabindex="-1" href="#">意见反馈</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" href="#">退出</a></li>
-					</ul>
-					
-				</li>
-				
-			</ul>
-
-		 	
-		 	</div> 
-		 </div>
-	</div>
-</div>
+<include file="Public:header" />
 <div class="container" id="pagewrap">
 	<div class=" module-show">
 			<!-- 功能模块 展示 -->
@@ -107,7 +29,7 @@
               <li class="span3">
                 <a href="#" class="thumbnail">
                   <span class="head-app-icon head-app-sns"></span>
-                  <span class="head-app-name">运动计划分享</span>
+                  <span class="head-app-name">个人社区</span>
                    <span class="badge badge-important ">100</span>
                 </a>
               </li>
@@ -124,7 +46,7 @@
 
 	
 			<ul class="breadcrumb">
-    				<li><a href="#">首页</a> <span class="divider">/</span></li>
+    				<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
 	    		<li><a href="/share">分享</a> <span class="divider">/</span></li>
     			<li class="#">文章发布 <span class="label ">ing...</span></li>
     		</ul>
@@ -202,7 +124,7 @@
 		      </div>
 		    <div class="control-group">
 			  	<!-- 文章编辑框 -->
-			     <script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+			<script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
 		    </div>
 
 		    	<div class="control-group">
@@ -227,6 +149,7 @@
 						<div class="upload-img" id="uploadImg"></div>
 						<input type="text" style="display:none;" id="ref_image" name="ref_image">
 					</div>
+					<span class="label label-success upload-info" >请上传图片</span>
 				</div>
 		    </fieldset>
 
@@ -257,9 +180,12 @@
 	</div>
 
 </div>
-<input type="file" name="fileToUpload" id = "fileToUpload" />	
+
 </body>
 <!-- 加载文本编辑器 -->
+<!-- 图片上传  -->
+<link href="__STATIC__css/croppic.css" rel="stylesheet" />
+<script type="text/javascript" src="__PUBLIC__Home/js/lib/jquery.js"></script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.config.js"></script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.all.min.js"> </script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__lang/zh-cn/zh-cn.js"></script>
@@ -300,7 +226,9 @@ $(function(){
 				imgEyecandyOpacity:0.4,
 				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 
-				onAfterImgCrop:function(){ 
+				onAfterImgCrop:function(){
+					//上传成功后
+					$(".upload .upload-info").hide();	 
 					$("#ref_image").val($('#uploadImg img:first').attr("src")); 
 				}
 		}

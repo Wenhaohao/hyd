@@ -70,6 +70,8 @@ class ShareController extends Controller {
     public function uploadImage(){
   
         /* Applicaiton  Common  文件上传保存 */
+        $name = "demo";
+        $path ="";
         img_save_to_file($name,$path);  
         return ;
     // $this->display();
