@@ -90,5 +90,16 @@ class ShareController extends Controller {
     }
 
 
+    /**
+    *  
+    *    修改个人资料个人偏好
+    *    @param
+    *    @return 
+    *
+    */
+    public function uploadUser(){
+        
+        $this->display();
+    }
 }
 
