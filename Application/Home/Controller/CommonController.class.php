@@ -4,24 +4,23 @@
 // +----------------------------------------------------------------------
 // | Author:  min_wenhao<min_Wenhao@163.com>
 // +----------------------------------------------------------------------
-// | 2014-10-12
+// | 2014-10-26
 // +----------------------------------------------------------------------
 
 /**
- * 首页控制器
+ * 公共的控制器
  */
-namespace Home\Controller;	//表示当前类是Home模块下的控制器类
-use Home\Controller\CommonController;	//表示引入Think\Controller明明空间便于直接使用
+namespace Home\Controller;
+use Think\Controller;
 
-class IndexController extends CommonController {
+class CommonController extends Controller{
 	
-    /**
-     * 首页输出
-     * @param 
-     * @return 
-     */
-    public function index(){
-    	$this->display();
-    }
-    
+	public function __construct(){
+		parent::__construct();
+		$userName = $_SESSION['name'];
+		$this->assign('userName',$userName);
+	}
+	
 }
+
+?>

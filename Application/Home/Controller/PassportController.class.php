@@ -11,9 +11,9 @@
  * 登录 注册 控制器
  */
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CommonController;
 
-class PassportController extends Controller{ 
+class PassportController extends CommonController{ 
 	
 	public function	index(){
 		
@@ -34,11 +34,11 @@ class PassportController extends Controller{
 
 		if(IS_POST){
 			$dataLogin = I('post.');
-			$checkLogin = D('Passport')->checkLogin($dataLogin);  
+			$checkLogin = D('Passport','Service')->checkLogin($dataLogin);  
 			if($checkLogin){
 				$this->success('登陆成功','/Index/index');
 			}else{
-				$this->error('用户名或密码错误','__URL__/login');
+				$this->error('用户名或密码错误');
 			}
 		}
 	}
@@ -47,7 +47,7 @@ class PassportController extends Controller{
 	public function checkRegister(){
 		if(IS_POST){
 			$dataRegister = I('post.');
-			$checkRegister = D('Passport')->checkRegister($dataRegister);
+			$checkRegister = D('Passport','Service')->checkRegister($dataRegister);
 			$this->show($checkRegister);
 		}
 	}
@@ -56,7 +56,7 @@ class PassportController extends Controller{
 	public function checkUsername(){
 		if(IS_POST){
 			$dataUsername = I("post.username");
- 			$checkUsername = D('Passport')->checkUsername($dataUsername);
+ 			$checkUsername = D('Passport','Service')->checkUsername($dataUsername);
  			//$this->ajaxReturn($checkUsername);
  			echo ($checkUsername==true)?'true':'false';
 		}
