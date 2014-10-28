@@ -19,6 +19,8 @@ class CommonController extends Controller{
 		parent::__construct();
 		$userName = $_SESSION['name'];
 		$this->assign('userName',$userName);
+// 		$auth = "power by thinkphp";
+// 		$this->assign('auth',$auth);
 	}
 	
 }

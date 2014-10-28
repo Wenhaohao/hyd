@@ -10,10 +10,10 @@
 /**
  *  登录 注册模型
  */
-namespace Home\Model;
+namespace Common\Service;
 use Think\Model;
 
-class PassportModel extends Model{
+class PassportService extends Model{
 	
 	// 验证用户登录
 	public function checkLogin($dataLogin){
