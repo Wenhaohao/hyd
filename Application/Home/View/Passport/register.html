@@ -3,7 +3,7 @@
 
   <div  class="container" >
   	 <div class="p-wrap"></div>
-  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="__URL__/checkRegister" method="post">
+  <form class="form-horizontal" name="registerForm" id="registerForm"  data-error="control-group" action="__URL__/checkregister" method="post">
     <fieldset>
       <div id="legend" class="">
         <legend class="">
@@ -74,9 +74,7 @@
 
  
 </div>
- <footer id="footer">
-  		<div class="container">footer</div>
-  </footer>
+
 </body>
 <script type="text/javascript">
 	window.onload = function(){
@@ -86,7 +84,7 @@
 		var form ={ name:"registerForm"};
 		require(["jquery","validForm/register"],function($,config){	
 
-			 $("form[name="+form.name+"]").validate(config);
+			  $("form[name="+form.name+"]").validate(config);
 		});
 	};
 </script>

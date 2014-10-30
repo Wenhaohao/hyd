@@ -37,13 +37,15 @@ class PassportService extends Model{
 		}
 		
 		// 判断用户名是否存在
-		$count = count(M('users')->where('account_name='.'"'.$dataRegister['uid_name'].'"')->select());
+		echo $dataRegister['uid_name'];
+		$count = count(M('users')->where("uid_name ="."'".$dataRegister['uid_name']."'")->select());
+
 		if($count > 0){
 			return "您的用户名已经存在";
 		}
 		
-		// 获取数据 添加数据
-		$data['account_name'] = $dataRegister['uid_name'];
+		// 获取数据 添加数据  NOT NULL
+		$data['uid_name'] = $dataRegister['uid_name'];
 		$data['passwd'] = md5($dataRegister['passwd']);
 		$data['email'] = $dataRegister['email'];
 		

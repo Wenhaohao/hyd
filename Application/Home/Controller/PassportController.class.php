@@ -46,7 +46,8 @@ class PassportController extends CommonController{
 	// 验证用户注册信息
 	public function checkRegister(){
 		if(IS_POST){
-			$dataRegister = I('post.');
+			$dataRegister = I('post.');  //获取 post 全部变量
+
 			$checkRegister = D('Passport','Service')->checkRegister($dataRegister);
 			$this->show($checkRegister);
 		}
