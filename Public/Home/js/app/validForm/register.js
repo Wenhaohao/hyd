@@ -15,15 +15,8 @@ return {
 							required:true,
 							login:true,
 							remote:{
-								url:"/passport/checkusername",
-								type:"post",
-								
-								data:{
-									username:function(){
-										 console.log("send ajax to checkUserName");
-										 return $("#uid_name").val();
-									}
-								}
+								url:"/Passport/checkusername",
+								type:"post"
 							}
 						},
 						passwd:{
@@ -36,7 +29,11 @@ return {
 						},
 						email: {
 							required: true,
-							email: true
+							email: true,
+							remote:{
+								url:"/Passport/checkemail",
+								type:"post"
+							}
 						},
 						contact:{
 							required:true
@@ -45,15 +42,14 @@ return {
 			},
 			messages :{
 						    uid_name: {
-									
 									login:"输入的用户名有误",
 									remote:"用户已经存在,请重新输入"
-
 							},
 
 							email: {
 									required: "请输入邮箱地址",
-									email: "邮箱格式必须满足example@xxx.com"
+									email: "邮箱格式必须满足example@xxx.com",
+									remote:"邮箱地址重复,请重新输入"
 							},
 							confirm_password:{
 									equalTo:"与原密码不一致,请确认"

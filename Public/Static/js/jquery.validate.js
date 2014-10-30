@@ -1267,7 +1267,8 @@ $.extend( $.validator, {
 			if ( previous.old === value ) {
 				return previous.valid;
 			}
-
+  
+    
 			previous.old = value;
 			validator = this;
 			this.startRequest( element );

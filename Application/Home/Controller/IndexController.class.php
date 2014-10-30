@@ -21,6 +21,7 @@ class IndexController extends CommonController {
      * @return 
      */
     public function index(){
+    //	print_r(I("session."));
     	$this->display();
     }
     

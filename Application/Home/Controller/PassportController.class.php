@@ -11,7 +11,7 @@
  * 登录 注册 控制器
  */
 namespace Home\Controller;
-use Home\Controller\CommonController;
+use Home\Controller\CommonController;  
 
 class PassportController extends CommonController{ 
 	
@@ -47,23 +47,32 @@ class PassportController extends CommonController{
 	public function checkRegister(){
 		if(IS_POST){
 			$dataRegister = I('post.');  //获取 post 全部变量
-
 			$checkRegister = D('Passport','Service')->checkRegister($dataRegister);
-			$this->show($checkRegister);
+			$this->show($checkRegister);  // 显示  结果
 		}
 	}
 	 
 	// 验证注册用户名是否存在
-	public function checkUsername(){
+	public function checkUserName(){
 		if(IS_POST){
-			$dataUsername = I("post.username");
+			$dataUsername = I("post.uid_name");
  			$checkUsername = D('Passport','Service')->checkUsername($dataUsername);
- 			//$this->ajaxReturn($checkUsername);
- 			echo ($checkUsername==true)?'true':'false';
+ 			$this->ajaxReturn(!$checkUsername);
+ 			//if($checkUsername==true){echo true;}else{echo false;};
 		}
 		return;
 	}
 	
+	// 验证邮箱是否存在
+	public function checkEmail(){
+		if(IS_POST){
+			$dataEmail = I("post.email");
+ 			$checkEmail = D('Passport','Service')->checkEmail($dataEmail);
+			$this->ajaxReturn(!$checkEmail);
+		}
+		return;
+	}
+
 	// 退出登录
 	public function logout(){
 		$value = $_SESSION['name'];
@@ -73,4 +82,7 @@ class PassportController extends CommonController{
 		$this->success('退出成功，返回首页','/Index/index');
 	}
 	
+	public function demo(){
+		$checkEmail = D('Passport','Service')->checkEmail('');
+	}
 }

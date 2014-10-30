@@ -77,14 +77,19 @@
 
 </body>
 <script type="text/javascript">
+
+
 	window.onload = function(){
 		/*
 			加载 注册插件
 		*/
+
 		var form ={ name:"registerForm"};
 		require(["jquery","validForm/register"],function($,config){	
 
 			  $("form[name="+form.name+"]").validate(config);
+
+
 		});
 	};
 </script>

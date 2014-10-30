@@ -17,11 +17,11 @@ class PassportService extends Model{
 	
 	// 验证用户登录
 	public function checkLogin($dataLogin){
-		$data['account_name'] = $dataLogin['uid_name'];
+		$data['uid_name'] = $dataLogin['uid_name'];
 		$data['passwd'] = md5($dataLogin['passwd']);
 		$result = M('users')->where($data)->find();
 		if($result){
-			$_SESSION['name'] = $data['account_name'];
+			$_SESSION['name'] = $data['uid_name'];
 			return true;
 		}else {
 			return false;
@@ -37,7 +37,7 @@ class PassportService extends Model{
 		}
 		
 		// 判断用户名是否存在
-		echo $dataRegister['uid_name'];
+	
 		$count = count(M('users')->where("uid_name ="."'".$dataRegister['uid_name']."'")->select());
 
 		if($count > 0){
@@ -57,14 +57,23 @@ class PassportService extends Model{
 	}
 	
 	// 验证用户名
-	public function checkUsername($dataUsername){
-		$count = count(M('users')->where('account_name='.'"'.$dataUsername.'"')->select());
+	public function checkUserName($dataUsername){
+		$count = count(M('users')->where('uid_name='.'"'.$dataUsername.'"')->select());
 		if($count > 0){
-			return true;
+			return true;  //用户存在
 		}else{
 			return false;
 		}
 	}
 	
+	// 验证邮箱
+	public function checkEmail($dataEmail){
+		$count = count(M('users')->where('email = '.'"'.$dataEmail.'"')->select());
+		if($count > 0){
+			return true;   //邮箱存在
+		}else{
+			return false;
+		}
+	}
 	
 }
