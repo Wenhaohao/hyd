@@ -16,7 +16,7 @@ use Home\Controller\CommonController;
 class PassportController extends CommonController{ 
 	
 	public function	index(){
-		
+		$this->display();
 	}
 	
 	// 登录控制器
