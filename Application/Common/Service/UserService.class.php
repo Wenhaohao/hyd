@@ -10,9 +10,9 @@
 /**
  * 用户中心模型
  */
-namespace Home\Model;
+namespace Common\Service;
 use Think\Model;
 
-class UsersModel extends Model {
+class UsersService extends Model {
 	
 }
