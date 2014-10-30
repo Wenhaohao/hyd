@@ -22,6 +22,7 @@ class IndexController extends CommonController {
      */
     public function index(){
     //	print_r(I("session."));
+    //dump(I("session"));
     	$this->display();
     }
     
