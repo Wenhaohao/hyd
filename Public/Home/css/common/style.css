@@ -10,7 +10,8 @@ FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=
 background:#fafafa;}
 li{list-style-type: none;}
 img{border-width:0px;border-style:none;outline: none;}
-
+a:visited{text-decoration: none;}
+a:active{text-decoration: none;}
 /*
 	alter bootstrap nav
 */
@@ -126,7 +127,8 @@ text-decoration: none;
 .module-left  .module-app-list > .item{border:1px solid #DDD; border-radius:5px;}
 
 .item .media-heading a{color: #333;cursor: pointer;}
-.item .media-heading a:hover{color:#B94A48;text-decoration:none;transition: all 0.3s linear 0s;}
+.item .media-heading a:hover{color:#B94A48;text-decoration: none;}
+
 .item .item-nav{margin-top: 10px;width:100%;vertical-align: middle;}
 
 .item-nav > a:hover{text-decoration: none;}
@@ -176,3 +178,6 @@ color:#333;
 text-align: center;
 }
 
+.clearfix-double{
+	margin: 15px 0px;
+}

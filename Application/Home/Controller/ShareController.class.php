@@ -26,7 +26,7 @@ class ShareController extends Controller {
 
     /**
     *   
-    *  共享文章查看 
+    *  文章全文
     *  @param
     *  @return
     */
@@ -36,70 +36,9 @@ class ShareController extends Controller {
     	$this->display();
     }
 
-    /**
-    *    编辑文章页面
-    *    @param
-    *    @return 
-    */
-
-    public function createArticle(){
-     
-        $this->display();
-    }
-
-
-    /**
-    *    提交文章页面
-    *    @param
-    *    @return 
-    */
-
     
-    public function uploadArticle(){
-
-        print_r($_POST);
-        return ;
-    // $this->display();
-    }
-    
-   /**
-    *    异步上传图片
-    *    @param
-    *    @return 
-    */
-    public function uploadImage(){
-  
-        /* Applicaiton  Common  文件上传保存 */
-        $name = "demo";
-        $path ="";
-        img_save_to_file($name,$path);  
-        return ;
-    // $this->display();
-    }
-    /**
-    *    异步裁剪图片
-    *    @param
-    *    @return 
-    */
-    public function uploadCroppicImage(){
-
-        /* 文件  裁剪 保存 */
-        $path = "/Public/Uploads/share/";  
-        img_crop_to_file($path);  // 裁剪图片
-        return;
-    }
 
 
-    /**
-    *  
-    *    修改个人资料个人偏好
-    *    @param
-    *    @return 
-    *
-    */
-    public function uploadUser(){
-        
-        $this->display();
-    }
+ 
 }
 

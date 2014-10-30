@@ -1,0 +1,302 @@
+<include file="Public:header" title="更新个人资料" />
+<!-- 个人空间 -->
+<link rel="stylesheet" href="__PUBLIC__HOME/css/common/user.css">
+<div class="container" id="pagewrap">
+	<div class="module-show">
+			<!-- 功能模块 展示 -->
+			<ul class="row">
+
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-sys"></span>
+                  <span class="head-app-name">网站公告</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-sport"></span>
+                  <span class="head-app-name">运动健康分享</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-share"></span>
+                  <span class="head-app-name">专家指导</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="/User/index" class="thumbnail">
+                  <span class="head-app-icon head-app-sns"></span>
+                  <span class="head-app-name">个人社区</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+              </li>
+            </ul>
+	</div>
+
+	<!-- 编辑内容-->
+	<div class="container">
+		<div class="row">	
+		<section class="module-left pull-left span9">
+			<ul class="breadcrumb">
+    			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
+	    		<li><a href="/share">个人社区</a> <span class="divider">/</span></li>
+    			<li class="#">个人资料<span class="label "></span></li>
+    		</ul>
+				
+			<!--  内容选项卡 -->
+			<div  class="module-app" id="myTab">
+				<div class="btn-group">
+    				<a class="btn"   href="/Share/Index">返回</a>    			
+    			</div>
+    			<div class="btn-group">
+    				<a class="btn"  href="#">修改资料</a>
+    			</div>
+			</div>
+			<div class="module-app ">
+				<div class="module-app-share">			
+			<form class="form-horizontal" name="editor" id="editorUser"  data-error="control-group" action="__URL__/uploaduser" method="post">
+		   	 <fieldset>
+		      <div id="legend" class="">
+		        <legend>基本资料</legend>
+		      </div>
+					
+		   		<div class="control-group" >
+		         <label class="control-label">登录名</label>
+		          <div class="controls">
+		                 <input class="input-large" type="text" name="uid_name" id="uid_name" value="liyanlong1993" disabled />
+		          </div>
+		        </div>
+
+		    	<div class="control-group ">
+		          <label class="control-label" >生日</label>
+		          <div class="controls">
+		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" />
+		            <p class="help-block">格式:2014-01-01</p>
+		          </div>
+		        </div>
+				
+				<div class="control-group ">
+		          <label class="control-label" >性别</label>
+		          <div class="controls">
+		          	<!-- 二级联动 -->
+					<label class="radio inline">保密
+					<input type="radio" name="sex" id="sex1" value="0" checked="checked">
+					</label>
+					<label class="radio inline">男
+					<input type="radio" name="sex" id="sex2" value="1">
+					</label>
+					<label class="radio inline">女
+					<input type="radio" name="sex" id="sex3" value="2">
+					</label>           
+		          </div>
+		        </div>
+
+		    	<div class="control-group">
+		          <!-- Text input-->
+		          <label class="control-label" >所在地址</label>
+		          <div class="controls">
+		            <input placeholder="省份" class="input-small" type="text" name="province" id="province" data-value="" />
+		           	<span>-</span>
+		           	<input placeholder="市" class="input-small" type="text" name="city" id="city" data-value="" />
+		           	<span>-</span>
+		           	<input placeholder="区" class="input-small" type="text" name="country" id="country" data-value="" />
+		           </div>
+		        </div>
+
+		        <div class="control-group">
+				  <label class="control-label" >个人简介</label>
+		          <div class="controls">
+		       		 <textarea rows="3" class="textarea" name="ref_contents"></textarea>   
+		       	  </div>
+		        </div>
+			 <div id="legend" class="">
+		        <legend>运动偏好</legend>
+		      </div>
+			 <div class="control-group">
+			 	 <label class="control-label" >室外运动</label>
+	    		<div class="controls">
+					<label class="checkbox inline">
+					户外攀岩
+					<input type="checkbox"  name="outdoorSports"  value="2">
+					</label>
+					<label class="checkbox inline">
+					城市骑行
+					<input type="checkbox"  name="outdoorSports"  value="3">
+					</label>
+				</div>
+			 </div>
+			 <div class="control-group">
+			 	<label class="control-label" >室内运动</label>
+	    		<div class="controls">
+					<label class="checkbox inline">
+					室内舞蹈
+					<input type="checkbox"  name="indoorSports"  value="2">
+					</label>
+					<label class="checkbox inline">
+					瑜伽
+					<input type="checkbox"  name="indoorSports"  value="3">
+					</label>
+				</div>
+			 </div>
+			 <div class="control-group">
+			 	<label class="control-label" >运动人群</label>
+	    		<div class="controls">
+					<label class="checkbox inline">
+					老年人
+					<input type="checkbox"  name="indoorSports"  value="2">
+					</label>
+					<label class="checkbox inline">
+					青年人
+					<input type="checkbox"  name="indoorSports"  value="3">
+					</label>
+				</div>
+			 </div>
+			 <div class="control-group">
+			 	<label class="control-label">运动目的</label>
+	    		<div class="controls">
+					<label class="checkbox inline">
+					减肥
+					<input type="checkbox"  name="indoorSports"  value="2">
+					</label>
+					<label class="checkbox inline">
+					健身
+					<input type="checkbox"  name="indoorSports"  value="3">
+					</label>
+				</div>
+			 </div>
+		    	<div class="control-group">
+		          
+		          <!-- Button -->
+		          <div class="controls">
+		            <button class="btn btn-primary"  type="submit" form="createArticle" >提交</button>
+		             <a class="btn" type="reset" form="createArticle" id="reset" onclick="window.history.go(-1);">取消修改</a>
+		          </div>
+		        </div>
+				<div class="upload">
+					<div class=" thumbnail " href="#">
+						<div class="upload-img" id="uploadImg"></div>
+						<input type="text" style="display:none;" id="ref_image" name="ref_image">
+					</div>
+					<span class="label label-success upload-info" >请上传图片</span>
+				</div>
+		    </fieldset>
+
+   		</form>
+
+				</div>
+			</div>
+			
+
+		</section>
+	
+			<!-- 网站旁白 -->
+		<aside class="module-aside pull-right span3">
+			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
+			<!--  用户头像 简介 -->
+			<div class="module-app-header">
+				<div class="header-info">
+					<div class="header-row">
+						<span class="label label-info">用户名:</span>
+						<span>李彦龙</span>
+					</div>
+					<div class="header-row">
+						<span class="label label-info">粉丝:</span>
+						<span>0</span>
+					</div>
+
+					<div class="header-row">
+						<button class="btn btn-warning">退出登录</button>
+						
+					</div>					
+				</div>
+				<div class=" thumbnail header-img">
+					<img src="" class="img-circle">
+				</div>
+			</div>
+			<ul class="nav nav-list">
+				    <li class="active">
+				    	<a href="/User/index">
+							<i class="icon-chevron-left"></i>
+				    		个人资料
+				    		<i class="icon-user"></i>
+				    	</a>
+				    </li>
+				    <li><a href="/User/friends">
+						<i class="icon-chevron-left"></i>
+				    	关注好友</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="/User/article">
+				    	<i class="icon-chevron-left"></i>
+				    	分享文章</a>
+				    </li>
+				    <li>
+				    	<a href="/User/collection">
+				    	<i class="icon-chevron-left"></i>
+				    	文章收藏</a>
+				    </li>
+				     <li>
+				    	<a href="/User/chart">
+				    	<i class="icon-chevron-left"></i>
+				    	文章留言</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="/User/talk">
+				    	<i class="icon-chevron-left"></i>
+				    	运动说说</a>
+				    </li>
+				    <li>
+				    	<a href="/User/plan">
+				    	<i class="icon-chevron-left"></i>
+				    	运动计划</a>
+				    </li>
+    		</ul>
+    		
+			</div>
+		</aside>
+	    </div>
+	</div>  <!-- row end  -->
+</div> 
+</body>
+<!-- 图片上传  -->
+<link href="__STATIC__css/croppic.css" rel="stylesheet" />
+
+<script src="__STATIC__js/croppic.js"></script>
+<script type="text/javascript" >
+$(function(){
+
+	//  croppic 容器 模型 配置文件
+	var croppicContainerModalOptions = {
+				uploadUrl:'/User/uploadImage',
+				cropUrl:'/User/uploadCroppicImage',
+				modal:true,
+				imgEyecandyOpacity:0.4,
+				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
+				uploadData:{
+					"action":"userHead",
+				},
+				cropData:{
+					"action":"userHead",
+				},
+				onAfterImgCrop:function(){
+					//上传成功后
+					$(".upload .upload-info").hide();	 
+					$("#ref_image").val($('#uploadImg img:first').attr("src")); 
+				}
+		}
+	// 新建 上传对象
+	var cropContainerModal = new Croppic('uploadImg', croppicContainerModalOptions);
+
+});
+
+</script>
+
+
+</html>

@@ -1,8 +1,6 @@
-<include file="Public:header" title="更新个人资料" />
-<!-- 个人空间 -->
-<link rel="stylesheet" href="__PUBLIC__HOME/css/common/share.css">
+<include file="Public:header" />
 <div class="container" id="pagewrap">
-	<div class="module-show">
+	<div class=" module-show">
 			<!-- 功能模块 展示 -->
 			<ul class="row">
 
@@ -29,7 +27,7 @@
                 </a>
               </li>
               <li class="span3">
-                <a href="#" class="thumbnail">
+                <a href="/Share/Index" class="thumbnail">
                   <span class="head-app-icon head-app-sns"></span>
                   <span class="head-app-name">个人社区</span>
                    <span class="badge badge-important ">100</span>
@@ -42,29 +40,20 @@
 	
 	<!-- 文章内容  -->
 	<div class="container">
-		<div class="row">
-	
-		<section class="module-left pull-left span9">
 
-			
+		<div class="clearfix"></div>
+		<section class="module-left pull-left">
+
+	
 			<ul class="breadcrumb">
-    			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="/share">个人社区</a> <span class="divider">/</span></li>
-    			<li class="#">个人资料<span class="label "></span></li>
+    				<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
+	    		<li><a href="/share">分享</a> <span class="divider">/</span></li>
+    			<li class="#">文章发布 <span class="label ">ing...</span></li>
     		</ul>
-				
-			<!--  内容选项卡 -->
-			<div  class="module-app" id="myTab">
-				<div class="btn-group">
-    				<a class="btn " data-toggle="tab"  href="/Share/Index">返回</a>    			
-    			</div>
-    			<div class="btn-group">
-    					<a class="btn"  href="/Share/uploaduser">修改资料</a>
-    			</div>
-			</div>
+	
 			<div class="module-app ">
 				<div class="module-app-share">			
-			<form class="form-horizontal" name="editor" id="createArticle"  data-error="control-group" action="__URL__/uploadArticle" method="post">
+			<form class="form-horizontal" name="registerForm" id="createArticle"  data-error="control-group" action="__URL__/uploadArticle" method="post">
 		   	 <fieldset>
 		      <div id="legend" class="">
 		        <legend class="">运动分享</legend>
@@ -167,81 +156,90 @@
 
 				</div>
 			</div>
-			
 
 		</section>
 	
 			<!-- 网站旁白 -->
-		<aside class="module-aside pull-right span3">
-			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
-			<!--  用户头像 简介 -->
-			<div class="module-app-header">
-				<div class="header-info">
-					<div class="header-row">
-						<span class="label label-info">用户名:</span>
-						<span>李彦龙</span>
-					</div>
-					<div class="header-row">
-						<span class="label label-info">粉丝:</span>
-						<span>0</span>
-					</div>
+		<aside class="module-aside pull-right">
+			<div class="module-app">
+				
 
-					<div class="header-row">
-						<button class="btn btn-warning">退出登录</button>
-						
-					</div>					
-				</div>
-				<div class=" thumbnail header-img">
-					<img src="" class="img-circle">
-				</div>
-			</div>
-			<ul class="nav nav-list">
-				    <li class="active">
-				    	<a href="#">
-							<i class="icon-chevron-left"></i>
-				    		个人资料
-				    		<i class="icon-user"></i>
-				    	</a>
-				    </li>
-				    <li><a href="#hot">
-						<i class="icon-chevron-left"></i>
-				    	关注好友</a>
-				    </li>
-				     <li class="divider"></li>
-				    <li>
-				    	<a href="#recommend">
-				    	<i class="icon-chevron-left"></i>
-				    	分享文章</a>
-				    </li>
-				    <li>
-				    	<a href="#recommend">
-				    	<i class="icon-chevron-left"></i>
-				    	文章收藏</a>
-				    </li>
-				     <li>
-				    	<a href="#recommend">
-				    	<i class="icon-chevron-left"></i>
-				    	文章留言</a>
-				    </li>
-				     <li class="divider"></li>
-				    <li>
-				    	<a href="#recommend">
-				    	<i class="icon-chevron-left"></i>
-				    	运动说说</a>
-				    </li>
-				    <li>
-				    	<a href="#recommend">
-				    	<i class="icon-chevron-left"></i>
-				    	运动计划</a>
-				    </li>
+			
+			<ul class="nav nav-tabs ">
+				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
+				    <li><a href="#hot" data-toggle="tab">热门文章</a></li>
+				    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
     		</ul>
-    		
+    		<div class="tab-content module-app-rank">
+					
+			</div>
 			</div>
 		</aside>
-	    </div>
+	
 	</div>
 
 </div>
 
 </body>
+
+<!-- 图片上传  -->
+<link href="__STATIC__css/croppic.css" rel="stylesheet" />
+
+<!-- 加载文本编辑器 -->
+<script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.config.js"></script>
+<script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.all.min.js"></script>
+<script type="text/javascript" charset="UTF-8"  src="__UEDITOR__lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript">
+
+	window.onload = function(){
+		
+		require(["ueditor/createArticle"],function(config){
+			
+				var ue = UE.getEditor('editor',config);
+					
+		});
+	
+	    /* 注册 事件 */
+	    require(["jquery","app/demo"],function(){
+	    	$("#reset").bind("click",function(){
+	    			var ue = UE.getEditor('editor');
+	    			ue.setContent(""); //清空 编辑器内容
+	    			$("#tag").data("value","");
+	    			$("#tag-text").html("");
+	    	});
+
+	    
+	    });
+	 
+	};
+</script>
+<script src="__STATIC__js/croppic.js"></script>
+<script type="text/javascript" >
+$(function(){
+
+	//  croppic 容器 模型 配置文件
+	var croppicContainerModalOptions = {
+				uploadUrl:'/User/uploadImage',
+				cropUrl:'/User/uploadCroppicImage',
+				modal:true,
+				imgEyecandyOpacity:0.4,
+				loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',		
+				uploadData:{
+				"dummyData":1,
+				"dummyData2":"text"
+				},
+				onAfterImgCrop:function(){
+					//上传成功后
+					$(".upload .upload-info").hide();	 
+					$("#ref_image").val($('#uploadImg img:first').attr("src")); 
+				}
+		}
+	// 新建对象
+	var cropContainerModal = new Croppic('uploadImg', croppicContainerModalOptions);
+
+});
+
+</script>
+
 </html>

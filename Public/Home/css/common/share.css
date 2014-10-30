@@ -1,14 +1,26 @@
 .share-sidenav{top:61px;}
 .share-sidenav ul{width: 270px;box-sizing: border-box;border: 1px solid #DDD;border-radius: 4px;background-color: #fff;}
 .share-sidenav  li > a{padding: 8px 10px;}
-.module-app-header{height:120px;position: relative;}
-.module-app-header .header-img{position:absolute;top:0px;right:0px;width: 98px;height: 98px;float: right; right: 0px;}
-.module-app-header .header-img > img{width: 100%;height: 100%;}
-.module-app-header .header-row{padding: 6px 10px;}
+.page-header{margin-bottom: 5px;}
+.article-author,
+.article-time{color: #999;}
+.article-author > label,
+.article-time > label{color:#333; display: inline-block;margin-right:5px;}
+.article-author a{color: #999;}
+.article-ref{margin-top: -40px;}
+.article-ref .article-ref-content{padding-top: 50px;float: left;display: inline-block;width: 60%;}
+.article-ref .article-ref-img{padding-top: -5px;}
+.article-ref .article-ref-label{float: left;}
+.article-ref .article-ref-content > p{padding-left: 40px; line-height:20px;}
+.article-ref img{float: right;width: 128px;height: 128px;border-radius: 5px;border: 1px solid #ddd;}
+.article-content{line-height: 30px;padding: 0px 5px;}
+.article-content p{text-indent: 30px;}
+.ref-article {margin-top:-20px;background-color: #ffffff;}
+.ref-article .thumbnail{border-top: none;}
+.no-margin-bottom{margin-bottom: 0px;}
+.judge-result{position: absolute;right:15px;top:15px;}
 
-.controls .control-span{padding: 5px;}
-.controls .text-show{border-radius: 5px;border: 1px solid #ddd;}
-/* share  favor  */
-.favor-controls{margin-top: 5px;}
-.favor-chart-box{position: absolute;right: 20px;top: 65px;width: 128px;overflow: hidden;}
-.favor-chart{height: 128px;}
+/*  评价 */
+.comment{float:left;width:90%;}
+.comment-btn{margin-bottom: 5px;}
+

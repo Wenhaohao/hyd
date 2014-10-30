@@ -1,0 +1,157 @@
+#chart-room{
+font-family: "\5FAE\8F6F\96C5\9ED1";
+overflow:hidden;
+background-color: #fff;
+margin-top:5px;
+}
+
+#chart-room .title{
+position: relative;
+}
+#chart-room .title-new{
+padding-left:18px;
+border-left:2px solid #5183c0;
+}
+
+
+/* 聊天室 细节 */
+
+#chart-room .chart-message-ul{
+overflow:hidden;
+width:100%;
+margin:10px 0px;
+padding:0px;
+}
+#chart-room .chart-message-ul li{
+list-style:none;
+position:relative;
+display:block;
+overflow:hidden;
+padding:1px;
+font-size: 12px;
+line-height: 20px;
+color: #333;
+margin-bottom:10px;
+border-bottom:1px dashed #dbdbdb;
+}
+
+/* 统一  超链接  颜色*/
+.chart-message-ul  a{
+color:#5183c0;	
+text-decoration:none;
+cursor:pointer;
+}
+.chart-message-ul  a:hover{
+text-decoration:underline;	
+}
+
+.chart-message-ul .user-face{
+float:left;
+border:2px solid #ededed;
+width: 66px;
+height: 60px;
+display:block;
+margin-right:20px;
+margin-bottom: 20px;
+}
+.user-face img{
+width: 66px;
+height: 60px;
+border:none;
+display:block;
+}
+.chart-message-ul .user-title{position:relative;overflow:hidden;}
+
+
+.user-title .user-name{
+padding-right:10px;	
+}
+
+.user-title .date{
+color: #b8afb8;	
+}
+
+.user-title .option-box{
+float: right;
+margin-right:0px;
+}
+.user-title .option-box .agreed,.option-box .quote,.option-box .response{
+padding:0px 10px;
+
+}
+.user-title .option-box .agreed {
+color:#fff;
+padding:12px 10px 12px 25px;
+background:url(../images/ui-utils/agreed.png) #5183c0 no-repeat;
+background-position:5px 12px;
+border-radius:3px;
+}
+
+.user-title  .floor{
+float:right;
+color: #999;
+margin-left: 15px;
+display: inline-block;
+text-align: left;
+}
+
+.chart-message-ul .content,
+.chart-message-ul .ref-content{
+padding-left:90px;
+padding-top:8px;
+}
+
+.content .comment-quote-wrap{
+width:90%;
+background:#f7f7f7;
+overflow:hidden;
+word-wrap: break-word;
+word-break: break-all;
+color: #666;
+padding: 8px;
+}
+.comment-quote-wrap .date ,.comment-quote-wrap b{ 
+padding-right:3px;	
+}
+.content .comment-text-wrap{
+overflow:hidden;
+width:100%;
+
+}
+
+.comment-text-wrap p{
+margin:5px 0px;	
+}
+
+/* 页面分页 */
+#chart-room .split-page{
+width:100%;
+text-align:center;
+margin-top:5px;
+margin:auto;
+}
+
+#chart-room .split-page a{
+padding:10px;
+color: #999;
+display:inline-block;
+line-height:10px;
+background:#f5f5f5;
+border:1px solid #fff;
+text-decoration:none;
+cursor:pointer;
+}
+#chart-room .split-page a:hover{
+background:#5183c0;
+color:#fff;	
+}
+
+#chart-room .split-page .select{
+border:1px solid #5183c0;
+color:#5183c0;	
+}
+
+.reply-count{padding: 2px 0px;}
+.reply-message-ul{margin-top: 5px;margin-left: 0px;display: none;}
+.reply-user{width:48px;height: 48px;float: left;margin-right: 15px;}
+.reply-content{padding-left: 65px;}
