@@ -22,8 +22,20 @@ class IndexController extends CommonController {
      */
     public function index(){
     //	print_r(I("session."));
-    //dump(I("session"));
+       //dump(I("session"));
     	$this->display();
+    }
+
+    /**
+    *
+    *  测试 demo
+    *   @param
+    *   @return 
+    */
+    public function  demo(){
+        //获取 模板内容
+        //   $content = $this->fetch('Home@index:index');
+        //   $this->show($content, 'utf-8', 'text/html');
     }
     
 }
