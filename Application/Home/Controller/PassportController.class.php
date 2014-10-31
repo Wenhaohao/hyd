@@ -82,7 +82,5 @@ class PassportController extends CommonController{
 		$this->success('退出成功，返回首页','/Index/index');
 	}
 	
-	public function demo(){
-		$checkEmail = D('Passport','Service')->checkEmail('');
-	}
+
 }
