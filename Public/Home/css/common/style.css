@@ -178,6 +178,5 @@ color:#333;
 text-align: center;
 }
 
-.clearfix-double{
-	margin: 15px 0px;
-}
+.clearfix-double{margin: 15px 0px;}
+.label-middle {vertical-align: middle;}

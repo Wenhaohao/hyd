@@ -19,9 +19,24 @@ class PassportController extends CommonController{
 		$this->display();
 	}
 	
+	
+
 	// 登录控制器
 	public function login(){
+
 		$this->display();
+	}
+
+	/* 注册前控制器
+	*
+	*  @author Liyanlong
+	*  如果用户登录成功则不允许进入注册页面
+	*/
+	public function _before_register(){
+		$name = I('session.name');
+		if(!empty($name)){
+			$this->error('用户'.$name.'请先退出登录');
+		}
 	}
 	
 	// 注册控制器
@@ -35,6 +50,7 @@ class PassportController extends CommonController{
 		if(IS_POST){
 			$dataLogin = I('post.');
 			$checkLogin = D('Passport','Service')->checkLogin($dataLogin);  
+			
 			if($checkLogin){
 				$this->success('登陆成功','/Index/index');
 			}else{
@@ -82,7 +98,5 @@ class PassportController extends CommonController{
 		$this->success('退出成功，返回首页','/Index/index');
 	}
 	
-	public function demo(){
-		$checkEmail = D('Passport','Service')->checkEmail('');
-	}
+
 }

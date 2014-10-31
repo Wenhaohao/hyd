@@ -20,8 +20,10 @@ class PassportService extends Model{
 		$data['uid_name'] = $dataLogin['uid_name'];
 		$data['passwd'] = md5($dataLogin['passwd']);
 		$result = M('users')->where($data)->find();
+
 		if($result){
-			$_SESSION['name'] = $data['uid_name'];
+			$_SESSION['name'] = $data['uid_name'];         //将 用户名存入 session
+			
 			return true;
 		}else {
 			return false;
