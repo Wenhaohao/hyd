@@ -11,9 +11,8 @@
  *  登录 注册模型
  */
 namespace Common\Service;
-use Think\Model;
-
-class PassportService extends Model{
+use Common\Service\CommonService;
+class PassportService extends CommonService{
 	
 	// 验证用户登录
 	public function checkLogin($dataLogin){

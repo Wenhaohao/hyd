@@ -1,4 +1,5 @@
 <?php
+header("content-Type: text/html; charset=utf-8");
 function is_login(){
 	$user = session('user');
 	if(!$user){
@@ -128,4 +129,12 @@ switch(strtolower($what['mime']))
 			"url" => $output_filename.$type 
 		  );
 	 print json_encode($response);
+}
+
+/**
+ *	截取字段 
+ */
+function cutStr($str,$cutLength){
+	$result = mb_substr($str,0,$cutLength,'utf-8')."...";
+	return $result;
 }
