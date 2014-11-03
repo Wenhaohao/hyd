@@ -255,8 +255,10 @@
 <script type="text/javascript">
 	window.onload = function(){
 
-		require(["jquery","flicker/headUnit"],function(J,obj){
-			
+		require(["jquery","flicker/headUnit"],function($,obj){
+			/**
+			*   object对象 针对  flicker 插件  selector 为 选择器   config 为 配置文件
+			*/
 			$(obj.selector).flicker(obj.config);
 			$(obj.selector).show();
 		});

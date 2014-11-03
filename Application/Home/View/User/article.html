@@ -1,0 +1,195 @@
+<include file="Public:header" title="更新个人资料" />
+<!-- 个人空间 -->
+<link rel="stylesheet" href="__PUBLIC__HOME/css/common/user.css">
+<link rel="stylesheet" href="__PUBLIC__HOME/css/common/list.css">
+<div class="container" id="pagewrap">
+	<div class="module-show">
+			<!-- 功能模块 展示 -->
+			<ul class="row">
+
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-sys"></span>
+                  <span class="head-app-name">网站公告</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-sport"></span>
+                  <span class="head-app-name">运动健康分享</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="#" class="thumbnail">
+                  <span class="head-app-icon head-app-share"></span>
+                  <span class="head-app-name">专家指导</span>
+                   <span class="badge badge-important ">100</span>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="/User/index" class="thumbnail">
+                  <span class="head-app-icon head-app-sns"></span>
+                  <span class="head-app-name">个人社区</span>
+                   <span class="badge badge-important">100</span>
+                </a>
+              </li>
+            </ul>
+	</div>
+
+	<!-- 编辑内容-->
+	<div class="container">
+		<div class="row">	
+		<section class="module-left pull-left span9">
+			<ul class="breadcrumb">
+    			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
+	    		<li><a href="/User/index">个人社区</a> <span class="divider">/</span></li>
+    			<li class="#">分享文章<span class="label"></span></li>
+    		</ul>
+				
+			<!--  内容选项卡 -->
+
+			<div class="module-app ">
+				<div class="module-app-share">			
+					<h4 class="page-header">我的分享文章</h4>
+				<div class="module-app-categorys"  id="categorys">
+					<div class="module-app-category">
+					<div class="category-head"><h4>运动分类</h4></div>
+					<div class="category-list" >
+						<a class="active label label-info">室内运动</a><a href="#">户外运动</a>
+					</div>		
+					</div>
+					<div class="module-app-category">
+					<div class="category-head"><h4>室内运动</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外运动</a>
+							<a  class="active" href="#">户外攀岩</a>
+						<a href="#">其他</a>
+					</div>
+					</div>
+					<div class="module-app-category " data-tabs="tab-pane" data-status="hidden">
+					<div class="category-head"><h4>运动目的</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">不限</a>
+						<a href="#">健身</a>
+					</div>
+					</div>
+					<div class="module-app-category " data-tabs="tab-pane" data-status="hidden">
+					<div class="category-head"><h4>针对人群</h4></div>
+					<div class="category-list" >
+						<a  class="active" href="#">老年人</a>
+						<a href="#">中年人</a>
+					</div>
+					</div>
+					<div class="module-app-category">
+					<div class="category-head"><h4>筛选条件</h4></div>
+					<div class="category-list" >
+						<a  class="active  label label-info" href="#">最新</a>
+						<a href="#">最热</a>
+					</div>
+				    </div>
+					</div>
+
+		    	</div>
+				<div class="pagination">
+				    <ul class="pull-right">
+				    <li ><a href="#">上一页</a></li>
+				    <li class="active"><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li><a href="#">下一页</a></li>
+				    </ul>
+   				 </div>
+			</div>
+			
+
+		</section>
+	
+			<!-- 网站旁白 -->
+		<aside class="module-aside pull-right span3">
+			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
+			<!--  用户头像 简介 -->
+			<div class="module-app-header">
+				<div class="header-info">
+					<div class="header-row">
+						<span class="label label-info">用户名:</span>
+						<span>李彦龙</span>
+					</div>
+					<div class="header-row">
+						<span class="label label-info">粉丝:</span>
+						<span>0</span>
+					</div>
+
+					<div class="header-row">
+						<button class="btn btn-warning">退出登录</button>
+						
+					</div>					
+				</div>
+				<div class=" thumbnail header-img">
+					<img src="" class="img-circle">
+				</div>
+			</div>
+			<ul class="nav nav-list">
+				    <li>
+				    	<a href="/User/index">
+							<i class="icon-chevron-left"></i>
+				    		个人资料
+				    		<i class="icon-user"></i>
+				    	</a>
+				    </li>
+				    <li ><a href="/User/friends">
+						<i class="icon-chevron-left "></i>
+				    	关注好友</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li class="active">
+				    	<a href="/User/article">
+				    	<i class="icon-chevron-left"></i>
+				    	分享文章</a>
+				    </li>
+				    <li>
+				    	<a href="/User/collection">
+				    	<i class="icon-chevron-left"></i>
+				    	文章收藏</a>
+				    </li>
+				     <li>
+				    	<a href="/User/chart">
+				    	<i class="icon-chevron-left"></i>
+				    	文章留言</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="/User/talk">
+				    	<i class="icon-chevron-left"></i>
+				    	运动说说</a>
+				    </li>
+				    <li>
+				    	<a href="/User/plan">
+				    	<i class="icon-chevron-left"></i>
+				    	运动计划</a>
+				    </li>
+    		</ul>
+    		
+			</div>
+		</aside>
+	    </div>
+	</div>  <!-- row end  -->
+</div> 
+</body>
+<script type="text/javascript" src="__PUBLIC__HOME/js/app/user/myTab.js"></script>
+<script>
+	$(function(){
+		// 执行 插件
+		$("#categorys").myTab();
+	});
+</script>
+</html>

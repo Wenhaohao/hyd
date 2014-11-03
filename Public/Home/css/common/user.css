@@ -20,3 +20,14 @@
 .friend-list .thumbnail .friend-tooltip{position: absolute;box-sizing:border-box;width:100%;bottom: 0px;left: 5px; z-index: 2;padding: 5px 0px; }
 
 .friend-list img{width:98px;height: 98px;}
+
+/* User  article */
+.module-app .module-app-share .page-header{margin:10px 0px;}
+.module-app .module-app-share .module-app-categorys{border:0px;}
+
+/* User tabs */
+.myTab-box{text-align:center;position: relative;height: 11px;}
+
+.myTab-box .myTab-button{top: -11px;position: absolute;margin-left: 0px;}
+.tab-pane{display: none;}
+*.show{display: block;}
