@@ -154,7 +154,7 @@ background-color: #fff;
 .module-app-rank .rank-middle{background-color:#39C;}
 .module-app-rank .rank-third{background-color:#693;}
 
-.module-app-share {position:relative;background: #ffffff; border: 1px solid #ddd;border-radius: 4px;box-sizing: border-box;padding: 4px 12px;}
+.module-app-share {position:relative;background: #ffffff; border: 1px solid #ddd;border-radius: 4px;box-sizing: border-box;padding: 4px 12px;overflow: hidden;}
 .module-app-share .form-horizontal .control-label {text-align: right;width:100px;}
 .module-app-share .form-horizontal .controls {margin-left: 120px;}
 .module-app-share  .tags .label{position: relative;padding: 5px 10px;font-size: 14px;margin-right: 10px;}
@@ -178,5 +178,26 @@ color:#333;
 text-align: center;
 }
 
+/* tools */
 .clearfix-double{margin: 15px 0px;}
 .label-middle {vertical-align: middle;}
+
+
+/* usually icon */
+.myicon{
+width: 24px;
+height: 24px;
+margin-top: 1px;
+line-height: 24px;
+vertical-align: text-top;
+display: inline-block;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.myicon-star-empty{
+background-image: url('./tools/icons/star-empty.png');
+}
+.myicon-star-full{
+background-image: url('./tools/icons/star-full.png');
+}

@@ -15,7 +15,22 @@ use Think\Controller;
 
 class InfoController extends Controller {
 	
+	/*
+	*   读取指定文章内容
+	*/
 	public function index(){
+		$articleId =  I("get.id");
+		if(empty($articleId)){
+				$this->error('404 NOT FOUND');
+		}
+		$infoService = D('Info','Service');
+
+		//获取 文章内容
+		$infoData = $infoService->getArticle($articleId);
+
+		//var_dump($infoData);
+		//return ;
+
 		$this->display();
 	}
 	
