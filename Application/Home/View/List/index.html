@@ -210,8 +210,26 @@
   </footer>
 </body>
 <script type="text/javascript">
+<<<<<<< HEAD
 	window.onload = function(){
 
 	};
+=======
+	$(function(){
+		$(".tabs a").click(function(e){
+				 e.preventDefault();		 
+				 $(".tab-pane").removeClass("show")
+				 .filter($(this).attr("href")).addClass("show");
+		});
+		//
+		$(".category-list a").bind("click",function(e){
+			 e.preventDefault();
+			 	if(!$(this).hasClass("label")){
+						$(this).addClass("label label-info");
+				 }
+				 $(this).siblings().removeClass("label label-info");
+		});
+	});
+>>>>>>> 80a5d78daa1270fd6a23876e51539b6e4ae3a90d
 </script>
 </html>

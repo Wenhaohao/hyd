@@ -99,4 +99,21 @@ class UserController extends Controller {
 
 		$this->display();
 	}
+
+  /**
+    *  
+    *    用户分享文章页面
+    *    @param
+    *    @return 
+    *
+    */
+    public function article(){
+
+        
+
+        $this->display();
+
+    }
+
+
 }
