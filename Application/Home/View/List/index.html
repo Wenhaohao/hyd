@@ -54,37 +54,51 @@
 			</div>
 			<!-- 分类 -->			
 			<div class="module-app">
-				<div class="module-app-categorys">
+				<div class="module-app-categorys"  id="categorys">
 				<div class="module-app-category">
 					<div class="category-head"><h4>运动分类</h4></div>
-					<div class="category-list" >
-						<a class="active label label-info" >室内运动</a><a href="#">户外运动</a>
+					<div class="category-list tabs"  >
+						<a class="label label-info" href="#innerSports"  >室内运动</a><a href="#outerSports">户外运动</a>
 					</div>
 						
 				</div>
-				<div class="module-app-category">
+				<div class="module-app-category tab-pane show" id="innerSports">
 					<div class="category-head"><h4>室内运动</h4></div>
 					<div class="category-list" >
-						<a  class="active" href="#">户外攀岩</a>
+						<a  class="label label-info" href="#">全部</a>
+						<a href="#">户外攀岩</a>
 						<a href="#">户外运动</a>
-						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外攀岩</a>
 						<a href="#">户外运动</a>
-						<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外攀岩</a>
 						<a href="#">户外运动</a>
-							<a  class="active" href="#">户外攀岩</a>
+						<a href="#">户外攀岩</a>
 						<a href="#">其他</a>
 					</div>
 				</div>
-				<div class="module-app-category">
+				<div class="module-app-category tab-pane" id=
+				"outerSports">
+					<div class="category-head"><h4>室外运动</h4></div>
+					<div class="category-list" >
+						<a  class="label label-info" href="#">全部</a>
+						<a  href="#">户外攀岩</a>
+						<a  href="#">户外运动</a>
+						<a  href="#">户外攀岩</a>
+						<a  href="#">户外运动</a>
+						<a  href="#">其他</a>
+					</div>
+				</div>
+				<div class="module-app-category"  >
 					<div class="category-head"><h4>运动目的</h4></div>
 					<div class="category-list" >
-						<a  class="active" href="#">不限</a>
+						<a  class="label label-info" href="#">不限</a>
 						<a href="#">健身</a>
 					</div>
 				</div>
-				<div class="module-app-category">
+				<div class="module-app-category" >
 					<div class="category-head"><h4>针对人群</h4></div>
 					<div class="category-list" >
+						<a  class="label label-info" href="#">不限</a>
 						<a  class="active" href="#">老年人</a>
 						<a href="#">中年人</a>
 					</div>
@@ -247,9 +261,20 @@
   </footer>
 </body>
 <script type="text/javascript">
-	window.onload = function(){
-
-
-	};
+	$(function(){
+		$(".tabs a").click(function(e){
+				 e.preventDefault();		 
+				 $(".tab-pane").removeClass("show")
+				 .filter($(this).attr("href")).addClass("show");
+		});
+		//
+		$(".category-list a").bind("click",function(e){
+			 e.preventDefault();
+			 	if(!$(this).hasClass("label")){
+						$(this).addClass("label label-info");
+				 }
+				 $(this).siblings().removeClass("label label-info");
+		});
+	});
 </script>
 </html>

@@ -10,3 +10,10 @@
 .module-app-category .category-more{}
 
 .label-middle{vertical-align: middle;font-size: 12px;}
+
+/* list tabs index */
+.myTab-box{text-align:center;position: relative;height: 11px;}
+
+.myTab-box .myTab-button{top: -21px;position: absolute;margin-left: 0px;}
+.tab-pane{display: none;}
+*.show{display: block;}
