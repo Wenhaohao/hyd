@@ -5,7 +5,6 @@
 	<div class=" module-show">
 			<!-- 功能模块 展示 -->
 			<ul class="row">
-
               <li class="span3">
                 <a href="#" class="thumbnail">
                   <span class="head-app-icon head-app-sys"></span>
@@ -38,11 +37,8 @@
             </ul>
 	</div>
 
-	
-	
 	<!-- 文章内容  -->
 	<div class="container">
-		
 		<section class="module-left pull-left">
 			<!-- 网站 导航  -->
 			<div id="navbar">
@@ -55,55 +51,28 @@
 			<!-- 分类 -->			
 			<div class="module-app">
 				<div class="module-app-categorys">
-				<div class="module-app-category">
-					<div class="category-head"><h4>运动分类</h4></div>
-					<div class="category-list" >
-						<a class="active label label-info" >室内运动</a><a href="#">户外运动</a>
-					</div>
-						
-				</div>
-				<div class="module-app-category">
-					<div class="category-head"><h4>室内运动</h4></div>
-					<div class="category-list" >
-						<a  class="active" href="#">户外攀岩</a>
-						<a href="#">户外运动</a>
-						<a  class="active" href="#">户外攀岩</a>
-						<a href="#">户外运动</a>
-						<a  class="active" href="#">户外攀岩</a>
-						<a href="#">户外运动</a>
-							<a  class="active" href="#">户外攀岩</a>
-						<a href="#">其他</a>
-					</div>
-				</div>
-				<div class="module-app-category">
-					<div class="category-head"><h4>运动目的</h4></div>
-					<div class="category-list" >
-						<a  class="active" href="#">不限</a>
-						<a href="#">健身</a>
-					</div>
-				</div>
-				<div class="module-app-category">
-					<div class="category-head"><h4>针对人群</h4></div>
-					<div class="category-list" >
-						<a  class="active" href="#">老年人</a>
-						<a href="#">中年人</a>
-					</div>
-				</div>
+					<volist name="category" id="vo">
+						<div class="module-app-category">
+							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
+							<div class="category-list" >
+							<volist name="vo['child']" id="val">
+								<a class="active" >{$val.ch_name}</a>
+							</volist>
+							</div>
+						</div>
+					</volist>
 					<div class="module-app-category">
-					<div class="category-head"><h4>筛选条件</h4></div>
-					<div class="category-list" >
-						<a  class="active  label label-info" href="#">最新</a>
-						<a href="#">最热</a>
-
+						<div class="category-head"><h4>筛选条件</h4></div>
+						<div class="category-list" >
+							<a  class="active  label label-info" href="#">最新</a>
+							<a href="#">最热</a>
+						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 
-
 			<!-- 列表 -->
 			<div class="module-app">
-
 			<ul class="media-list module-app-list">
 			<volist name="list" id="vo">
 				<li class="media item"> 
@@ -137,23 +106,17 @@
 				</li>
 			</volist>
 			</ul>
-		
 				<div class="pagination">
 				    <ul class="pull-right">
 				    	{$page}
 				    </ul>
    				 </div>
 			</div>
-
-
 		</section>
 
 		<!-- 网站旁白 -->
 		<aside class="module-aside pull-right">
 			<div class="module-app">
-				
-
-			
 			<ul class="nav nav-tabs ">
 				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
 				    <li><a href="#hot" data-toggle="tab">热门文章</a></li>
@@ -248,7 +211,6 @@
 </body>
 <script type="text/javascript">
 	window.onload = function(){
-
 
 	};
 </script>

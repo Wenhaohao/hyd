@@ -20,6 +20,7 @@ class ListService extends CommonService{
 	public function getList($first,$last){
 		$listData = M('articles')
 					->join('hyd_users ON hyd_articles.uid = hyd_users.uid')
+					->order('publish_time desc')
 					->limit($first,$last)
 					->select();
 		return $listData;		
