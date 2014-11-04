@@ -28,22 +28,33 @@ class ListController extends Controller {
 		
 		// 分类
 		$categoryData = $listService->getCategorys();
-// 		foreach ($categoryData as $key => $val){
-// 			if($val['parent_id'] == null){
-// 				$data[] = $val;
-// 			}
+		
+		// 父级分类
+		$arrParentCate = $this->getCate($categoryData);
+		
+		foreach ($arrParentCate as $key=>$val){
+			$arrParentCate[$key]['child'] = $this->getCate($categoryData,$val['category_id']);
+		}	
 			
-// 		}
-// 		dump($data);
+// 		dump($arrParentCate);
 // 		exit();
-		$this->assign('category',$categoryData);
+		$this->assign('category',$arrParentCate);
 		$this->assign('list',$listData);
 		$this->assign('page',$list);
 		$this->display();
 	}
 
-	public function article(){
-		$this->display();
+	/**
+	 *	分类处理
+	 */
+	private function getCate($data,$pid=0){
+		$arrCate = array();
+		foreach ($data as $key=>$val){
+			if($val['parent_id'] == $pid){
+				$arrCate[] = $val;
+			}
+		}
+		return $arrCate;
 	}
 	
 }
