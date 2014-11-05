@@ -81,6 +81,7 @@ background-position: 2px -239px;
 /* pagewrap main content */
 #pagewrap{margin-top: 20px;min-height: 500px;}
 .p-wrap{ padding:10px 0px;display:block;}
+.p-wrap-mini{ padding:1px 0px;display:block;}
 /* set form  help-block  confim-img */
 
 .form-horizontal .help-block{
@@ -133,10 +134,10 @@ text-decoration: none;
 
 .item-nav > a:hover{text-decoration: none;}
 .item .item-img{width: 128px;height: 128px;}
-
+.item .media-chart{margin-top: 10px;}
 .module-app{margin-bottom: 20px;}
 .module-app .pagination a{color: #333;}
-
+.module-app .chartbox{margin:0px;padding: 0px;border:none;background: transparent;}
 .module-app-rank{
 border-sizing:border-box;
 border: 1px solid #ddd;
@@ -181,8 +182,8 @@ text-align: center;
 /* tools */
 .clearfix-double{margin: 15px 0px;}
 .label-middle {vertical-align: middle;}
-
-
+.nobg{background-color: transparent;}
+.noborder{border:0px;}
 /* usually icon */
 .myicon{
 width: 24px;
