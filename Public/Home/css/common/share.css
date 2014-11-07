@@ -30,3 +30,8 @@
 /*  评价 */
 .comment{float:left;width:90%;}
 .comment-btn{margin-bottom: 5px;}
+
+
+/*view in  info health */
+.item-content {height: 90px;}
+.item-content > p{ text-indent: 1em;}

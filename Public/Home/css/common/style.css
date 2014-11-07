@@ -134,6 +134,7 @@ text-decoration: none;
 
 .item-nav > a:hover{text-decoration: none;}
 .item .item-img{width: 128px;height: 128px;}
+.item .item-img-small{width:83px;height: 83px;}
 .item .media-chart{margin-top: 10px;}
 .module-app{margin-bottom: 20px;}
 .module-app .pagination a{color: #333;}
