@@ -4,16 +4,16 @@
 // +----------------------------------------------------------------------
 // | Author:  liyanlong<liyanlong1993@sina.com>
 // +----------------------------------------------------------------------
-// | 2014-10-21
+// | 2014-11-5
 // +----------------------------------------------------------------------
 
 /**
- *  分享控制器 分享说说之类
+ *  健康指南 
  */
 namespace Home\Controller;	//表示当前类是Home模块下的控制器类
 use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
 
-class ShareController extends Controller {
+class HealthController extends Controller {
 	
     /**
      * 首页输出
@@ -23,12 +23,6 @@ class ShareController extends Controller {
     public function index(){
     	$this->display();
     }
-
-
-
-    
-
-
  
 }
 

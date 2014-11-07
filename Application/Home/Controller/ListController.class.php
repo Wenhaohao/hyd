@@ -15,6 +15,9 @@ use Think\Controller;
 
 class ListController extends Controller {
 	
+   /**
+	*	 运动分享列表
+	*/
 	public function index(){
 		$listService = D('List','Service');
 		
@@ -41,6 +44,15 @@ class ListController extends Controller {
 		$this->assign('category',$arrParentCate);
 		$this->assign('list',$listData);
 		$this->assign('page',$list);
+		$this->display();
+	}
+
+   /**
+	*	 健康指南分享列表  
+	*	 @author  liyanlong
+	*/
+	public function health(){
+
 		$this->display();
 	}
 

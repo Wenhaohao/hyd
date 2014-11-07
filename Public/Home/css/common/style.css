@@ -43,7 +43,7 @@ a:active{text-decoration: none;}
 .head-tool-search:hover{background-position: 6px -20px;}
 .head-tool-config{background-position: 6px -146px;cursor: pointer; }
 .head-tool-config:hover{background-position: 6px -170px;}
-.head-tool-user{width:25px;height:25px;margin-top:3px;padding:0px !important;cursor: pointer;border:1px solid #D4D4D4; background:none;}
+.head-tool-user{width:25px;height:25px;display:inline-block;margin-top:3px;padding:0px !important;cursor: pointer;border:1px solid #D4D4D4; background:none;}
 .head-tool-user img{width:25px;height:25px;display: block;}
 .head-tool-register,
 .head-tool-login{
