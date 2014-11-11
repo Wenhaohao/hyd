@@ -24,3 +24,6 @@
 .health-list-row [class*='span']{background: #fff; }
 .health-list-row img{height: 150px;}
 .health-list{margin: 0px;}
+
+/*list  sports-health-categories-list*/
+#sports-categories{width:120px;font-size: 12px; line-height: 24px; height: 24px; margin-top: 5px; margin-bottom: 5px;}

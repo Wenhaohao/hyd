@@ -22,9 +22,8 @@
 .article-footer{padding: 5px 0px; border-top: 1px solid #eee; margin: 0px -12px;overflow: hidden;}
 .article-footer .well{margin-bottom: 0px;margin-left: 20px;}
 .article-footer .collection{margin: 5px;}
-.ref-article {margin-top:-20px;background-color: #ffffff;}
-.ref-article .thumbnail{border-top: none;}
-.no-margin-bottom{margin-bottom: 0px;}
+
+
 .judge-result{position: absolute;right:15px;top:15px;}
 
 /*  评价 */
@@ -33,5 +32,3 @@
 
 
 /*view in  info health */
-.item-content {height: 90px;}
-.item-content > p{ text-indent: 1em;}

@@ -13,7 +13,7 @@
 			<div id="navbar">
 		    	<ul class="breadcrumb">
 				 <li><a href="#">首页</a> <span class="divider">/</span></li>
-				  <li><a href="#">健康指南</a> <span class="divider">/</span></li>
+				  <li><a href="#">运动健康指南</a> <span class="divider">/</span></li>
 				<li class="active">列表</li>
 				</ul>
 			</div>
@@ -31,6 +31,27 @@
 						</div>
 					</volist>
 					<div class="module-app-category">
+						<div class="category-head"><h4>运动分类</h4></div>
+						<div class="category-list" >
+						   
+						   		<a href="?sport_id=0">全部</a>
+						   		 <a href="?sports_id=1"  class="label label-info">球类运动</a>
+						   		 <a href="?sports_id=2">田径运动</a>
+						   		 <a href="?sports_id=3">水上运动</a>  	
+						</div>
+						<!-- 二级分类  全部情况下不显示 -->
+						<div class="category-list" >
+						   
+						   	 	 <a href="?sport_id=0">篮球</a>
+						   		 <a href="sports_id=1">足球</a>
+						   		 <a href="sports_id=2">排球</a>
+
+						</div>
+
+					</div>
+
+
+					<div class="module-app-category">
 						<div class="category-head"><h4>筛选条件</h4></div>
 						<div class="category-list" >
 						    <a  class="active  label label-info" href="#">最新</a>
@@ -45,7 +66,7 @@
 			    <div class="row-fluid health-list-row">
 	   				<div class="span4">
 	   					<div class="thumbnail">
-		                  <img src="#"  alt="300x200" />
+		                  <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
                           <div class="caption">
                             <h4>Thumbnail label</h4>
                             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. </p>
@@ -214,6 +235,44 @@
 			</section>
 			</div>
 			</div>
+
+			<!-- 热门 指南 -->
+			<!--  其他公告 -->
+    			<div class="module-app">
+            <ul class="nav nav-tabs no-margin-bottom">
+            <li class="active"><a href="#hot" data-toggle="tab">热门指南</a></li>
+            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
+
+            </ul>
+            <div class="tab-content">
+                <div class="ref-article tab-pane active" id="hot">     
+                        <div class="thumbnail">
+                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
+                          <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p>
+                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
+                            </p>
+                          </div>
+                        </div>
+                </div>
+                <div class="ref-article tab-pane" id="recommend">     
+                        <div class="thumbnail">
+                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
+                          <div class="caption">
+                            <h3>hot</h3>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p>
+                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
+                             </p>
+                          </div>
+                        </div>
+                </div>
+                 
+            </div>
+
+    			</div>  <!-- 文章结束 -->
 		</aside>
 	</div>
 
