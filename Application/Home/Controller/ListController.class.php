@@ -11,9 +11,9 @@
  * 列表页控制器
  */
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CommonController;
 
-class ListController extends Controller {
+class ListController extends CommonController {
 	
 	public function index(){
 		$listService = D('List','Service');

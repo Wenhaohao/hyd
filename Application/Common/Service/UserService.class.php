@@ -11,8 +11,8 @@
  * 用户中心模型
  */
 namespace Common\Service;
-use Think\Model;
+use Common\Service\CommonService;
 
-class UsersService extends Model {
+class UsersService extends CommonService {
 	
 }

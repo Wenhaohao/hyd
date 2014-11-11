@@ -19,10 +19,10 @@ class PassportService extends CommonService{
 		$data['uid_name'] = $dataLogin['uid_name'];
 		$data['passwd'] = md5($dataLogin['passwd']);
 		$result = M('users')->where($data)->find();
-
+		
+		//将 用户名存入 session
 		if($result){
-			$_SESSION['name'] = $data['uid_name'];         //将 用户名存入 session
-			
+			$_SESSION['name'] = $result;
 			return true;
 		}else {
 			return false;
@@ -38,7 +38,6 @@ class PassportService extends CommonService{
 		}
 		
 		// 判断用户名是否存在
-	
 		$count = count(M('users')->where("uid_name ="."'".$dataRegister['uid_name']."'")->select());
 
 		if($count > 0){

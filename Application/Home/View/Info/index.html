@@ -1,8 +1,8 @@
 <include file="Public:header" />
 
 <!-- 文章共享 -->
-<link rel="stylesheet" href="__PUBLIC__HOME/css/common/share.css">
-<link rel="stylesheet" href="__PUBLIC__HOME/css/common/chart.css">
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/share.css">
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/chart.css">
 <div class="container" id="pagewrap">
 	<div class="module-show">
 			<!-- 功能模块 展示 -->
@@ -54,33 +54,30 @@
 	    		<li><a href="/share">运动健康分享</a> <span class="divider">/</span></li>
     			<li class="#">文章名称<span class="label "></span></li>
     		</ul>
-				
-	
 				<div class="module-app" id="content">
 					<div class="module-app-share">
 					     <div class="page-header">
-    							<h3>Example page header <small>Subtext for header</small></h3>
+    							<h3>{$info.title}<small>{$info.sub_title}</small></h3>
                   <div class="judge-result">
                     <span class="btn btn-small btn-info">赞同:15</span>
                     <span class="btn btn-small">反对:10</span>
 
                   </div>
    						 </div>
-   						 <div class="article-author"><label>作者:</label><a href="">李彦龙</a></div>
-   						 <div class="article-time"><label>时间:</label>2014-11-12 15:30:11</div>
+   						 <div class="article-author"><label>作者:</label><a href="">{$info.uid_name}</a></div>
+   						 <div class="article-time"><label>时间:</label>{$info.publish_time}</div>
 						   <div class="article-ref">
 							   <div class="article-ref-content">
 								   <label class="article-ref-label">导语:</label>
 							   	<p>
-									创业者都很忙，每天都需要管理企业，你一定没有时间去测试市场上的所有相关应用。我们选出了应用市场上最优秀的一些企业管理应用供你选择。
+									{$info.ref_contents}
 								 </p>
 							   </div>
-							    <div class="article-ref-img"><img src="" alt="" /></div>		
+							    <div class="article-ref-img"><img src="{$info.ref_image}" alt="" /></div>		
 						   </div>
 						   <div class="clearfix clearfix-double"></div>				
 	             <div class="article-content">
-                  <p>日前,在广州市海珠区,有车主因其购买的某品牌汽车有质量问题,为了引起社会关注,他纠结39名同品牌汽车车主,集体驾车游街一个多小时,影响了正常交通秩序。广州警方29日通报称,事件中的7名组织者被警方处以行政拘留处罚,33名参与者被处以警告处罚。</p> 
-                  <p>日前,在广州市海珠区,有车主因其购买的某品牌汽车有质量问题,为了引起社会关注,他纠结39名同品牌汽车车主,集体驾车游街一个多小时,影响了正常交通秩序。广州警方29日通报称,事件中的7名组织者被警方处以行政拘留处罚,33名参与者被处以警告处罚。</p> 
+                 	{$info.contents}
                </div>
                <div class="article-footer">
                   <div class="pull-left well well-small">---如果发现文章涉及黄色,暴力
@@ -88,7 +85,6 @@
                   <div class="pull-right ">
                      <span class="btn btn-info collection">收藏:15</span>
                   </div>
-                   
                 </div>
 					</div>
 				</div>

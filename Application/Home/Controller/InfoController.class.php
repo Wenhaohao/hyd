@@ -11,15 +11,15 @@
  * 用户中心控制器
  */
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CommonController;
 
-class InfoController extends Controller {
+class InfoController extends CommonController {
 	
 	/*
 	*   读取指定文章内容
 	*/
 	public function index(){
-		$articleId =  I("get.id");
+		$articleId =  I('get.id');
 		if(empty($articleId)){
 				$this->error('404 NOT FOUND');
 		}
@@ -28,9 +28,9 @@ class InfoController extends Controller {
 		//获取 文章内容
 		$infoData = $infoService->getArticle($articleId);
 
-		//var_dump($infoData);
-		//return ;
-
+// 		dump($infoData);
+// 		return ;
+		$this->assign('info',$infoData);
 		$this->display();
 	}
 	

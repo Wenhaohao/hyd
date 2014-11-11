@@ -19,19 +19,60 @@ class PassportController extends CommonController{
 		$this->display();
 	}
 	
-	
-
-	// 登录控制器
+	/**
+	 *	登录控制器
+	 */
 	public function login(){
-
+		$this->returnUrl();
 		$this->display();
 	}
-
-	/* 注册前控制器
-	*
-	*  @author Liyanlong
-	*  如果用户登录成功则不允许进入注册页面
-	*/
+	
+	/**
+	 *	验证用户登录信息
+	 */
+	public function checkLogin(){
+		if(IS_POST){
+			$dataLogin = I('post.');
+			$checkLogin = D('Passport','Service')->checkLogin($dataLogin);
+			
+			// 判断进入登录界面之前的页面是否为本网站路径
+			$refURL = session("HYD_LOGIN_REFURL");
+			if(empty($refURL)){
+				$refURL = '/User';
+			}
+			
+			if($checkLogin){
+				$this->success('登陆成功',$refURL);
+			}else{
+				$this->error('用户名或密码错误');
+			}
+		}
+	}
+	
+	/**
+	 *	进来的时候设置来路为要跳回的页面
+	 */
+	public function  returnUrl(){
+		$referer = parse_url($_SERVER['HTTP_REFERER']);  // 控制器
+		$refererPath = $referer['path'];
+		$refererHost = $referer['host'];
+		if(in_array($refererHost,array('121.40.173.194','www.hyd.com','127.0.0.1')) && !in_array($refererPath, array('/Passport/index','/Passport/login'))){
+			session("HYD_LOGIN_REFURL", $refererPath);
+		}else{
+			session("HYD_LOGIN_REFURL", null);
+		}
+	}
+	
+	/**
+	 * 注册控制器
+	 */
+	public function register(){
+		$this->display();
+	}
+	
+	/**
+	 *	如果用户登录成功则不允许进入注册页面
+	 */
 	public function _before_register(){
 		$name = I('session.name');
 		if(!empty($name)){
@@ -39,27 +80,9 @@ class PassportController extends CommonController{
 		}
 	}
 	
-	// 注册控制器
-	public function register(){
-		$this->display();
-	}
-	
-	// 验证用户登录信息
-	public function checkLogin(){
-
-		if(IS_POST){
-			$dataLogin = I('post.');
-			$checkLogin = D('Passport','Service')->checkLogin($dataLogin);  
-			
-			if($checkLogin){
-				$this->success('登陆成功','/Index/index');
-			}else{
-				$this->error('用户名或密码错误');
-			}
-		}
-	}
-	
-	// 验证用户注册信息
+	/**
+	 *	验证用户注册信息
+	 */
 	public function checkRegister(){
 		if(IS_POST){
 			$dataRegister = I('post.');  //获取 post 全部变量
@@ -68,7 +91,9 @@ class PassportController extends CommonController{
 		}
 	}
 	 
-	// 验证注册用户名是否存在
+	/**
+	 *	验证注册用户名是否存在
+	 */
 	public function checkUserName(){
 		if(IS_POST){
 			$dataUsername = I("post.uid_name");
@@ -79,7 +104,9 @@ class PassportController extends CommonController{
 		return;
 	}
 	
-	// 验证邮箱是否存在
+	/**
+	 *	验证邮箱是否存在
+	 */
 	public function checkEmail(){
 		if(IS_POST){
 			$dataEmail = I("post.email");
@@ -89,11 +116,11 @@ class PassportController extends CommonController{
 		return;
 	}
 
-	// 退出登录
+	/**
+	 *	退出登录
+	 */
 	public function logout(){
 		$value = $_SESSION['name'];
-		echo $value;
-		exit();
 		unset($_SESSION['name']);
 		$this->success('退出成功，返回首页','/Index/index');
 	}

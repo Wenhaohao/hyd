@@ -11,12 +11,11 @@
  * 用户中心控制器
  */
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CheckController;
 
-class UserController extends Controller {
+class UserController extends CheckController {
 	
 	public function index(){
-		
 		$this->display();
 	}
 
@@ -29,7 +28,6 @@ class UserController extends Controller {
     */
 
     public function createArticle(){
-     
         $this->display();
     }
 

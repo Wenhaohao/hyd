@@ -21,8 +21,7 @@ class InfoService extends CommonService{
 		$infoData = M('articles')
 					->join('hyd_users ON hyd_articles.uid = hyd_users.uid')
 					->where('article_id = '+$article_id)
-					->select();
-		
+					->find();
 		return $infoData;		
 	}
 

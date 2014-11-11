@@ -21,11 +21,21 @@ class IndexController extends CommonController {
      * @return 
      */
     public function index(){
-    //	print_r(I("session."));
-       //dump(I("session"));
-    	$this->display();
+   		$listService = D('List','Service');
+		
+		// 翻页
+		$listCount = $listService->getCount();
+		$page = new \Think\Page($listCount,2);
+		$first = $page->firstRow;
+		$last = $page->listRows;
+		$list = $page->show();
+		$listData = $listService->getList($first,$last);
+		
+// 		dump(session('name'));
+    	$this->assign('list',$listData);
+		$this->assign('page',$list);
+		$this->display();
     }
-
     /**
     *
     *  测试 demo
