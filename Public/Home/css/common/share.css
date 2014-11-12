@@ -32,3 +32,5 @@
 
 
 /*view in  info health */
+.item-content {height: 90px;}
+.item-content > p{ text-indent: 1em;}
