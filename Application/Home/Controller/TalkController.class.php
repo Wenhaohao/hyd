@@ -24,6 +24,21 @@ class TalkController extends Controller {
     public function index(){
     	$this->display();
     }
+
+    //编辑说说
+    public function  createTalk(){
+
+    	$this->display();
+    }
+
+    // 发表说说
+    public function uploadTalk(){
+                         dump();
+    }
+     public function  demo(){
+
+    	$this->display();
+    }
  
 }
 

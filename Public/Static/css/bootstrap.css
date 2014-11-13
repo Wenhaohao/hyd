@@ -97,7 +97,7 @@ sup {
 sub {
   bottom: -0.25em;
 }
-
+/*
 img {
   width: auto\9;
   height: auto;
@@ -106,7 +106,7 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
-
+*/
 #map_canvas img,
 .google-maps img {
   max-width: none;

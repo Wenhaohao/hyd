@@ -95,5 +95,6 @@ border-radius: 4px;
 }
 
 /*sitemap*/
+#map-pane{height: 300px;overflow-y: scroll;}
 #sitemap{height: 300px;width: 100%;}
 
