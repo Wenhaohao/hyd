@@ -13,6 +13,23 @@
 namespace Common\Service;
 use Common\Service\CommonService;
 
-class UsersService extends CommonService {
+class UserService extends CommonService {
+	
+	/**
+	 *	用户个人信息
+	 *	@param int $intUserId 用户ID
+	 *	@return array $arrUserData 用户信息
+	 */
+	public function getUserInfo($intUserId){
+		$where['uid'] = $intUserId;
+		$arrUserData = M('users')->where($where)->find();
+		return $arrUserData;
+	}
+	
+	public function saveImageUrl($intUserId,$strImageUrl){
+		$where['uid'] = $intUserId;
+		$where['head_url'] = $strImageUrl;
+		D('users')->where($where)->save();
+	}
 	
 }

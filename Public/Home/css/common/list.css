@@ -17,3 +17,13 @@
 .myTab-box .myTab-button{top: -21px;position: absolute;margin-left: 0px;}
 .tab-pane{display: none;}
 *.show{display: block;}
+
+
+/*list  health-list-row */
+.health-list-row {margin-bottom: 15px;}
+.health-list-row [class*='span']{background: #fff; }
+.health-list-row img{height: 150px;}
+.health-list{margin: 0px;}
+
+/*list  sports-health-categories-list*/
+#sports-categories{width:120px;font-size: 12px; line-height: 24px; height: 24px; margin-top: 5px; margin-bottom: 5px;}

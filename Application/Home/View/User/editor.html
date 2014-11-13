@@ -1,41 +1,9 @@
 <include file="Public:header" title="更新个人资料" />
 <!-- 个人空间 -->
-<link rel="stylesheet" href="__PUBLIC__HOME/css/common/user.css">
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
 <div class="container" id="pagewrap">
 	<div class="module-show">
-			<!-- 功能模块 展示 -->
-			<ul class="row">
-
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-sys"></span>
-                  <span class="head-app-name">网站公告</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-
-              </li>
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-sport"></span>
-                  <span class="head-app-name">运动健康分享</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-share"></span>
-                  <span class="head-app-name">专家指导</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-              <li class="span3">
-                <a href="/User/index" class="thumbnail">
-                  <span class="head-app-icon head-app-sns"></span>
-                  <span class="head-app-name">个人社区</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-            </ul>
+		
 	</div>
 
 	<!-- 编辑内容-->
@@ -47,11 +15,10 @@
 	    		<li><a href="/share">个人社区</a> <span class="divider">/</span></li>
     			<li class="#">个人资料<span class="label "></span></li>
     		</ul>
-				
 			<!--  内容选项卡 -->
 			<div  class="module-app" id="myTab">
 				<div class="btn-group">
-    				<a class="btn"   href="/Share/Index">返回</a>    			
+    				<a class="btn"   href="/User/index.html">返回</a>    			
     			</div>
     			<div class="btn-group">
     				<a class="btn"  href="#">修改资料</a>
@@ -59,7 +26,7 @@
 			</div>
 			<div class="module-app ">
 				<div class="module-app-share">			
-			<form class="form-horizontal" name="editor" id="editorUser"  data-error="control-group" action="__URL__/uploaduser" method="post">
+			<form class="form-horizontal" name="editor" id="editorUser"  data-error="control-group" action="{:U('User/saveInfo')}" method="post">
 		   	 <fieldset>
 		      <div id="legend" class="">
 		        <legend>基本资料</legend>
@@ -68,14 +35,14 @@
 		   		<div class="control-group" >
 		         <label class="control-label">登录名</label>
 		          <div class="controls">
-		                 <input class="input-large" type="text" name="uid_name" id="uid_name" value="liyanlong1993" disabled />
+		                 <input class="input-large" type="text" name="uid_name" id="uid_name" value="{$user.uid_name}" disabled />
 		          </div>
 		        </div>
 
 		    	<div class="control-group ">
 		          <label class="control-label" >生日</label>
 		          <div class="controls">
-		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" />
+		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" value="{$user.birthday}"/>
 		            <p class="help-block">格式:2014-01-01</p>
 		          </div>
 		        </div>
@@ -85,13 +52,13 @@
 		          <div class="controls">
 		          	<!-- 二级联动 -->
 					<label class="radio inline">保密
-					<input type="radio" name="sex" id="sex1" value="0" checked="checked">
+					<input type="radio" name="sex" id="sex1" value="0" <if condition="$user.sex eq 0">checked="checked"</if>>
 					</label>
 					<label class="radio inline">男
-					<input type="radio" name="sex" id="sex2" value="1">
+					<input type="radio" name="sex" id="sex2" value="1" <if condition="$user.sex eq 1">checked="checked"</if>>
 					</label>
 					<label class="radio inline">女
-					<input type="radio" name="sex" id="sex3" value="2">
+					<input type="radio" name="sex" id="sex3" value="2" <if condition="$user.sex eq 2">checked="checked"</if>>
 					</label>           
 		          </div>
 		        </div>
@@ -111,7 +78,7 @@
 		        <div class="control-group">
 				  <label class="control-label" >个人简介</label>
 		          <div class="controls">
-		       		 <textarea rows="3" class="textarea" name="ref_contents"></textarea>   
+		       		 <textarea rows="3" class="textarea" name="ref_contents">{$user.description}</textarea>   
 		       	  </div>
 		        </div>
 			 <div id="legend" class="">
@@ -173,7 +140,7 @@
 		          
 		          <!-- Button -->
 		          <div class="controls">
-		            <button class="btn btn-primary"  type="submit" form="createArticle" >提交</button>
+		            <button class="btn btn-primary"  type="submit" id="saveUserInfo" >提交</button>
 		             <a class="btn" type="reset" form="createArticle" id="reset" onclick="window.history.go(-1);">取消修改</a>
 		          </div>
 		        </div>

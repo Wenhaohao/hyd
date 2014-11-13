@@ -1,0 +1,99 @@
+/* publish btn */
+.publish-talk{margin-top: -5px;}
+.talk-list{margin: 0px;}
+.talk-list > li{ background-color:#fff;margin-top:10px; box-sizing: content-box;border:1px solid #d9d9d9;}
+.talk-list .talk-name{
+white-space: nowrap;
+word-wrap: normal;
+overflow: hidden;
+text-overflow: ellipsis;
+font-size: 14px;
+line-height: 22px;
+margin-bottom: 8px;
+}
+
+/* user head  photograph*/
+.talk-list  .talk-user-pto{display: inline-block;float: left;margin-right: 5px;}
+.talk-list .talk-info .talk-pos-right{position: absolute;right: 0px;top: -30px;}
+.talk-list  .talk-user-pto img{
+display: block;
+border: 0px none;
+font-size: 0px;
+width: 50px;
+height: 50px;
+vertical-align: top;
+border-radius: 4px;
+}
+.talk-list .talk-name a{
+vertical-align: middle;
+font-family: punctuation,微软雅黑;
+color:#333;
+}
+/* user  talk info */
+.talk-list .talk-info{position: relative;}
+.talk-list .talk-info span,
+.talk-list .talk-info a{
+color: #8C8C8C;
+}
+.talk-list .talk-info .talk-sports img{
+border: 0px none;
+font-size: 0px;
+width: 50px;
+height: 50px;
+vertical-align: top;
+border-radius: 4px;
+}
+.talk-list .talk-info  .talk-address{vertical-align: bottom;}
+
+.talk-list  li:first-child{margin-top: 0px;}
+
+.talk-list .talk-wrap-white{background-color: #FFFFFF; padding:5px 8px;}
+.talk-list .talk-wrap{background-color: #FAFAFA; padding: 5px; border-top:1px solid #d9d9d9;}
+.talk-list .talk-contents{padding: 5px 0px;}
+
+/* talk tool bar */
+.talk-toobar > ul {margin: 0px;overflow: hidden;}
+.talk-toobar > ul > li{background: transparent;border: none; float: left;}
+.talk-toobar > ul > li a{text-decoration: none;
+display: inline-block;
+padding: 6px 8px;
+margin: 0px 8px 0px 0px;
+cursor: pointer;
+color: #333;
+border:1px solid transparent;
+}
+.talk-toobar > ul > li a:hover{
+border:1px solid #ddd;
+background:#FFF;
+}
+
+/*talk comments-list*/
+
+.comments-list,.comments-list-sub{
+padding: 4px 0px 0px 0px;
+overflow: hidden;  
+}
+.comments-list-sub{padding-top: 12px;}
+.comments-list ul,
+.comments-list-sub ul{margin: 0px;}
+.comments-list li,
+.comments-list-sub li{
+padding-left: 60px;
+position: relative;
+min-height: 50px;
+box-sizing: border-box;
+width: 100%;
+margin-bottom:5px;
+}
+
+.ui-avatar {width:50px;height: 50px;position: absolute; left: 0px;top: 0px;}
+.ui-avatar img{
+width: 100%;height: 100%;border:0px none;
+font-size: 0px;
+vertical-align: top;
+border-radius: 4px;
+}
+
+/*sitemap*/
+#sitemap{height: 300px;width: 100%;}
+

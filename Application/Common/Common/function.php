@@ -36,16 +36,17 @@ function img_save_to_file($name,$path){
 		}
 	  else
 		{
-			
-		  $filename = $_FILES["img"]["tmp_name"];
+		  $randname=date("Y").date("m").date("d").date("H").date("i").date("s").rand(100, 999);  // 随机名称（时间戳）
+		  $filename = $_FILES["img"]["tmp_name"];   // 服务器 带的 临时目录 还有移动的目的目录
 		  list($width, $height) = getimagesize( $filename );
 		  //存放文件 路径
-		  $result =  move_uploaded_file($filename, $DOCUMENT_ROOT.$IMAGE_URL.$_FILES["img"]["name"]);
-
+		  $urlSave = $DOCUMENT_ROOT.$IMAGE_URL.$randname.'.'.$extension;
+		  $result =  move_uploaded_file($filename, $urlSave);
+			// move_upload_file hanshu   你看下 linux 下   文件临时目录是哪个 应该不在 web 
 		  if($result ==false){
 				$response = array(
 					"status" => 'error',
-					 "message" => "move_upload_file error",
+					 "message" => "move_upload_file error", // 看是不是权限问题
 					);
 		  							
 		  }else{

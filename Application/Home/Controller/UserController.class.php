@@ -16,6 +16,11 @@ use Home\Controller\CheckController;
 class UserController extends CheckController {
 	
 	public function index(){
+		$intUserId = $this->uid;
+		$arrUserData = D('User','Service')->getUserInfo($intUserId);
+// 		dump($arrUserData);
+// 		exit();
+		$this->assign('user',$arrUserData);
 		$this->display();
 	}
 
@@ -54,10 +59,11 @@ class UserController extends CheckController {
         /* Applicaiton  Common  文件上传保存 */
         $name = "demo";
         $path ="";
-        img_save_to_file($name,$path);  
-        return ;
-    // $this->display();
+        img_save_to_file($name,$path);
+//         $intUserId = $this->uid;
+//         D('User','Service')->saveImageUrl($intUserId,$data);
     }
+    
     /**
     *    异步裁剪图片
     *    @param     action  目的 上传为头像还是文章图片
@@ -81,10 +87,29 @@ class UserController extends CheckController {
     *
     */
     public function editor(){
-        
+    	$intUserId = $this->uid;
+    	$arrUserData = D('User','Service')->getUserInfo($intUserId);
+    	$this->assign('user',$arrUserData);
         $this->display();
     }
-
+	
+    /**
+     * 保存修改信息
+     */
+    public function saveInfo(){
+    	if(IS_POST){
+    		$where['birthday'] = I('post.birthday');
+    		$where['sex'] = I('post.sex');
+    		$where['province'] = I('post.province');
+    		$where['city'] = I('post.city');
+    		$where['country'] = I('post.country');
+    		$where['description'] = I('post.ref_contents');
+    		$where['head_url'] = I('ref_image');
+    		dump($where);
+    		exit();
+    	}
+    }
+    
   /**
     *  
     *    用户好友界面

@@ -2,7 +2,7 @@
 .share-sidenav{top:61px;}
 .share-sidenav ul{width: 270px;box-sizing: border-box;border: 1px solid #DDD;border-radius: 4px;background-color: #fff;}
 .share-sidenav  li > a{padding: 8px 10px;}
-.page-header{margin-bottom: 5px;}
+.page-header{margin-bottom: 5px;margin-top: 35px;}
 .article-author,
 .article-time{color: #999;}
 .article-author > label,
@@ -11,20 +11,24 @@
 .article-ref{margin-top: -40px;}
 .article-ref .article-ref-content{padding-top: 50px;float: left;display: inline-block;width: 60%;}
 .article-ref .article-ref-img{padding-top: -5px;}
+.article-notice-img{height: 180px;}
 .article-ref .article-ref-label{float: left;}
 .article-ref .article-ref-content > p{padding-left: 40px; line-height:20px;}
 .article-ref img{float: right;width: 128px;height: 128px;border-radius: 5px;border: 1px solid #ddd;}
+.article-notice-img img{width:100%;height: 180px;}
 .article-content{line-height: 30px;padding: 0px 5px;}
 .article-content p{text-indent: 30px;}
 /* 文章尾部 */
 .article-footer{padding: 5px 0px; border-top: 1px solid #eee; margin: 0px -12px;overflow: hidden;}
 .article-footer .well{margin-bottom: 0px;margin-left: 20px;}
 .article-footer .collection{margin: 5px;}
-.ref-article {margin-top:-20px;background-color: #ffffff;}
-.ref-article .thumbnail{border-top: none;}
-.no-margin-bottom{margin-bottom: 0px;}
+
+
 .judge-result{position: absolute;right:15px;top:15px;}
 
 /*  评价 */
 .comment{float:left;width:90%;}
 .comment-btn{margin-bottom: 5px;}
+
+
+/*view in  info health */

@@ -1,56 +1,19 @@
 <include file="Public:header" />
 
 <!-- 个人空间 -->
-<link rel="stylesheet" href="__PUBLIC__HOME/css/common/user.css">
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
 <div class="container" id="pagewrap">
 	<div class="module-show">
-			<!-- 功能模块 展示 -->
-			<ul class="row">
-
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-sys"></span>
-                  <span class="head-app-name">网站公告</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-
-              </li>
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-sport"></span>
-                  <span class="head-app-name">运动健康分享</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-share"></span>
-                  <span class="head-app-name">专家指导</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-              <li class="span3">
-                <a href="#" class="thumbnail">
-                  <span class="head-app-icon head-app-sns"></span>
-                  <span class="head-app-name">个人社区</span>
-                   <span class="badge badge-important ">100</span>
-                </a>
-              </li>
-            </ul>
+	
 	</div>
-
-	
-	
 	<!-- 文章内容  -->
 	<div class="container">
 		<div class="row">
 	
 		<section class="module-left pull-left span9">
-
-			
 			<ul class="breadcrumb">
-    			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="/share">个人社区</a> <span class="divider">/</span></li>
+    			<li><a href="/">首页</a> <span class="divider">/</span></li>
+	    		<li><a href="/User/index">个人社区</a> <span class="divider">/</span></li>
     			<li class="#">个人资料<span class="label "></span></li>
     		</ul>
 				
@@ -76,21 +39,26 @@
 					   		<div class="control-group" >
 					         <label class="control-label" >用户名</label>
 					          <div class="controls" >
-					             <span class="control-span">liyanlong1993</span>
+					             <span class="control-span">{$user['uid_name']}</span>
 					          </div>
 					        </div>
 
 					    	<div class="control-group ">
 					          <label class="control-label" >邮箱地址</label>
 					          <div class="controls">
-					         	 <span class="control-span">295697141@qq.com</span>
+					         	 <span class="control-span">{$user['email']}</span>
 					          </div>
 					        </div>
 							
 							<div class="control-group ">
 					          <label class="control-label">性别</label>
 					          <div class="controls">
-			 					<span class="control-span">保密</span>
+			 					<span class="control-span">
+			 					<if condition="$user['sex'] eq 1">男
+			 					<elseif condition="$user['sex'] eq 2"/>女
+			 					<else/>保密
+			 					</if>
+			 					</span>
 					          </div>
 					        </div>
 
@@ -98,7 +66,7 @@
 					         
 					          <label class="control-label" >出生日期</label>
 					          <div class="controls">
-					          	<span class="control-span">1993-11-29</span>   
+					          	<span class="control-span">{$user['birthday']}</span>   
 					          </div>
 					        </div>
 							<div class="control-group">
@@ -112,7 +80,7 @@
 					        <div class="control-group">
 							  <label class="control-label" >个人简介</label>
 					          <div class="controls">
-					       		 <div  class="textarea text-show"></div>
+					       		 <div  class="textarea text-show">{$user['description']}</div>
 					          </div>
 					        </div>
 
