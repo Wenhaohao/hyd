@@ -11,9 +11,9 @@
  * 列表页控制器
  */
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CommonController;
 
-class ListController extends Controller {
+class ListController extends CommonController {
 	
    /**
 	*	 运动分享列表

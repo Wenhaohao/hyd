@@ -56,19 +56,7 @@
 					</form>
 				</li>
 {/* 如果 用户没有登录 */}
-<if condition="$Think.session.name eq  NULL">
-				<li>
-					<div>
-					<a  class="head-tool head-tool-register" href="/Passport/register">注册</a>
-					</div>			
-				</li>
-				<li>
-					<div>
-						<a href="/Passport/login" class="head-tool head-tool-login">登录</a>
-					</div>
-				 </li>   
-<else /> 
-{/*如果 用已经登陆*/}
+<if condition="$Think.session.name neq NULL">
 				  <li>
 						<div class="head-tool head-tool-config"></div>
 				  </li>
@@ -76,7 +64,7 @@
 
 					
 					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="__PUBLIC__Home	/images/default-user.png" alt="头像"  > 
+						 <img  src="__PUBLIC__Home/images/default-user.png" alt="头像"  > 
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
 						<li><a tabindex="-1" href="{:U('User/createarticle')}">发表文章</a></li>
@@ -87,6 +75,18 @@
 						<li><a tabindex="-1" href="{:U('Passport/logout')}">退出</a></li>
 					</ul>
 				 </li>
+<else /> 
+{/*如果 用已经登陆*/}
+				 <li>
+					<div>
+					<a  class="head-tool head-tool-register" href="/Passport/register">注册</a>
+					</div>			
+				</li>
+				<li>
+					<div>
+						<a href="/Passport/login" class="head-tool head-tool-login">登录</a>
+					</div>
+				 </li>   
 </if>
 {/* 结束判断*/}
 				

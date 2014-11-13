@@ -11,9 +11,9 @@
  *  分享控制器 分享说说之类
  */
 namespace Home\Controller;	//表示当前类是Home模块下的控制器类
-use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
+use Home\Controller\CommonController;	//表示引入Think\Controller明明空间便于直接使用
 
-class ShareController extends Controller {
+class ShareController extends CommonController {
 	
     /**
      * 首页输出

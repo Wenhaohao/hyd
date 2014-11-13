@@ -46,79 +46,41 @@
 				
 			
 			<ul class="media-list module-app-list">
+				<volist name="list" id="vo">
 				<li class="media item"> 
 					<a class="pull-left thumbnail" href="#">
-					<img  class="media-object item-img" alt="128x128" data-src="">
-					</a>
-					<div class="media-body">
-					<h4 class="media-heading page-header">
-						<a href="#">
-						传微软将发布智能运动手环：支持多个系统
-						</a>
-					</h4>
-					<div class="item-nav">
-						<a href="#">
-							<span class="label label-info">丽丽	
-							</span>
-						</a>
-						<span class="label-time">
-							2014-10-20 08:45
-						</span>
-						<div class="pull-right">
-						
-						<span class="label ">已阅读:200</span>		
-						<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
-								<span>8</span>
-						</span>
-						</div>
-						
-					</div>
-					<div class="media">
-						微软这款手环将首先专注于运动功能。通过内置的多个传感器，这款手环将可以用于计步、追踪心率、热量消耗，以及其他关键的健康信息。
-					</div>
-					</div>
-					
-				</li>
-				<li class="media item"> 
-					<a class="pull-left thumbnail" href="#">
-					<img  src=""  alt="128x128" class="media-object item-img" data-src="holder.js/64x64">
+					<img  class="media-object item-img img-rounded" alt="128x128" data-src="" src="{$vo.ref_image}">
 					</a>
 					<div class="media-body">
 						<h4 class="media-heading page-header">
+							<a href="{:U('Info/index')}?id={$vo.article_id}">
+							{$vo.title}</a>
+						</h4>
+						<div class="item-nav">
 							<a href="#">
-							传微软将发布智能运动手环：支持多个系统</a></h4>
-					<div class="item-nav">
-						<a href="#">
-							<span class="label label-info">丽丽	
+								<span class="label label-info">{$vo.uid_name}	
+								</span>
+							</a>
+							<span class="label-time">
+								{$vo.publish_time}
 							</span>
-						</a>
-						<span class="label-time">
-							2014-10-20 08:45
-						</span>
-						<div class="pull-right">
-						
-						<span class="label ">已阅读:200</span>		
-						<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
-								<span>8</span>
-						</span>
+							<div class="pull-right">
+								<span class="label ">已阅读:200</span>		
+								<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
+										<span>8</span>
+								</span>
+							</div>
 						</div>
+							<div class="media">
+								{$vo.contents|cutStr=###,100}
+							</div>
 					</div>
-					<div class="media">
-						微软这款手环将首先专注于运动功能。通过内置的多个传感器，这款手环将可以用于计步、追踪心率、热量消耗，以及其他关键的健康信息。
-					</div>
-					</div>
-					
 				</li>
+			</volist>
 			</ul>
 				<div class="pagination">
 				    <ul class="pull-right">
-				    <li ><a href="#">上一页</a></li>
-				    <li class="active"><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">下一页</a></li>
+				   {$page}
 				    </ul>
    				 </div>
 			</div>

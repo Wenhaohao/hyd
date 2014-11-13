@@ -24,6 +24,7 @@
 						<div class="module-app-category">
 							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
 							<div class="category-list" >
+							<a class="active label label-info">全部</a>
 							<volist name="vo['child']" id="val">
 								<a class="active" >{$val.ch_name}</a>
 							</volist>
@@ -33,7 +34,7 @@
 					<div class="module-app-category">
 						<div class="category-head"><h4>筛选条件</h4></div>
 						<div class="category-list" >
-						    <a  class="active  label label-info" href="#">最新</a>
+							<a  class="active label label-info" href="#">最新</a>
 							<a href="#">最热</a>
 						</div>
 					</div>
@@ -50,7 +51,7 @@
 					</a>
 					<div class="media-body">
 						<h4 class="media-heading page-header">
-						<a href='{:U("Info/index?id=$vo[article_id]")}'>
+							<a href="{:U('Info/index')}?id={$vo.article_id}">
 							{$vo.title}</a>
 						</h4>
 						<div class="item-nav">
