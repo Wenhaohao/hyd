@@ -168,17 +168,6 @@ background-color: #fff;
 .module-app-share  .upload-info{width:100%;padding: 5px 10px; box-sizing: border-box;}
 
 .module-app-share  .upload-click{position: absolute;left: 0px;bottom: 0px;width:100%;background: #FF0000; opacity: 0.8;}
-/* footer bar #fotter #footer  */
-#footer{
-padding-top: 20px;
-/* size width height */
-width: 100%;
-min-height: 35px;
-
-/* background color */
-color:#333;
-text-align: center;
-}
 
 
 /*  aside */
@@ -218,6 +207,17 @@ border-radius: 2px;
 .module-app-header .header-img > img{width: 100%;height: 100%;}
 .module-app-header .header-row{padding: 6px 10px;}
 
+
+/* website in footer */
+#footer{
+color: #fff;
+background: none repeat scroll 0% 0% #333;
+border-top: 1px solid #E3E5E8;
+min-height: 35px;
+padding-top: 20px;
+position: relative;
+bottom: 0px;
+}
 
 /* usually icon */
 .myicon{

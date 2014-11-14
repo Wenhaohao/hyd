@@ -135,12 +135,7 @@
 					          </div>
 					        </div>
 			    	
-							<div class="favor-chart-box">
-								<div class="thumbnail">
-									<div  class="favor-chart" id="favor-chart" style="width:593px;height:378px;"></div>
-								</div>
-								<span class="label label-success" >能力偏好</span>
-							</div>
+						
 					    </fieldset>
 			   		</div>
 					</div>
@@ -221,61 +216,10 @@
 	</div>
 
 </div>
-
+  
+<include file="Public:footer" />
 </body>
-<script type="text/javascript" src="__STATIC__js/echarts-plain.js"></script>
-<script type="text/javascript">
-
-option = {
-    title : {
-        text: '室内运动分布比例',
-        subtext: '网站来源',
-        x:'center'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['瑜伽','健美操','舞蹈','俯卧撑','仰卧起坐','哑铃','其他']
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    calculable : true,
-    series : [
-        {
-            name:'访问来源',
-            type:'pie',
-            radius : '55%',
-            center: ['50%', '60%'],
-            data:[
-                {value:335, name:'瑜伽'},
-                {value:310, name:'健美操'},
-                {value:234, name:'舞蹈'},
-                {value:135, name:'俯卧撑'},
-                {value:1548, name:'仰卧起坐'},
-                {value:1548, name:'哑铃'},
-                 {value:1548, name:'其他'},
-            ]
-        }
-    ]
-};
-                    
-               
-
-var myChart = echarts.init(document.getElementById("favor-chart"));
-	myChart.setOption(option);
 
 
-</script>
 
 </html>

@@ -35,27 +35,26 @@
             <script id="editor" type="text/plain" style="width:100%;height:200px;"></script>
           </div>
           <div class="control-group" >
-             <label class="control-label">时间</label>
+             <label class="control-label">日期</label>
               <div class="controls">
-                     <input class="input-large" type="text" name="time" id="time" />
+                     <input class="input-large" type="text" name="date" id="date" />
+                     
               </div>
             </div>
           <div class="control-group">
               <!-- Text input-->
-              <label class="control-label" >所在地点</label>
+              <label class="control-label" >时间</label>
               <div class="controls">
-                <input placeholder="省份" class="input-small" type="text" name="province" id="province" data-value="" />
+                <input placeholder="开始时间" class="input-small" type="text" name="startTime" id="start-time" data-value="" />
                 <span>-</span>
-                <input placeholder="市" class="input-small" type="text" name="city" id="city" data-value="" />
-                <span>-</span>
-                <input placeholder="区" class="input-small" type="text" name="country" id="country" data-value="" />
+                <input placeholder="结束时间" class="input-small" type="text" name="endTime" id="end-time" data-value="" />
                </div>
           </div>
   
             <div class="control-group ">
               <label class="control-label" >详细地址</label>
               <div class="controls">
-                <input placeholder="" class="input-large" type="text" name="detailAddress" id="detailAddress" /> 
+                <input placeholder="" class="input-large" type="text" name="mapAddress" id="mapAddress" data-BMap="text" /> 
                 <span class="btn"  id="searchAddress" onclick="searchAddress()">查询</span>
               </div>
           </div>
@@ -205,12 +204,9 @@
 	</div>
 
 </div>
- 
   <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
- <footer id="footer">
   
-  		<div class="container">footer</div>
-  </footer>
+<include file="Public:footer" />
 </body>
 
 <!-- 加载文本编辑器 -->

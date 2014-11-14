@@ -33,7 +33,8 @@ class TalkController extends Controller {
 
     // 发表说说
     public function uploadTalk(){
-                         dump();
+
+        dump(I('post.'));
     }
      public function  demo(){
 

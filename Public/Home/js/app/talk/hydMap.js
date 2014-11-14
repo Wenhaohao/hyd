@@ -1,14 +1,14 @@
 // 百度地图API功能  initlize
-(function(){
+(function(options){
 
-  var map = new BMap.Map("sitemap");          
+  var textId= options.inputText;
+  
+  var map = new BMap.Map(options.sitemap);          
   map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
   var local = new BMap.LocalSearch(map, {
     renderOptions:{map: map}
   });
 
-//
-// 开启控件
 
 var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
   var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
@@ -20,12 +20,12 @@ var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 
   }
 
   function searchAddress(){
-   var text   =   G("detailAddress").value;  //查询按钮触发事件
+   var text   =   G(textId).value;  //查询按钮触发事件
    local.search(text);
   }
 
   var ac = new BMap.Autocomplete({              //建立一个自动完成的对象
-     "input" : "detailAddress",
+     "input" : textId,
      "location" : map
   });
 
@@ -65,10 +65,13 @@ function showInfo(e){
  //   local.search(maker);
     geoc.getLocation(e.point, function(rs){
       var addComp = rs.addressComponents;  //根据 经纬度 获取 详细地址
-      G('detailAddress').value=( addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber);
+      G(textId).value=( addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber);
     });
 }
 
 map.addEventListener("click", showInfo);
 
-})();
+})({
+  inputText   :  "mapAddress",    //　　地址填写框　　　
+  mapId       :  "sitemap"　　　 //    地图 
+});
