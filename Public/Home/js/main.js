@@ -5,7 +5,8 @@ require.config({
 		validForm:"../app/validForm",
 		flicker:"../app/flicker",
 		ueditor:"../app/ueditor",
-
+		user :"../app/user",
+		STATIC:"../../../Static/js"
 	}
 });
 // 加载必要 js 文件
