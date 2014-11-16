@@ -1,4 +1,6 @@
 <include file="Public:header" title="更新个人资料" />
+
+<link rel="stylesheet" type="text/css" href="__STATIC__css/bootstrap-datetimepicker.css">
 <link rel="stylesheet" href="__STATIC__css/datepicker.css"><!-- The default theme -->
 <!-- 个人空间 -->
 <link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
@@ -43,9 +45,12 @@
 		    	<div class="control-group ">
 		          <label class="control-label" >生日</label>
 		          <div class="controls">
-		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" value="{$user.birthday}"  />
+		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" value="{$user.birthday}"/>
+		            
 		            <p class="help-block">格式:2014-01-01</p>
+
 		          </div>
+		          
 		        </div>
 				
 				<div class="control-group ">
@@ -236,10 +241,8 @@
 
 <include file="Public:footer" />
 </body>
-<script type="text/javascript" src="__PUBLIC__Home/js/lib/jsAddress.js"></script>
-<script type="text/javascript">
-	addressInit('province', 'city', 'country');
-</script>
+
+
 <!-- 图片上传  -->
 <link href="__STATIC__css/croppic.css" rel="stylesheet" />
 
@@ -273,16 +276,32 @@ $(function(){
 });
 
 window.onload=function(){
-      
-      requirejs(["jquery","STATIC/datepicker"],function(){
+     // 加载 地址插件
+     requirejs(["jsAddress"],function(){
+     	 addressInit('province', 'city', 'country');
+     });
+	 // 加载 日期时间插件
+     requirejs(["jquery","STATIC_BOOTSTRAP/datetimepicker"],function($){
 
-      		requirejs(["user/datepicker.zh"],function(){  //加载中文插件
-      			$("#birthday").datepicker();
+      	requirejs(["STATIC_BOOTSTRAP/locales/datetimepicker.zh-CN"],function(){  		//加载中文包
+				$('#birthday').datetimepicker({	
+   					 format: 'yyyy-mm-dd',
+   					 language: "zh-CN",
+			         todayBtn:  1,        //当天快捷按钮
+					 autoclose: 1,		  //自动关闭    
+					 todayHighlight: 1,  // 当天高亮
+					 startView: 2,   	//  in 1 hour :0 , in 1 days :1,in 1 mounth :2  
+					 minView: 2,		 //  start width  1 mounths 
+					 forceParse: 1,
+  				  });
       		});
       		
       });
-  
+
+
 }
+
 </script>
+
 
 </html>

@@ -6,7 +6,8 @@ require.config({
 		flicker:"../app/flicker",
 		ueditor:"../app/ueditor",
 		user :"../app/user",
-		STATIC:"../../../Static/js"
+		STATIC:"../../../Static/js",
+		STATIC_BOOTSTRAP:"../../../Static/js/bootstrap",
 	}
 });
 // 加载必要 js 文件
