@@ -73,5 +73,5 @@ map.addEventListener("click", showInfo);
 
 })({
   inputText   :  "mapAddress",    //　　地址填写框　　　
-  mapId       :  "sitemap"　　　 //    地图 
+  sitemap       :  "sitemap"　　　 //    地图 
 });
