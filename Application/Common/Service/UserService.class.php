@@ -31,10 +31,12 @@ class UserService extends CommonService {
 	 * @param 
 	 */
 	public function saveUserInfo($arrUserData){
+		
 		$result = M('users')->save($arrUserData);
 		if($result!=false){
 			return true;
 		}else{
+			
 			return false;
 		}
 	}

@@ -8,7 +8,7 @@
 .module-app-header .header-row{padding: 6px 10px;}
 
 .controls .control-span{padding: 5px;}
-.controls .text-show{border-radius: 5px;border: 1px solid #ddd;}
+.controls .text-show{border-radius: 5px;}
 /* User  favor  */
 .favor-controls{margin-top: 5px;}
 .favor-chart-box{padding:5px;height: 378px;overflow: hidden;}

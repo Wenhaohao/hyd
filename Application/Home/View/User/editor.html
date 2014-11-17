@@ -73,12 +73,12 @@
 		          <!-- Text input-->
 		          <label class="control-label" >所在地址</label>
 		          <div class="controls">
-		            <select class="input-small" type="text" name="province" id="province" data-value="">
+		            <select class="input-small" type="text" name="province" id="province" data-value="{$user.province}">
 		            </select>
 		           	<span>-</span>
-		           	<select class="input-small" type="text" name="city" id="city" data-value="" ></select>
+		           	<select class="input-small" type="text" name="city" id="city" data-value="{$user.city}"></select>
 		           	<span>-</span>
-		           	<select  class="input-small" type="text" name="country" id="country" data-value="" ></select>
+		           	<select  class="input-small" type="text" name="county" id="county" data-value="{$user.county}" ></select>
 		           </div>
 		        </div>
 
@@ -154,7 +154,7 @@
 				<div class="upload">
 					<div class=" thumbnail " href="#">
 						<div class="upload-img" id="uploadImg"><img class="croppedImg" src="{$user['head_url']}"></div>
-						<input type="text" style="display:none;" id="ref_image" name="ref_image">
+						<input type="hidden"  id="ref_image" name="ref_image" value="{$user['head_url']}" />
 					</div>
 					<span class="label label-success upload-info" >请上传图片</span>
 				</div>
@@ -277,8 +277,9 @@ $(function(){
 
 window.onload=function(){
      // 加载 地址插件
-     requirejs(["jsAddress"],function(){
-     	 addressInit('province', 'city', 'country');
+     requirejs(["jquery","jsAddress"],function($){
+     	
+     	 addressInit('province', 'city', 'county',$("#province").data("value"),$("#city").data("value"),$("#county").data("value"));
      });
 	 // 加载 日期时间插件
      requirejs(["jquery","STATIC_BOOTSTRAP/datetimepicker"],function($){

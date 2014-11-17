@@ -15,7 +15,7 @@
 	
 			<ul class="breadcrumb">
     				<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="/share">分享</a> <span class="divider">/</span></li>
+	    		<li><a href="{:U('List/index')}">分享</a> <span class="divider">/</span></li>
     			<li class="#">文章发布 <span class="label ">ing...</span></li>
     		</ul>
 	
@@ -63,18 +63,13 @@
 		          <!-- Text input-->
 		          <label class="control-label" >文章标签</label>
 		          <div class="controls">
-		            <input placeholder="请输入标签名" class="input-small" type="text" name="tag" id="tag" data-value="">
-		            <button class="btn btn-info" type="button" data-text="#tag" id="add-tag">添加</button>      
+		            <input placeholder="请输入标签名" class="input-" type="text" name="tag" id="tag" data-value="">
+		            <p class="help-block tags" id="tag-text">
+					 多个标签使用;隔开
+		       		</p>    
 		          </div>
 		        </div>
-				<div class="control-group">
-				
-		          <div class="controls">
-		       		<p class="help-block tags" id="tag-text">
 
-		       		</p>
-		          </div>
-		        </div>
 		        <div class="control-group">
 				  <label class="control-label" >内容介绍</label>
 		          <div class="controls">
@@ -169,17 +164,7 @@
 					
 		});
 	
-	    /* 注册 事件 */
-	    require(["jquery","app/demo"],function(){
-	    	$("#reset").bind("click",function(){
-	    			var ue = UE.getEditor('editor');
-	    			ue.setContent(""); //清空 编辑器内容
-	    			$("#tag").data("value","");
-	    			$("#tag-text").html("");
-	    	});
-
-	    
-	    });
+	
 	 
 	};
 </script>

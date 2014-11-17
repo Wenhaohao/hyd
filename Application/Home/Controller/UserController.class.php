@@ -111,12 +111,11 @@ class UserController extends CheckController {
     		$where['uid'] = $this->uid;
     		$where['birthday'] = I('post.birthday');
     		$where['sex'] = I('post.sex');
-    		$where['province'] = I('post.province');
-    		$where['city'] = I('post.city');
-    		$where['county'] = I('post.country');
+    		$where['province'] = intval(I('post.province'));
+    		$where['city']   = intval(I('post.city'));
+    		$where['county'] = intval(I('post.county'));
     		$where['description'] = I('post.ref_contents');
     		$where['head_url'] = I('ref_image');
-    		
     		$result = D('User','Service')->saveUserInfo($where);
     		if($result){
     			$this->success('修改资料成功','/User/index');
