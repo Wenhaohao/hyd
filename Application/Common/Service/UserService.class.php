@@ -26,10 +26,17 @@ class UserService extends CommonService {
 		return $arrUserData;
 	}
 	
-	public function saveImageUrl($intUserId,$strImageUrl){
-		$where['uid'] = $intUserId;
-		$where['head_url'] = $strImageUrl;
-		D('users')->where($where)->save();
+	/**
+	 * 保存修改用户个人信息
+	 * @param 
+	 */
+	public function saveUserInfo($arrUserData){
+		$result = M('users')->save($arrUserData);
+		if($result!=false){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 }

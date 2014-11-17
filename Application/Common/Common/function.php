@@ -54,7 +54,7 @@ function img_save_to_file($name,$path){
 		
 			  $response = array(
 				"status" => 'success',
-				"url" =>  $IMAGE_URL . $_FILES["img"]["name"],
+				"url" =>  $IMAGE_URL . $randname.'.'.$extension,
 				"width" => $width,
 				"height" => $height
 			  );
@@ -90,7 +90,7 @@ $jpeg_quality = 100;
 
 $path = '/Public/Uploads/share/';  // 路径
 
-$output_filename = $path."croppedImg_".rand();
+$output_filename = $path."hyd_".date("Y").date("m").date("d").date("H").date("i").date("s").rand(100, 999);
 $imgUrl = $_SERVER['DOCUMENT_ROOT'].$imgUrl;
 $what = getimagesize($imgUrl);
 switch(strtolower($what['mime']))

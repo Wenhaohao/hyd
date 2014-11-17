@@ -1,0 +1,65 @@
+<aside class="module-aside pull-right span3">
+			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
+			<!--  用户头像 简介 -->
+			<div class="module-app-header">
+				<div class="header-info">
+					<div class="header-row">
+						<span class="label label-info">用户名:</span>
+						<span>{$rightUser.uid_name}</span>
+					</div>
+					<div class="header-row">
+						<span class="label label-info">粉丝:</span>
+						<span>0</span>
+					</div>
+
+					<div class="header-row">
+						<button class="btn btn-warning">退出登录</button>
+					</div>					
+				</div>
+				<div class=" thumbnail header-img">
+					<img src="{$rightUser.head_url}" class="img-circle"/>
+				</div>
+			</div>
+			<ul class="nav nav-list">
+				    <li class="active">
+				    	<a href="/User/index">
+							<i class="icon-chevron-left"></i>
+				    		个人资料
+				    		<i class="icon-user"></i>
+				    	</a>
+				    </li>
+				    <li><a href="/User/friends">
+						<i class="icon-chevron-left"></i>
+				    	关注好友</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="/User/article">
+				    	<i class="icon-chevron-left"></i>
+				    	分享文章</a>
+				    </li>
+				    <li>
+				    	<a href="/User/collection">
+				    	<i class="icon-chevron-left"></i>
+				    	文章收藏</a>
+				    </li>
+				     <li>
+				    	<a href="/User/chart">
+				    	<i class="icon-chevron-left"></i>
+				    	文章留言</a>
+				    </li>
+				     <li class="divider"></li>
+				    <li>
+				    	<a href="/User/talk">
+				    	<i class="icon-chevron-left"></i>
+				    	运动说说</a>
+				    </li>
+				    <li>
+				    	<a href="/User/plan">
+				    	<i class="icon-chevron-left"></i>
+				    	运动计划</a>
+				    </li>
+    		</ul>
+    		
+			</div>
+		</aside>

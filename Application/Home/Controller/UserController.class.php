@@ -15,6 +15,16 @@ use Home\Controller\CheckController;
 
 class UserController extends CheckController {
 	
+	/**
+	 *	初始化
+	 */
+	public function __construct(){
+		parent::__construct();
+		$intUserId = $this->uid;
+		$arrUserData = D('User','Service')->getUserInfo($intUserId);
+		$this->assign('rightUser',$arrUserData);
+	}
+	
 	public function index(){
 		$intUserId = $this->uid;
 		$arrUserData = D('User','Service')->getUserInfo($intUserId);
@@ -98,15 +108,21 @@ class UserController extends CheckController {
      */
     public function saveInfo(){
     	if(IS_POST){
+    		$where['uid'] = $this->uid;
     		$where['birthday'] = I('post.birthday');
     		$where['sex'] = I('post.sex');
     		$where['province'] = I('post.province');
     		$where['city'] = I('post.city');
-    		$where['country'] = I('post.country');
+    		$where['county'] = I('post.country');
     		$where['description'] = I('post.ref_contents');
     		$where['head_url'] = I('ref_image');
-    		dump($where);
-    		exit();
+    		
+    		$result = D('User','Service')->saveUserInfo($where);
+    		if($result){
+    			$this->success('修改资料成功','/User/index');
+    		}else{
+    			$this->error('修改资料失败','/User/editor');
+    		}
     	}
     }
     
