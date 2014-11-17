@@ -168,19 +168,10 @@ background-color: #fff;
 .module-app-share  .upload-info{width:100%;padding: 5px 10px; box-sizing: border-box;}
 
 .module-app-share  .upload-click{position: absolute;left: 0px;bottom: 0px;width:100%;background: #FF0000; opacity: 0.8;}
-/* footer bar #fotter #footer  */
-#footer{
-padding-top: 20px;
-/* size width height */
-width: 100%;
-min-height: 35px;
-
-/* background color */
-color:#333;
-text-align: center;
-}
-
-
+.module-app-title{margin-top: 0px;}
+.health-list-row {margin-bottom: 15px;}
+.health-list-row [class*="span"] {background: none repeat scroll 0% 0% #FFF;}
+.health-list-row img{height:106px;}
 /*  aside */
 .ref-article {margin-top:-20px;background-color: #ffffff;}
 .ref-article .thumbnail{border-top: none;}
@@ -219,6 +210,17 @@ border-radius: 2px;
 .module-app-header .header-row{padding: 6px 10px;}
 
 
+/* website in footer */
+#footer{
+color: #fff;
+background: none repeat scroll 0% 0% #333;
+border-top: 1px solid #E3E5E8;
+min-height: 35px;
+padding-top: 20px;
+position: relative;
+bottom: 0px;
+}
+
 /* usually icon */
 .myicon{
 width: 24px;
@@ -244,3 +246,5 @@ background-image: url('./tools/icons/star-full.png');
 .noborder{border:0px;}
 .no-margin-bottom{margin-bottom: 0px;}
 .nopad{padding: 0px;}
+.product-by{position: relative;display:block;height: 0px;z-index: 1;}
+.product-by:before{z-index: 1; border-top: 1px solid #333; line-height: 8px;display: inline-block;  content: "line"; font-size: 0px;width: 100%;}

@@ -1,8 +1,7 @@
 <include file="Public:header" />
-<script src="__STATIC__js/bootstrap/transition.js"></script>
-<script src="__STATIC__js/bootstrap/button.js"></script>
-<link rel="stylesheet" href="__PUBLIC__Home/css/common/talk.css">
 
+<link rel="stylesheet" type="text/css" href="__STATIC__css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/talk.css">
 
 <!--  shuoshuo  css -->
 <div class="container" id="pagewrap">
@@ -23,53 +22,57 @@
 			</div>
       <div class="module-app ">
         <div class="module-app-share">      
-      <form class="form-horizontal" name="editor" id="editorTalk"  data-error="control-group" action="__URL__/uploadTalk" method="post">
+      <form class="form-horizontal" name="editor" id="uploadTalk"  data-error="control-group" action="__URL__/uploadTalk" method="post">
          <fieldset>
           <div id="legend" class="">
             <legend>发表运动说说</legend>
           </div>
-          
-          <div class="control-group" >
-             <label class="control-label">时间</label>
-              <div class="controls">
-                     <input class="input-large" type="text" name="time" id="time" />
-              </div>
-            </div>
+          <div class="control-group">
+            <script id="editor" type="text/plain" style="width:100%;height:200px;"></script>
+          </div>
 
-        
-       
           <div class="control-group">
               <!-- Text input-->
-              <label class="control-label" >所在地点</label>
+              <label class="control-label" >时间</label>
               <div class="controls">
-                <input placeholder="省份" class="input-small" type="text" name="province" id="province" data-value="" />
+                <input placeholder="开始时间" class="input" type="text" name="startTime" id="start-time" data-value="" />
                 <span>-</span>
-                <input placeholder="市" class="input-small" type="text" name="city" id="city" data-value="" />
-                <span>-</span>
-                <input placeholder="区" class="input-small" type="text" name="country" id="country" data-value="" />
+                <input placeholder="结束时间" class="input" type="text" name="endTime" id="end-time" data-value="" />
                </div>
           </div>
-  
+         <div class="control-group">
+              <!-- Text input-->
+              <label class="control-label" >所在地址</label>
+              <div class="controls">
+                <select class="input-small" type="text" name="province" id="province" data-value="">
+                </select>
+                <span>-</span>
+                <select class="input-small" type="text" name="city" id="city" data-value="" ></select>
+                <span>-</span>
+                <select  class="input-small" type="text" name="country" id="country" data-value="" ></select>
+               </div>
+            </div>
             <div class="control-group ">
               <label class="control-label" >详细地址</label>
               <div class="controls">
-                <input placeholder="" class="input-large" type="text" name="detailAddress" id="detailAddress" /> 
+                <input placeholder="" class="input-large" type="text" name="mapAddress" id="mapAddress" data-BMap="text" /> 
                 <span class="btn"  id="searchAddress" onclick="searchAddress()">查询</span>
               </div>
           </div>
           <div class="control-group">
-              <div id="sitemap"></div>
+            <div id="sitemap"></div>
+              <input type="hidden" name="lat" id="lat" /> <!-- 经度 --> 
+              <input type="hidden" name="lng" id="lng" />   <!-- 纬度 -->
           </div>
-          <div class="control-group">
-              
-                  <script id="editor" type="text/plain" style="width:100%;height:200px;"></script>
-          </div>
+          
+        
+       
           <div class="control-group">
               
               <!-- Button -->
               <div class="controls">
-                <button class="btn btn-primary"  type="submit" form="createArticle" >提交</button>
-                 <a class="btn" type="reset" form="createArticle" id="reset" onclick="window.history.go(-1);">取消修改</a>
+                <button class="btn btn-primary"  type="submit" form="uploadTalk"  >提交</button>
+                 <a class="btn"  onclick="window.history.go(-1);">取消修改</a>
               </div>
           </div>
         
@@ -79,7 +82,7 @@
 
         </div>
       </div>
-      			
+
 		</section>
 
 <!-- 网站旁白 -->
@@ -202,10 +205,9 @@
 	</div>
 
 </div>
- <footer id="footer">
+  <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
   
-  		<div class="container">footer</div>
-  </footer>
+<include file="Public:footer" />
 </body>
 
 <!-- 加载文本编辑器 -->
@@ -213,34 +215,56 @@
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.all.min.js"></script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__lang/zh-cn/zh-cn.js"></script>
 <script>
+
 window.onload=function(){
+
+       // 加载 地址插件
+     requirejs(["jsAddress"],function(){
+       addressInit('province', 'city', 'country');
+     });
+
       require(["ueditor/comment"],function(config){
       
         var ue = UE.getEditor('editor',config);
           
       });
+    // 加载 日期时间插件
+     requirejs(["jquery","STATIC_BOOTSTRAP/datetimepicker"],function($){
 
+        requirejs(["STATIC_BOOTSTRAP/locales/datetimepicker.zh-CN"],function(){     //加载中文包
+            $('#start-time,#end-time').datetimepicker({ 
+               format: 'yyyy-mm-dd hh:ii:ss',
+               language: "zh-CN",
+               todayBtn:  1,        //当天快捷按钮
+               autoclose: 0,      //自动关闭    
+               todayHighlight: 1,  // 当天高亮
+               startView: 2,    //  in 1 hour :0 , in 1 days :1,in 1 mounth :2   
+               forceParse: 1,
+
+                });
+            var date = new Date();
+          $('#start-time,#end-time').datetimepicker("setStartDate",date);
+          date.setDate(date.getDate()+7); // 七天
+          $("#start-time").datetimepicker("setEndDate",date);
+
+         $('#start-time').datetimepicker().on('changeDate', function(ev){
+ 
+               var date = new Date();
+               $("#end-time").datetimepicker("setStartDate",ev.date);
+                date.setDate(ev.date.getDate()+1);
+                $("#end-time").datetimepicker("setEndDate",date);
+          });
+
+
+        });
+       
+    
+      });
+   //  requirejs(["http://api.map.baidu.com/api?v=2.0&ak=vyCakEhavFN13iGT8i0NDSd3","app/talk/hydMap.js"]);
 }
-
 </script>
+<!-- 引用 api  -->
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vyCakEhavFN13iGT8i0NDSd3"></script>
+<script type="text/javascript" src="__PUBLIC__Home/js/app/talk/hydMap.js"></script>
 
-
-<script type="text/javascript">
-  // 百度地图API功能
-  var map = new BMap.Map("sitemap");       
-  map.enableScrollWheelZoom();
- // map.setCenter("武汉市");
-  map.centerAndZoom(new BMap.Point(116.404, 39.915)  ,25);//若为字符串 无需 zoom
-
-  var local = new BMap.LocalSearch(map, {
-    renderOptions:{map: map}
-  });
-  function searchAddress(){
-   var text   =   document.getElementById("detailAddress").value;
-   local.search(text);
-  }
-
-  
-</script>
 </html>

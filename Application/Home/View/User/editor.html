@@ -1,4 +1,7 @@
 <include file="Public:header" title="更新个人资料" />
+
+<link rel="stylesheet" type="text/css" href="__STATIC__css/bootstrap-datetimepicker.css">
+
 <!-- 个人空间 -->
 <link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
 <div class="container" id="pagewrap">
@@ -12,7 +15,7 @@
 		<section class="module-left pull-left span9">
 			<ul class="breadcrumb">
     			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="/share">个人社区</a> <span class="divider">/</span></li>
+	    		<li><a href="{:U('List/index')}">个人社区</a> <span class="divider">/</span></li>
     			<li class="#">个人资料<span class="label "></span></li>
     		</ul>
 			<!--  内容选项卡 -->
@@ -35,7 +38,7 @@
 		   		<div class="control-group" >
 		         <label class="control-label">登录名</label>
 		          <div class="controls">
-		                 <input class="input-large" type="text" name="uid_name" id="uid_name" value="{$user.uid_name}" disabled />
+		                 <input class="input-large" type="text" name="uid_name" id="uid_name" value="{$user.uid_name}" disabled data-date-format="yy-mm-dd"  />
 		          </div>
 		        </div>
 
@@ -43,8 +46,11 @@
 		          <label class="control-label" >生日</label>
 		          <div class="controls">
 		            <input placeholder="请填写生日" class="input-large" type="text" name="birthday" id="birthday" value="{$user.birthday}"/>
+		            
 		            <p class="help-block">格式:2014-01-01</p>
+
 		          </div>
+		          
 		        </div>
 				
 				<div class="control-group ">
@@ -67,11 +73,12 @@
 		          <!-- Text input-->
 		          <label class="control-label" >所在地址</label>
 		          <div class="controls">
-		            <input placeholder="省份" class="input-small" type="text" name="province" id="province" data-value="" />
+		            <select class="input-small" type="text" name="province" id="province" data-value="">
+		            </select>
 		           	<span>-</span>
-		           	<input placeholder="市" class="input-small" type="text" name="city" id="city" data-value="" />
+		           	<select class="input-small" type="text" name="city" id="city" data-value="" ></select>
 		           	<span>-</span>
-		           	<input placeholder="区" class="input-small" type="text" name="country" id="country" data-value="" />
+		           	<select  class="input-small" type="text" name="country" id="country" data-value="" ></select>
 		           </div>
 		        </div>
 
@@ -231,9 +238,14 @@
 	    </div>
 	</div>  <!-- row end  -->
 </div> 
+
+<include file="Public:footer" />
 </body>
+
+
 <!-- 图片上传  -->
 <link href="__STATIC__css/croppic.css" rel="stylesheet" />
+
 
 <script src="__STATIC__js/croppic.js"></script>
 <script type="text/javascript" >
@@ -262,6 +274,32 @@ $(function(){
 	var cropContainerModal = new Croppic('uploadImg', croppicContainerModalOptions);
 
 });
+
+window.onload=function(){
+     // 加载 地址插件
+     requirejs(["jsAddress"],function(){
+     	 addressInit('province', 'city', 'country');
+     });
+	 // 加载 日期时间插件
+     requirejs(["jquery","STATIC_BOOTSTRAP/datetimepicker"],function($){
+
+      	requirejs(["STATIC_BOOTSTRAP/locales/datetimepicker.zh-CN"],function(){  		//加载中文包
+				$('#birthday').datetimepicker({	
+   					 format: 'yyyy-mm-dd',
+   					 language: "zh-CN",
+			         todayBtn:  1,        //当天快捷按钮
+					 autoclose: 1,		  //自动关闭    
+					 todayHighlight: 1,  // 当天高亮
+					 startView: 2,   	//  in 1 hour :0 , in 1 days :1,in 1 mounth :2  
+					 minView: 2,		 //  start width  1 mounths 
+					 forceParse: 1,
+  				  });
+      		});
+      		
+      });
+
+
+}
 
 </script>
 
