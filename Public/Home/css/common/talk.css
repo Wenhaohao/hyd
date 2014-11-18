@@ -47,7 +47,8 @@ border-radius: 4px;
 
 .talk-list  li:first-child{margin-top: 0px;}
 
-.talk-list .talk-wrap-white{background-color: #FFFFFF; padding:5px 8px;}
+.talk-list .talk-wrap-white{background-color: #FFFFFF;padding: 8px 0px;}
+.talk-list .talk-wrap-white .talk-img-box{ margin:5px 15px;height:140px;}
 .talk-list .talk-wrap{background-color: #FAFAFA; padding: 5px; border-top:1px solid #d9d9d9;}
 .talk-list .talk-contents{padding: 5px 0px;}
 

@@ -25,3 +25,7 @@
 .module-app .module-app-share .page-header{margin:10px 0px;}
 .module-app .module-app-share .module-app-categorys{border:0px;}
 
+/* User editor */
+
+.checkbox-control-group label.checkbox{display: inline-block;}
+.checkbox-control-group input[type='checkbox']{float: none; margin-top: 0px;}
