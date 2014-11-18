@@ -1,5 +1,5 @@
 /* publish btn */
-.publish-talk{margin-top: -5px;}
+.publish-talk{margin-top: 2px;}
 .talk-list{margin: 0px;}
 .talk-list > li{ background-color:#fff;margin-top:10px; box-sizing: content-box;border:1px solid #d9d9d9;}
 .talk-list .talk-name{
@@ -11,7 +11,7 @@ font-size: 14px;
 line-height: 22px;
 margin-bottom: 8px;
 }
-
+.breadcrumb select{margin-bottom: 0px;}
 /* user head  photograph*/
 .talk-list  .talk-user-pto{display: inline-block;float: left;margin-right: 5px;}
 .talk-list .talk-info .talk-pos-right{position: absolute;right: 0px;top: -30px;}

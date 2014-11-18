@@ -14,13 +14,19 @@
 			<!-- 网站 说说  -->
 			<div id="navbar">
 		    	<ul class="breadcrumb">
-				 <li class="active">
-				 	<a href="#">查看全部</a> <span class="divider">|</span></li>
-				 <li><a href="#">只看好友</a> <span class="divider">|</span></li>
-				 <li ><a href="#">原创</a></li>
+		    	 <li><span>地区</span></li>
+		    	 <li><span class="divider">:</span></li>
+				 <li>
+				 	<select class="input-small" type="text" name="province" id="province" data-value="{$user.province}">
+		            </select> <span class="divider">-</span></li>
+				 <li><select class="input-small" type="text" name="city" id="city" data-value="{$user.city}"></select><span class="divider">-</span></li>
+				 <li ><select  class="input-small" type="text" name="county" id="county" data-value="{$user.county}" ></select></li>
+				 <li><span class="divider"></span></li>
+				 <li><button class="btn btn-small">查询</button></li>
 				 <li class="pull-right">
-				 	<a class="btn btn-small btn-primary publish-talk" href="{:U('Talk/createtalk')}">发表新说说</a>
+				 	
 				 </li>
+
 				</ul>
 			</div>
 			<!-- 分类 -->			
@@ -39,6 +45,11 @@
 								</li>
 							</ul>
 							<ul class="nav pull-right">
+								<li>
+									<div class="publish-talk">
+										<a class="btn btn-small btn-primary " href="{:U('Talk/createtalk')}">发表新说说</a>
+									</div>
+								</li>
 								<li class="divider-vertical"></li>
 								<li>
 									<a href="#">
@@ -277,5 +288,13 @@
 <include file="Public:footer" />
 </body>
 
-
+<script>
+window.onload=function(){
+	     // 加载 地址插件
+     requirejs(["jquery","jsAddress"],function($){
+     	
+     	 addressInit('province', 'city', 'county',$("#province").data("value"),$("#city").data("value"),$("#county").data("value"));
+     });
+};	
+</script>
 </html>
