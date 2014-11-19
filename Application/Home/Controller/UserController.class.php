@@ -43,6 +43,20 @@ class UserController extends CheckController {
     */
 
     public function createArticle(){
+    	if(IS_POST){
+    		$arrArticleData['uid'] = $this->uid;
+    		$arrArticleData['title'] = I('post.title');
+    		$arrArticleData['sub_title'] = I('post.sub_title');
+    		$arrArticleData['article_tag'] = I('post.tag');
+    		$arrArticleData['ref_contents'] = trim(I('post.ref_contents'));
+    		$edit = I('post.editorValue');
+    		$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
+    		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤p标签
+    		$arrArticleData['contents'] = $intro_info;
+    		dump($arrArticleData);
+    		exit();
+    		$booResult = D('User','Service')->createArticle($arrArticleData);
+    	}
         $this->display();
     }
 
@@ -117,6 +131,8 @@ class UserController extends CheckController {
     		$where['description'] = I('post.ref_contents');
     		$where['head_url'] = I('ref_image');
     		
+//     		dump($where);
+//     		exit();
     		$result = D('User','Service')->saveUserInfo($where);
     		if($result){
     			$this->success('修改资料成功','/User/index');
