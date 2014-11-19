@@ -71,16 +71,16 @@
 					        </div>
 							<div class="control-group">
 							  <label class="control-label" >所在地址</label>
-					          <div class="controls">
-									<span class="control-span">湖北省</span>
-									<span class="control-span">武汉市</span> 
-									<span class="control-span">武昌区</span> 
+					          <div  id="address" class="controls" data-value="{$user['province']},{$user['city']},{$user['county']}" >
+									<span class="control-span" >&nbsp;</span>
+									<span class="control-span" >&nbsp;</span> 
+									<span class="control-span" >&nbsp;</span> 
 					          </div>
 					        </div>
 					        <div class="control-group">
 							  <label class="control-label" >个人简介</label>
 					          <div class="controls">
-					       		 <div  class="textarea text-show">{$user['description']}</div>
+					       		 <div  class="control-span textarea text-show">{$user['description']}</div>
 					          </div>
 					        </div>
 
@@ -154,7 +154,19 @@
   
 <include file="Public:footer" />
 </body>
+<script type="text/javascript">
+window.onload = function(){
 
+	 require(["jquery","jsAddress"],function($){
+		
+	    var data = $("#address").data("value").split(",");// 解析地址
+	    var result = getAddress(data[0],data[1],data[2]);
+     	$("#address span").each(function(i){
+			$(this).html(result[i]);
+     	});
+    });
+};
+</script>
 
 
 </html>

@@ -73,12 +73,12 @@
 		          <!-- Text input-->
 		          <label class="control-label" >所在地址</label>
 		          <div class="controls">
-		            <select class="input-small" type="text" name="province" id="province" data-value="">
+		            <select class="input-small" type="text" name="province" id="province" data-value="{$user.province}">
 		            </select>
 		           	<span>-</span>
-		           	<select class="input-small" type="text" name="city" id="city" data-value="" ></select>
+		           	<select class="input-small" type="text" name="city" id="city" data-value="{$user.city}"></select>
 		           	<span>-</span>
-		           	<select  class="input-small" type="text" name="country" id="country" data-value="" ></select>
+		           	<select  class="input-small" type="text" name="county" id="county" data-value="{$user.county}" ></select>
 		           </div>
 		        </div>
 
@@ -91,55 +91,50 @@
 			 <div id="legend" class="">
 		        <legend>运动偏好</legend>
 		      </div>
-			 <div class="control-group">
+			 <div class="control-group checkbox-control-group">
 			 	 <label class="control-label" >室外运动</label>
 	    		<div class="controls">
 					<label class="checkbox inline">
-					户外攀岩
-					<input type="checkbox"  name="outdoorSports"  value="2">
+					<input type="checkbox"  name="outdoorSports"  value="2">	户外攀岩
 					</label>
 					<label class="checkbox inline">
-					城市骑行
-					<input type="checkbox"  name="outdoorSports"  value="3">
+					<input type="checkbox"  name="outdoorSports"  value="3">城市骑行
 					</label>
 				</div>
 			 </div>
-			 <div class="control-group">
+			 <div class="control-group checkbox-control-group">
 			 	<label class="control-label" >室内运动</label>
 	    		<div class="controls">
 					<label class="checkbox inline">
-					室内舞蹈
-					<input type="checkbox"  name="indoorSports"  value="2">
+					<input type="checkbox"  name="indoorSports"  value="2" />室内舞蹈
 					</label>
 					<label class="checkbox inline">
+					<input type="checkbox"  name="indoorSports"  value="3" />
 					瑜伽
-					<input type="checkbox"  name="indoorSports"  value="3">
 					</label>
 				</div>
 			 </div>
-			 <div class="control-group">
+			 <div class="control-group checkbox-control-group">
 			 	<label class="control-label" >运动人群</label>
 	    		<div class="controls">
-					<label class="checkbox inline">
-					老年人
-					<input type="checkbox"  name="indoorSports"  value="2">
+					<label class="checkbox inline">			
+					<input type="checkbox"  name="indoorSports"  value="2">	老年人
 					</label>
 					<label class="checkbox inline">
-					青年人
-					<input type="checkbox"  name="indoorSports"  value="3">
+					<input type="checkbox"  name="indoorSports"  value="3">	青年人
 					</label>
 				</div>
 			 </div>
-			 <div class="control-group">
+			 <div class="control-group checkbox-control-group">
 			 	<label class="control-label">运动目的</label>
 	    		<div class="controls">
-					<label class="checkbox inline">
-					减肥
+					<label class="checkbox inline" > 
 					<input type="checkbox"  name="indoorSports"  value="2">
+					减肥
 					</label>
 					<label class="checkbox inline">
+					<input type="checkbox"  name="indoorSports"  value="3" />
 					健身
-					<input type="checkbox"  name="indoorSports"  value="3">
 					</label>
 				</div>
 			 </div>
@@ -154,7 +149,7 @@
 				<div class="upload">
 					<div class=" thumbnail " href="#">
 						<div class="upload-img" id="uploadImg"><img class="croppedImg" src="{$user['head_url']}"></div>
-						<input type="text" style="display:none;" id="ref_image" name="ref_image">
+						<input type="hidden"  id="ref_image" name="ref_image" value="{$user['head_url']}" />
 					</div>
 					<span class="label label-success upload-info" >请上传图片</span>
 				</div>
@@ -212,8 +207,9 @@ $(function(){
 
 window.onload=function(){
      // 加载 地址插件
-     requirejs(["jsAddress"],function(){
-     	 addressInit('province', 'city', 'country');
+     requirejs(["jquery","jsAddress"],function($){
+     	
+     	 addressInit('province', 'city', 'county',$("#province").data("value"),$("#city").data("value"),$("#county").data("value"));
      });
 	 // 加载 日期时间插件
      requirejs(["jquery","STATIC_BOOTSTRAP/datetimepicker"],function($){

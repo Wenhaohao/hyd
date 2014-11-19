@@ -33,45 +33,55 @@ class UserController extends CheckController {
 		$this->assign('user',$arrUserData);
 		$this->display();
 	}
-
-
-
+	
+	/**
+	 *
+	 *    用户分享文章页面
+	 *    @param
+	 *    @return
+	 *
+	 */
+	public function article(){
+		$intUserId = $this->uid;
+		$intUserArticleCount = D('User','Service')->getUserArticleCount($intUserId);
+		
+		// 翻页
+		$page = new \Think\Page($intUserArticleCount,5);
+		$first = $page->firstRow;
+		$last = $page->listRows;
+		$listPage = $page->show();
+		$arrUserArticle = D('User','Service')->getUserArticle($intUserId,$first,$last);
+// 		dump($arrUserArticle);
+// 		exit();
+		$this->assign('list',$arrUserArticle);
+		$this->assign('page',$listPage);
+		$this->display();
+	
+	}
+	
 	/**
     *    编辑文章页面
     *    @param
     *    @return 
     */
-
     public function createArticle(){
     	if(IS_POST){
     		$arrArticleData['uid'] = $this->uid;
     		$arrArticleData['title'] = I('post.title');
     		$arrArticleData['sub_title'] = I('post.sub_title');
     		$arrArticleData['article_tag'] = I('post.tag');
+    		$arrArticleData['ref_image'] = I('ref_image');
     		$arrArticleData['ref_contents'] = trim(I('post.ref_contents'));
     		$edit = I('post.editorValue');
     		$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
-    		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤p标签
+    		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤/p标签
     		$arrArticleData['contents'] = $intro_info;
-    		dump($arrArticleData);
-    		exit();
     		$booResult = D('User','Service')->createArticle($arrArticleData);
+    		$this->redirect('/User/createarticle');
     	}
         $this->display();
     }
 
-
-    /**
-    *    提交文章页面
-    *    @param
-    *    @return 
-    */
-
-    public function uploadArticle(){
-        print_r($_POST);
-        return ;
-    // $this->display();
-    }
     
    /**
     *    异步上传图片
@@ -125,14 +135,11 @@ class UserController extends CheckController {
     		$where['uid'] = $this->uid;
     		$where['birthday'] = I('post.birthday');
     		$where['sex'] = I('post.sex');
-    		$where['province'] = I('post.province');
-    		$where['city'] = I('post.city');
-    		$where['county'] = I('post.country');
+    		$where['province'] = intval(I('post.province'));
+    		$where['city']   = intval(I('post.city'));
+    		$where['county'] = intval(I('post.county'));
     		$where['description'] = I('post.ref_contents');
     		$where['head_url'] = I('ref_image');
-    		
-//     		dump($where);
-//     		exit();
     		$result = D('User','Service')->saveUserInfo($where);
     		if($result){
     			$this->success('修改资料成功','/User/index');
@@ -150,25 +157,10 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
-
-
 		$this->display();
 	}
 
-  /**
-    *  
-    *    用户分享文章页面
-    *    @param
-    *    @return 
-    *
-    */
-    public function article(){
-
-        
-
-        $this->display();
-
-    }
+  
 
 
 }

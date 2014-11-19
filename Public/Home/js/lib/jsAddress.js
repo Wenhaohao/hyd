@@ -1,10 +1,11 @@
 ﻿// 纯JS省市区三级联动
 var addressInit = function(_cmbProvince, _cmbCity, _cmbArea, defaultProvince, defaultCity, defaultArea)
 {
+
 	var cmbProvince = document.getElementById(_cmbProvince);
 	var cmbCity = document.getElementById(_cmbCity);
 	var cmbArea = document.getElementById(_cmbArea);
-	
+
 	function cmbSelect(cmb, str)
 	{
 		for(var i=0; i<cmb.options.length; i++)
@@ -60,6 +61,36 @@ var addressInit = function(_cmbProvince, _cmbCity, _cmbArea, defaultProvince, de
 	changeProvince();
 	cmbProvince.onchange = changeProvince;
 }
+// 根据  值 获取 地址
+var getAddress=function(defaultProvince,defaultCity,defaultArea){
+	
+	var result =[];
+	function getCityList(provinceList,province){
+		 if((typeof province)=="undefined" ){
+		 	return null;
+		 }
+		 result[0] = provinceList[province].name;
+		 return provinceList[province].cityList;
+	}
+	function getAreaList(cityList,city){
+
+		if((typeof city)=="undefined" ){
+		 	return null;
+		}
+		result[1] = cityList[city].name;
+
+		return cityList[city].areaList;
+
+	}
+
+	function getArea(areaList,area){
+		return areaList[area];
+	}
+	var cityList =  getCityList(provinceList,defaultProvince);
+	var areaList = 	getAreaList(cityList,defaultCity);
+	result[2] = getArea(areaList,defaultArea);
+	return result;
+};
 
 var provinceList = [
 {name:'北京', cityList:[		   

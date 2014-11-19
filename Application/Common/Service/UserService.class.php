@@ -32,10 +32,12 @@ class UserService extends CommonService {
 	 * @return boolean
 	 */
 	public function saveUserInfo($arrUserData){
+		
 		$result = M('users')->save($arrUserData);
 		if($result!=false){
 			return true;
 		}else{
+			
 			return false;
 		}
 	}
@@ -54,4 +56,25 @@ class UserService extends CommonService {
 		}
 	}
 	
+	/**
+	 *	获取用户发表文章
+	 *	@param int $intUserId 用户ID
+	 *	@return array
+	 */
+	public function getUserArticle($intUserId,$first,$last){
+		$where['uid'] = $intUserId;
+		$arrUserArticle = M('articles')->where($where)->limit($first,$last)->select();
+		return $arrUserArticle;
+	}
+	
+	/**
+	 *	获取用户发表文章
+	 *	@param int $intUserId 用户ID
+	 *	@return int
+	 */
+	public function getUserArticleCount($intUserId){
+		$where['uid'] = $intUserId;
+		$intUserArticle = M('articles')->where($where)->count();
+		return $intUserArticle;
+	}
 }

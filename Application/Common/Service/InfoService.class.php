@@ -18,9 +18,10 @@ class InfoService extends CommonService{
 	 *	获取文章内容
 	 */
 	public function getArticle($articleId){
+		$where['article_id'] = $articleId;
 		$infoData = M('articles')
 					->join('hyd_users ON hyd_articles.uid = hyd_users.uid')
-					->where('article_id = '+$article_id)
+					->where($where)
 					->find();
 		return $infoData;		
 	}
