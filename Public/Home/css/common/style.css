@@ -175,7 +175,8 @@ background-color: #fff;
 .health-list-row img{height:106px;}
 /*  aside */
 .ref-article {margin-top:-20px;background-color: #ffffff;}
-.ref-article .thumbnail{border-top: none;}
+.ref-article .thumbnail{border-top: none;margin-top: 20px;}
+.ref-article .thumbnail img{height: 120px;margin:15px auto;}
 .item-content {height: 90px;}
 .item-content > p{ text-indent: 1em;}
 .friend-list{overflow: hidden;min-height: 192px;}
