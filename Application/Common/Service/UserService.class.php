@@ -28,7 +28,8 @@ class UserService extends CommonService {
 	
 	/**
 	 * 保存修改用户个人信息
-	 * @param 
+	 * @param array $arrUserData 表单提交的用户信息
+	 * @return boolean
 	 */
 	public function saveUserInfo($arrUserData){
 		
@@ -41,4 +42,39 @@ class UserService extends CommonService {
 		}
 	}
 	
+	/**
+	 *	发表运动分享文章
+	 *	@param array $arrArticleData 表单提交的文章信息
+	 *	@return boolean
+	 */
+	public function createArticle($arrArticleData){
+		$result = M('articles')->add($arrArticleData);
+		if($result){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	/**
+	 *	获取用户发表文章
+	 *	@param int $intUserId 用户ID
+	 *	@return array
+	 */
+	public function getUserArticle($intUserId,$first,$last){
+		$where['uid'] = $intUserId;
+		$arrUserArticle = M('articles')->where($where)->limit($first,$last)->select();
+		return $arrUserArticle;
+	}
+	
+	/**
+	 *	获取用户发表文章
+	 *	@param int $intUserId 用户ID
+	 *	@return int
+	 */
+	public function getUserArticleCount($intUserId){
+		$where['uid'] = $intUserId;
+		$intUserArticle = M('articles')->where($where)->count();
+		return $intUserArticle;
+	}
 }

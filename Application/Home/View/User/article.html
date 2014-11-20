@@ -73,124 +73,50 @@
 						    	</div> 
 					-->
 				<ul class="media-list module-app-list">
-			<li class="media item"> 
-					<a class="pull-left thumbnail" href="#">
-					<img  class="media-object item-img img-rounded" alt="128x128" data-src="" src="http://img1.cache.netease.com/catchpic/4/40/4040B55FC99377F96DACE2B94EDE6057.jpg">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading page-header">
-							<a href='/Info/index/id/1.html'>
-								李克强给安徽金寨县希望小学师生回信
-							</a>
-							<div class="pull-right">
-								<span class="label-middle">20</span>&nbsp;<i class="myicon myicon-star-full"></i>
-							</div>
-						</h4>
-						<div class="item-nav">
-							<a href="#">
-								<span class="label label-info">liyanlong	
+					<volist name="list" id="vo">
+					<li class="media item"> 
+						<a class="pull-left thumbnail" href="#">
+						<img  class="media-object item-img img-rounded" alt="128x128" data-src="" src="{$vo.ref_image}">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading page-header">
+								<a href="{:U('Info/index')}?id={$vo.article_id}">
+								{$vo.title}</a>
+							</h4>
+							<div class="item-nav">
+								<a href="#">
+									<span class="label label-info">{$vo.uid_name}	
+									</span>
+								</a>
+								<span class="label-time">
+									{$vo.publish_time}
 								</span>
-							</a>
-							<span class="label-time">
-								2014-10-31 17:15:02							</span>
-							<div class="pull-right">
-								<span class="label ">已阅读:200</span>		
-								<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
-										<span>8</span>
-								</span>
+								<div class="pull-right">
+									<span class="label ">已阅读:200</span>		
+									<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
+											<span>8</span>
+									</span>
+								</div>
 							</div>
+								<div class="media">
+									{$vo.contents|cutStr=###,100}
+								</div>
 						</div>
-							<div class="media">
-								一段往事
-
-李克强为金寨希望小学选址
-
-“25年了，总理没有忘记我们，总理和咱山里娃娃心连心”。金寨县希望小学校长陈德武激动地说，金寨希望小学是全国第一所希望小学，当年，时任团中央书记处书记的李克强同...							</div>
-					</div>
-				</li>			</ul>
+					</li>
+					</volist>
+				</ul>
 				<div class="pagination">
 				    <ul class="pull-right">
-				    <li ><a href="#">上一页</a></li>
-				    <li class="active"><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li><a href="#">下一页</a></li>
+				   {$page}
 				    </ul>
-   				 </div>
+  				</div>
 			</div>
 			
 
 		</section>
 	
 			<!-- 网站旁白 -->
-		<aside class="module-aside pull-right span3">
-			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
-			<!--  用户头像 简介 -->
-			<div class="module-app-header">
-				<div class="header-info">
-					<div class="header-row">
-						<span class="label label-info">用户名:</span>
-						<span>李彦龙</span>
-					</div>
-					<div class="header-row">
-						<span class="label label-info">粉丝:</span>
-						<span>0</span>
-					</div>
-
-					<div class="header-row">
-						<button class="btn btn-warning">退出登录</button>
-						
-					</div>					
-				</div>
-				<div class=" thumbnail header-img">
-					<img src="" class="img-circle">
-				</div>
-			</div>
-			<ul class="nav nav-list">
-				    <li>
-				    	<a href="/User/index">
-							<i class="icon-chevron-left"></i>
-				    		个人资料
-				    		<i class="icon-user"></i>
-				    	</a>
-				    </li>
-				    <li ><a href="/User/friends">
-						<i class="icon-chevron-left "></i>
-				    	关注好友</a>
-				    </li>
-				     <li class="divider"></li>
-				    <li class="active">
-				    	<a href="/User/article">
-				    	<i class="icon-chevron-left"></i>
-				    	分享文章</a>
-				    </li>
-				    <li>
-				    	<a href="/User/collection">
-				    	<i class="icon-chevron-left"></i>
-				    	文章收藏</a>
-				    </li>
-				     <li>
-				    	<a href="/User/chart">
-				    	<i class="icon-chevron-left"></i>
-				    	文章留言</a>
-				    </li>
-				     <li class="divider"></li>
-				    <li>
-				    	<a href="/User/talk">
-				    	<i class="icon-chevron-left"></i>
-				    	运动说说</a>
-				    </li>
-				    <li>
-				    	<a href="/User/plan">
-				    	<i class="icon-chevron-left"></i>
-				    	运动计划</a>
-				    </li>
-    		</ul>
-    		
-			</div>
-		</aside>
+		<include file="Public:right_user"/>
 	    </div>
 	</div>  <!-- row end  -->
 </div> 

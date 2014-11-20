@@ -28,12 +28,12 @@ class IndexController extends CommonController {
 		$page = new \Think\Page($listCount,2);
 		$first = $page->firstRow;
 		$last = $page->listRows;
-		$list = $page->show();
+		$listPage = $page->show();
 		$listData = $listService->getList($first,$last);
 		
 // 		dump(session('name'));
     	$this->assign('list',$listData);
-		$this->assign('page',$list);
+		$this->assign('page',$listPage);
 		$this->display();
     }
     /**

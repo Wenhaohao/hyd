@@ -21,7 +21,7 @@
 	
 			<div class="module-app ">
 				<div class="module-app-share">			
-			<form class="form-horizontal" name="registerForm" id="createArticle"  data-error="control-group" action="__URL__/uploadArticle" method="post">
+			<form class="form-horizontal" name="registerForm" id="createArticle"  data-error="control-group" action="{:U('User/createArticle')}" method="post">
 		   	 <fieldset>
 		      <div id="legend" class="">
 		        <legend class="">运动分享</legend>
@@ -102,7 +102,7 @@
 		          
 		          <!-- Button -->
 		          <div class="controls">
-		            <button class="btn btn-primary"  type="submit" form="createArticle" >提交</button>
+		            <button class="btn btn-primary"  type="submit" id="createArticle" >提交</button>
 		             <button class="btn" type="reset" form="createArticle" id="reset">重置</button>
 		          </div>
 		        </div>
@@ -123,21 +123,7 @@
 		</section>
 	
 			<!-- 网站旁白 -->
-		<aside class="module-aside pull-right">
-			<div class="module-app">
-				
-
-			
-			<ul class="nav nav-tabs ">
-				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
-				    <li><a href="#hot" data-toggle="tab">热门文章</a></li>
-				    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
-    		</ul>
-    		<div class="tab-content module-app-rank">
-					
-			</div>
-			</div>
-		</aside>
+		<include file="Public:right_user"/>
 	
 	</div>
 

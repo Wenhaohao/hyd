@@ -158,7 +158,7 @@
 window.onload = function(){
 
 	 require(["jquery","jsAddress"],function($){
-     	
+		
 	    var data = $("#address").data("value").split(",");// 解析地址
 	    var result = getAddress(data[0],data[1],data[2]);
      	$("#address span").each(function(i){

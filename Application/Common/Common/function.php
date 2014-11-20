@@ -1,14 +1,17 @@
 <?php
 header("content-Type: text/html; charset=utf-8");
-function is_login(){
-	$user = session('user');
-	if(!$user){
-		 $this->redirect('User/index');
-	}else{
-		return $user['uid'];
-	}
+/**
+ * 去掉html格式【加强版】
+ * @param string $str
+ * @return string
+ */
+function strip_html($str){
+	$str = trim($str);
+	$str = str_replace("<br>","",$str);
+	$str = str_replace(array("\n","\t","\r"),array("","",""),$str);
+// 	$str = htmlspecialchars($str);
+	return strip_tags($str);
 }
-
 
   /**
     *    上传图片函数 操作  

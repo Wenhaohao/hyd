@@ -27,9 +27,9 @@ class InfoController extends CommonController {
 
 		//获取 文章内容
 		$infoData = $infoService->getArticle($articleId);
-
-// 		dump($infoData);
-// 		return ;
+		
+// 		dump($articleId);
+// 		exit();
 		$this->assign('info',$infoData);
 		$this->display();
 	}
