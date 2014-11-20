@@ -1,13 +1,13 @@
 /* reset bootstrap stylesheet */
 .hero-unit{border-color:#DDD;padding: 0px;}
 
-#flicker-tool{height: 240px !important;}
+#flicker-tool{height: 280px !important;}
 
 .flickerplate ul{margin: 0px;}
 .flickerplate ul.flicks > li{
 background-repeat: no-repeat;
 background-position: right center;
-background-size: 64% 108%;
+background-size: 100% 108%;
 }
 .flickerplate ul.flicks > li .flick-inner .flick-content{
 max-width: 36%;
@@ -15,4 +15,35 @@ margin-right: 5px;
 text-align: right;
 float: left;
 }
+.imgnav-mask {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 72px;
+    background: none repeat scroll 0% 0% #000;
+    width: 100%;
+    z-index: 86;
+    opacity: 0.6;
+}
 
+.imgtit {
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    bottom: 16px;
+
+    border-left: 6px solid #1C96D6;
+    padding-left: 18px;
+    z-index: 87;
+    background: none repeat scroll 0px center transparent;
+    text-align: left;
+    color:#fff;
+}
+.imgtit a{
+color: #fff;
+text-decoration: none;
+}
+.imgtit a strong {
+    display: block;
+    font: bold 20px/22px "Microsoft YaHei","微软雅黑","黑体",tahoma;
+}

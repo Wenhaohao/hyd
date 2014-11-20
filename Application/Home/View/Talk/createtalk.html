@@ -35,9 +35,9 @@
               <!-- Text input-->
               <label class="control-label" >时间</label>
               <div class="controls">
-                <input placeholder="开始时间" class="input" type="text" name="startTime" id="start-time" data-value="" />
+                <input placeholder="开始时间" class="input" type="text" name="startTime" id="start-time" data-value=""  autocomplete="off" />
                 <span>-</span>
-                <input placeholder="结束时间" class="input" type="text" name="endTime" id="end-time" data-value="" />
+                <input placeholder="结束时间" class="input" type="text" name="endTime" id="end-time" data-value=""  autocomplete="off" />
                </div>
           </div>
          <div class="control-group">
@@ -242,17 +242,15 @@ window.onload=function(){
                forceParse: 1,
 
                 });
-            var date = new Date();
+            var date = new Date(Date.now());
           $('#start-time,#end-time').datetimepicker("setStartDate",date);
-          date.setDate(date.getDate()+7); // 七天
-          $("#start-time").datetimepicker("setEndDate",date);
 
          $('#start-time').datetimepicker().on('changeDate', function(ev){
- 
-               var date = new Date();
-               $("#end-time").datetimepicker("setStartDate",ev.date);
-                date.setDate(ev.date.getDate()+1);
-                $("#end-time").datetimepicker("setEndDate",date);
+              var date = new Date(ev.date);
+               date.setHours(date.getHours()-8);
+               console.log(date);
+               $("#end-time").datetimepicker("setStartDate",date);
+              
           });
 
 

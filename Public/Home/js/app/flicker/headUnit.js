@@ -10,8 +10,7 @@ define(["finger/modernizrCustom","finger/jqueryFinger","finger/flickerplate"],{
 			auto_flick: true,
 			auto_flick_delay: 10,
 			block_text: true,
-			dot_alignment: 'center',
-			dot_navigation: true,
+			dot_navigation: false,
 			flick_animation: 'transition-slide',//transition-slide, transform-slide, jquery-slide, scroller-slide, transition-fade, jquery-fade
 			flick_position: 1,
 			theme: 'dark'
