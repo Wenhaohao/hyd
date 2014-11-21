@@ -48,7 +48,9 @@ class UserService extends CommonService {
 	 *	@return boolean
 	 */
 	public function createArticle($arrArticleData){
+		
 		$result = M('articles')->add($arrArticleData);
+		
 		if($result){
 			return true;
 		}else{
