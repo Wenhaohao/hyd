@@ -79,4 +79,15 @@ class UserService extends CommonService {
 		$intUserArticle = M('articles')->where($where)->count();
 		return $intUserArticle;
 	}
+
+	/**
+	*
+	* 获取运动分享文章分类 
+	* @author liyanlong
+	* @param  int $parentId  运动类别父ID
+	* @return array $categoryList  子运动类别
+	*/
+	public function getArticleCategoryList($parentId){
+		
+	}
 }

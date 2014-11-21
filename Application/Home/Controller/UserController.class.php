@@ -82,7 +82,21 @@ class UserController extends CheckController {
           
      		$this->redirect('/User/createarticle');
     	}
+
+        D('User','Service')->
         $this->display();
+    }
+
+    /**
+    *
+    * 获取运动分享文章分类 
+    * @author liyanlong
+    * @param  $_POST.category
+    * @return array $categoryList  子运动类别
+    */
+    public function getCategoryList(){
+
+            $this->
     }
 
     
