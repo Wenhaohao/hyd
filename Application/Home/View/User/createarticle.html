@@ -48,13 +48,19 @@
 		          <label class="control-label" >运动分类</label>
 		          <div class="controls">
 		          	<!-- 二级联动 -->
-		            <select class="span2" name="">	
-						<option value="1">室内运动</option>
-						<option value="2">户外运动</option>
+		            <select class="span2" name="categoryTree" id="categoryTree" data-ajax="category">
+		            	<volist name="categoryTree" id="vo">
+		            		<option value="{$vo.category_id}" data-isleaf='{$vo.is_leaf}'>
+		            		{$vo.ch_name}</option>
+		            	</volist>
 					</select>
-					<select class="span2" name="category">	
-						<option value="3">a</option>
-						<option value="4">b</option>
+					<select class="span2" name="categoryId" id="category">	
+						
+						<volist name="defaultCat" id="vo">
+		            		<option value="{$vo.category_id}" data-isleaf='{$vo.is_leaf}'>
+		            		{$vo.ch_name}</option>
+		            	</volist>
+						
 					</select>
 		            <p class="help-block">选择运动分类</p>
 		          </div>
@@ -176,7 +182,22 @@ $(function(){
 		}
 	// 新建对象
 	var cropContainerModal = new Croppic('uploadImg', croppicContainerModalOptions);
+	// 二级联动 选项卡
+	$("#categoryTree").change(function(e){
+		//this 表示 触发 事件对象
+		var value = $(this).val();
+		var destId = $(this).data("ajax");
 
+		$.get("/List/changeCategory",{"parentId":value},function(data){
+				// 更新列表
+				
+				var $dest =  $("#"+destId).empty();
+				$.each(data,function(i,o){
+					$dest.append("<option value='"+o.category_id+"'>"+o.ch_name+"</option>");
+				});
+				
+		},"json");
+	});
 });
 
 </script>

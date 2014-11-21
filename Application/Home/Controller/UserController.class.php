@@ -71,19 +71,44 @@ class UserController extends CheckController {
     		$arrArticleData['title'] = I('post.title');
     		$arrArticleData['sub_title'] = I('post.sub_title');
     		$arrArticleData['article_tag'] = I('post.tag');
-            
+            $arrArticleData['category_id'] = I('post.categoryId');
     		$arrArticleData['ref_image'] = I('ref_image');
     		$arrArticleData['ref_contents'] = trim(I('post.ref_contents'));
     		
-    		// 过滤标签
+    		
     		$edit = I('post.editorValue');
-    		$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
-    		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤/p标签
-    		$arrArticleData['contents'] = $intro_info;
+    		//$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
+    		//$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤/p标签
+    		$arrArticleData['contents'] = $edit;
     		$booResult = D('User','Service')->createArticle($arrArticleData);
     		$this->success('发表文章成功','/User/article');
     	}else{
-    		$this->display();
+            // 获取 分类
+            if(S('categorysAll') == null){
+    
+                $categoryData = D('List','Service')->getCategorys();
+            }else{
+                $categoryData = S('categorysAll');
+            }
+
+            $categoryTree = array();    // 父类分类列表
+            $defaultCat   = array();    //默认子分类列表
+            $index = null;
+            foreach ($categoryData as $category) {
+                if($category['parent_id'] == null){
+                   if($index == null ){    //首个分类选项 id标识
+                       $index =  $category['category_id'];    
+                   }
+                       $categoryTree[] = $category;
+                }else{
+                   if($index != null && $category['parent_id'] == $index){
+                      $defaultCat[] = $category; 
+                   }
+                }
+            }
+            $this->assign('categoryTree',$categoryTree);
+            $this->assign('defaultCat',$defaultCat);
+            $this->display();
     	}
     }
 

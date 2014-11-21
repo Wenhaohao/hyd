@@ -23,10 +23,14 @@
 					<volist name="category" id="vo">
 						<div class="module-app-category">
 							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
-							<div class="category-list" >
+							<div class="category-list">
 							<a class="active label label-info">全部</a>
 							<volist name="vo['child']" id="val">
-								<a class="active" >{$val.ch_name}</a>
+								<a class="active" href="">
+								{:U('List/index',array('cate_id'=>$val.category_id))}
+									{$val.ch_name}
+									
+								</a>
 							</volist>
 							</div>
 						</div>
@@ -70,7 +74,8 @@
 							</div>
 						</div>
 							<div class="media">
-								{$vo.contents|cutStr=###,100}
+								
+								{$vo.ref_contents}
 							</div>
 					</div>
 				</li>

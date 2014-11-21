@@ -68,5 +68,29 @@ class ListController extends CommonController {
 		}
 		return $arrCate;
 	}
+
+	/**
+    *  
+    *   二级联动列表 运动分类  ajax 请求
+    *   @author  liyanlong
+    *	@param  $_GET
+    *   @return $jsonData
+    *	
+    */
+    public function changeCategory(){
+        $pid = I('get.parentId');    // 若不携带 参数 默认 $pid  为 null 
+
+        if(S('categorysAll') == null){  // 从缓存 获取 分类
+            $categoryData = D('List','Service')->getCategorys();
+        }else{
+             $categoryData = S('categorysAll');
+        }
+        foreach ($categoryData as $category) {
+            if($category['parent_id'] == $pid){
+                $data[] = $category;
+            }
+        }
+        $this->ajaxReturn($data);
+    }
 	
 }
