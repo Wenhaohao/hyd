@@ -21,19 +21,20 @@
 				</div>
 			</div>
 			<ul class="nav nav-list">
-				    <li class="active">
+				    <li <if condition="$nameAction eq 'index'">class="active"</if>>
 				    	<a href="/User/index">
 							<i class="icon-chevron-left"></i>
 				    		个人资料
 				    		<i class="icon-user"></i>
 				    	</a>
 				    </li>
-				    <li><a href="/User/friends">
+				    <li <if condition="$nameAction eq 'friends'">class="active"</if>>
+				    	<a href="/User/friends">
 						<i class="icon-chevron-left"></i>
 				    	关注好友</a>
 				    </li>
 				     <li class="divider"></li>
-				    <li>
+				    <li <if condition="$nameAction eq 'article'">class="active"</if>>
 				    	<a href="/User/article">
 				    	<i class="icon-chevron-left"></i>
 				    	分享文章</a>

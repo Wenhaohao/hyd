@@ -31,6 +31,7 @@ class UserController extends CheckController {
 // 		dump($arrUserData);
 // 		exit();
 		$this->assign('user',$arrUserData);
+		$this->assign('nameAction','index');
 		$this->display();
 	}
 	
@@ -55,6 +56,7 @@ class UserController extends CheckController {
 // 		exit();
 		$this->assign('list',$arrUserArticle);
 		$this->assign('page',$listPage);
+		$this->assign('nameAction','article');
 		$this->display();
 	
 	}
@@ -128,6 +130,7 @@ class UserController extends CheckController {
     	$intUserId = $this->uid;
     	$arrUserData = D('User','Service')->getUserInfo($intUserId);
     	$this->assign('user',$arrUserData);
+    	$this->assign('nameAction','index');
         $this->display();
     }
 	
@@ -161,6 +164,7 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
+		$this->assign('nameAction','friends');
 		$this->display();
 	}
 
