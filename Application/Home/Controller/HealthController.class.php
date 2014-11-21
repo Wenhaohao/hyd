@@ -21,6 +21,19 @@ class HealthController extends Controller {
      * @return 
      */
     public function index(){
+    	$healthService = D('Health','Service');
+    	
+    	$intHealthCount = $healthService->getCount();
+    	$page = new \Think\Page($intHealthCount,1);
+    	$first = $page->firstRow;
+    	$last = $page->listRows;
+    	$listPage = $page->show();
+    	$listData = $healthService->getList($first,$last);
+    	
+//     	dump($listData);
+//     	exit();
+    	$this->assign('list',$listData);
+    	$this->assign('page',$listPage);
     	$this->display();
     }
  

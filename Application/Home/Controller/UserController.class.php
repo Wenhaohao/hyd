@@ -31,6 +31,7 @@ class UserController extends CheckController {
 // 		dump($arrUserData);
 // 		exit();
 		$this->assign('user',$arrUserData);
+		$this->assign('nameAction','index');
 		$this->display();
 	}
 	
@@ -55,8 +56,8 @@ class UserController extends CheckController {
 // 		exit();
 		$this->assign('list',$arrUserArticle);
 		$this->assign('page',$listPage);
+		$this->assign('nameAction','article');
 		$this->display();
-	
 	}
 	
 	/**
@@ -73,30 +74,17 @@ class UserController extends CheckController {
             
     		$arrArticleData['ref_image'] = I('ref_image');
     		$arrArticleData['ref_contents'] = trim(I('post.ref_contents'));
+    		
+    		// 过滤标签
     		$edit = I('post.editorValue');
     		$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
     		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤/p标签
     		$arrArticleData['contents'] = $intro_info;
-  
     		$booResult = D('User','Service')->createArticle($arrArticleData);
-          
-     		$this->redirect('/User/createarticle');
+    		$this->success('发表文章成功','/User/article');
+    	}else{
+    		$this->display();
     	}
-
-        D('User','Service')->
-        $this->display();
-    }
-
-    /**
-    *
-    * 获取运动分享文章分类 
-    * @author liyanlong
-    * @param  $_POST.category
-    * @return array $categoryList  子运动类别
-    */
-    public function getCategoryList(){
-
-            $this->
     }
 
     
@@ -141,6 +129,7 @@ class UserController extends CheckController {
     	$intUserId = $this->uid;
     	$arrUserData = D('User','Service')->getUserInfo($intUserId);
     	$this->assign('user',$arrUserData);
+    	$this->assign('nameAction','index');
         $this->display();
     }
 	
@@ -174,6 +163,7 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
+		$this->assign('nameAction','friends');
 		$this->display();
 	}
 

@@ -39,6 +39,7 @@ class ListService extends CommonService{
 	 */
 	public function getCategorys(){
 		$categoryData = M('article_categorys')->select();
+		S('categorysAll',$categoryData);
 		return $categoryData;
 	}
 	
