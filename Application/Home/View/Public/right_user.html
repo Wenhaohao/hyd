@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
 <aside class="module-aside pull-right span3">
 			<div class="module-app share-sidenav" data-spy="affix" data-offset-top="50">
 			<!--  用户头像 简介 -->
@@ -13,7 +14,7 @@
 					</div>
 
 					<div class="header-row">
-						<a href="{:U('Passport/logout')}"><button class="btn btn-warning">退出登录</button></a>
+						<button class="btn btn-warning">退出登录</button>
 					</div>					
 				</div>
 				<div class=" thumbnail header-img">
@@ -25,13 +26,13 @@
 				    	<a href="/User/index">
 							<i class="icon-chevron-left"></i>
 				    		个人资料
-				    		<i class="icon-user"></i>
 				    	</a>
 				    </li>
 				    <li <if condition="$nameAction eq 'friends'">class="active"</if>>
 				    	<a href="/User/friends">
 						<i class="icon-chevron-left"></i>
-				    	关注好友</a>
+				    	关注好友
+				    	</a>
 				    </li>
 				     <li class="divider"></li>
 				    <li <if condition="$nameAction eq 'article'">class="active"</if>>
@@ -51,12 +52,12 @@
 				    </li>
 				     <li class="divider"></li>
 				    <li>
-				    	<a href="#">
+				    	<a href="/User/talk">
 				    	<i class="icon-chevron-left"></i>
 				    	运动说说</a>
 				    </li>
 				    <li>
-				    	<a href="#">
+				    	<a href="/User/plan">
 				    	<i class="icon-chevron-left"></i>
 				    	运动计划</a>
 				    </li>

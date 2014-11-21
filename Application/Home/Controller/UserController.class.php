@@ -58,7 +58,6 @@ class UserController extends CheckController {
 		$this->assign('page',$listPage);
 		$this->assign('nameAction','article');
 		$this->display();
-	
 	}
 	
 	/**
@@ -72,6 +71,7 @@ class UserController extends CheckController {
     		$arrArticleData['title'] = I('post.title');
     		$arrArticleData['sub_title'] = I('post.sub_title');
     		$arrArticleData['article_tag'] = I('post.tag');
+            
     		$arrArticleData['ref_image'] = I('ref_image');
     		$arrArticleData['ref_contents'] = trim(I('post.ref_contents'));
     		
@@ -80,7 +80,6 @@ class UserController extends CheckController {
     		$intro_info = str_replace("&lt;p&gt;","",$edit); //过滤p标签
     		$intro_info = str_replace("&lt;/p&gt;","",$intro_info); //过滤/p标签
     		$arrArticleData['contents'] = $intro_info;
-    		
     		$booResult = D('User','Service')->createArticle($arrArticleData);
     		$this->success('发表文章成功','/User/article');
     	}else{
