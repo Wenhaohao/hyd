@@ -24,10 +24,11 @@
 						<div class="module-app-category">
 							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
 							<div class="category-list">
-							<a class="active label label-info">全部</a>
+							<a class="active label label-info" href="{:U('List/index',array('cate_id'=>$vo['category_id'],'p'=>$_GET['p']))}">全部</a>
 							<volist name="vo['child']" id="val">
-								<a class="active" href="">
-								{:U('List/index',array('cate_id'=>$val.category_id))}
+								<a class="active" 
+
+								href="{:U('List/index',array('cate_id'=>$val['category_id'],'p'=>$_GET['p']))}">
 									{$val.ch_name}
 									
 								</a>

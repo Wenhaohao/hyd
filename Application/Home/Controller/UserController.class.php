@@ -21,8 +21,8 @@ class UserController extends CheckController {
 	public function __construct(){
 		parent::__construct();
 		$intUserId = $this->uid;
-		$arrUserData = D('User','Service')->getUserInfo($intUserId);
-		$this->assign('rightUser',$arrUserData);
+		$arrUserData = I("session.name");   //从session 调取
+		$this->assign('userData',$arrUserData); // User控制器 附加的右栏 
 	}
 	
 	public function index(){
@@ -52,8 +52,7 @@ class UserController extends CheckController {
 		$last = $page->listRows;
 		$listPage = $page->show();
 		$arrUserArticle = D('User','Service')->getUserArticle($intUserId,$first,$last);
-// 		dump($arrUserArticle);
-// 		exit();
+
 		$this->assign('list',$arrUserArticle);
 		$this->assign('page',$listPage);
 		$this->assign('nameAction','article');
