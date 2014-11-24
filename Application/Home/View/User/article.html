@@ -85,7 +85,8 @@
 							</h4>
 							<div class="item-nav">
 								<a href="#">
-									<span class="label label-info">{$vo.uid_name}	
+									<span class="label label-info">
+										{$userData.uid_name}
 									</span>
 								</a>
 								<span class="label-time">
@@ -99,7 +100,7 @@
 								</div>
 							</div>
 								<div class="media">
-									{$vo.contents|cutStr=###,100}
+									{$vo.ref_contents}
 								</div>
 						</div>
 					</li>
