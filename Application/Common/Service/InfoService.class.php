@@ -26,7 +26,6 @@ class InfoService extends CommonService{
 		return $infoData;		
 	}
 
-	
 }
 
 ?>

@@ -64,80 +64,20 @@
 			<!-- 列表 -->
 			<div class="module-app">
 			    <div class="row-fluid health-list-row">
-	   				<div class="span4">
-	   					<div class="thumbnail">
-		                  <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. </p>
-                            <p>
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                            </p>
-                          </div>                 
-						</div>
-	   				</div>
-	    			<div class="span4 ">
-	    				 <div class="thumbnail">
-                          <img src="#" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a>
-                            </p>
-                          </div>
-                        </div>   
-	    			</div>
-	    			<div class="span4 ">
-	    				<div class="thumbnail">
-                          <img src="#"  data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h4>Thumbnail</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a>
-                            </p>
-                          </div>
-                        </div>
-	    			</div>
-    			</div>
-				   <div class="row-fluid health-list-row">
-	   				<div class="span4">
-	   					<div class="thumbnail">
-		                  <img src="#"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. </p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> 
-                            </p>
-                          </div>                 
-						</div>
-	   				</div>
-	    			<div class="span4 ">
-	    				 <div class="thumbnail">
-                          <img src="#" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a>
-                            </p>
-                          </div>
-                        </div>   
-	    			</div>
-	    			<div class="span4 ">
-	    				<div class="thumbnail">
-                          <img src="#"  data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h4>Thumbnail</h4>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a>
-                            </p>
-                          </div>
-                        </div>
-	    			</div>
+				    <volist name="list" id="vo">
+		   				<div class="span4">
+		   					<div class="thumbnail">
+			                  <img src="{$vo.sport_ref_image}"  alt="300x200" />
+	                          <div class="caption">
+	                            <h4>{$vo.name}</h4>
+	                            <p>{$vo.description}</p>
+	                            <p>
+	                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
+	                            </p>
+	                          </div>                 
+							</div>
+		   				</div>
+		   			</volist>
     			</div>
 				
 				

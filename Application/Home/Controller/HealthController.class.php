@@ -11,9 +11,9 @@
  *  健康指南 
  */
 namespace Home\Controller;	//表示当前类是Home模块下的控制器类
-use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
+use Home\Controller\CommonController;	//表示引入Think\Controller明明空间便于直接使用
 
-class HealthController extends Controller {
+class HealthController extends CommonController {
 	
     /**
      * 首页输出
@@ -24,7 +24,7 @@ class HealthController extends Controller {
     	$healthService = D('Health','Service');
     	
     	$intHealthCount = $healthService->getCount();
-    	$page = new \Think\Page($intHealthCount,1);
+    	$page = new \Think\Page($intHealthCount,10);
     	$first = $page->firstRow;
     	$last = $page->listRows;
     	$listPage = $page->show();

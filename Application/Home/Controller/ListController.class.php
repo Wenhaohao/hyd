@@ -19,6 +19,9 @@ class ListController extends CommonController {
 	*	 运动分享列表
 	*/
 	public function index(){
+		$intCategoryId = I('get.cid');
+// 		dump($intCategoryId);
+// 		exit();
 		$listService = D('List','Service');
 		
 		// 翻页
@@ -44,6 +47,7 @@ class ListController extends CommonController {
 		$this->assign('category',$arrParentCate);
 		$this->assign('list',$listData);
 		$this->assign('page',$list);
+		$this->assign('categoryId',$intCategoryId);
 		$this->display();
 	}
 

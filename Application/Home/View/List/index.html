@@ -24,12 +24,10 @@
 						<div class="module-app-category">
 							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
 							<div class="category-list">
-							<a class="active label label-info">全部</a>
+							<a class="active <if condition="empty($categoryId)">label label-info</if>">全部</a>
 							<volist name="vo['child']" id="val">
-								<a class="active" href="">
-								{:U('List/index',array('cate_id'=>$val.category_id))}
+								<a class="active <if condition="$categoryId eq $val['category_id']">label label-info</if>" href="{:U('List/index')}?cid={$val.category_id}">
 									{$val.ch_name}
-									
 								</a>
 							</volist>
 							</div>

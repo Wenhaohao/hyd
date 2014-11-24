@@ -16,8 +16,8 @@ use Home\Controller\CommonController;
 class InfoController extends CommonController {
 	
 	/*
-	*   读取指定文章内容
-	*/
+	 *   运动分享文章内容
+	 */
 	public function index(){
 		$articleId =  I('get.id');
 		if(empty($articleId)){
@@ -30,6 +30,24 @@ class InfoController extends CommonController {
 		
 		$this->assign('info',$infoData);
 		$this->display();
+	}
+	
+	/**
+	 * 	运动健康指南内容
+	 */
+	public function health(){
+		$healthId = I('get.id');
+		if(empty($healthId)){
+			$this->error('404 NOT FOUND');
+		}
+		$infoService = D('Info','Service');
+		
+		//获取 文章内容
+		$infoData = $infoService->getArticle($healthId);
+		
+		$this->assign('info',$infoData);
+		$this->display();
+		
 	}
 	
 }
