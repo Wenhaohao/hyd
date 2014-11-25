@@ -16,7 +16,7 @@ use Think\Controller;	//表示引入Think\Controller明明空间便于直接使�
 class HealthController extends Controller {
 	
     /**
-     * 首页输出
+     * 健康指南首页输出
      * @param 
      * @return 
      */
@@ -30,8 +30,7 @@ class HealthController extends Controller {
     	$listPage = $page->show();
     	$listData = $healthService->getList($first,$last);
     	
-//     	dump($listData);
-//     	exit();
+
     	$this->assign('list',$listData);
     	$this->assign('page',$listPage);
     	$this->display();

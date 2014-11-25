@@ -35,6 +35,7 @@ class UserService extends CommonService {
 		
 		$result = M('users')->save($arrUserData);
 		if($result!=false){
+			
 			return true;
 		}else{
 			
@@ -63,7 +64,7 @@ class UserService extends CommonService {
 	 *	@param int $intUserId 用户ID
 	 *	@return array
 	 */
-	public function getUserArticle($intUserId,$first,$last){
+	public function getUserArticle($intUserId,$first,$last,$where=array()){
 		$where['uid'] = $intUserId;
 		$arrUserArticle = M('articles')->where($where)->limit($first,$last)->select();
 		return $arrUserArticle;
@@ -72,22 +73,43 @@ class UserService extends CommonService {
 	/**
 	 *	获取用户发表文章
 	 *	@param int $intUserId 用户ID
+	 *  @param array $where   筛选条件
 	 *	@return int
 	 */
-	public function getUserArticleCount($intUserId){
+	public function getUserArticleCount($intUserId,$where=array()){
 		$where['uid'] = $intUserId;
 		$intUserArticle = M('articles')->where($where)->count();
 		return $intUserArticle;
 	}
 
 	/**
+	 *	获取用户收藏文章数目
+	 *	@param int $intUserId 用户ID
+	 *  
+	 *	@return int  counts
+	 */
+	public function getUserCollectsCount($intUserId){
+		$where['uid'] = $intUserId;
+		$where['is_collected'] = 1;
+		$collectCounts = M('article_collects')
+						->where($where)
+						->count();
+						//->getField('article_id',true);
+		return $collectCounts;
+	}
+	
+	/**
 	*
-	* 获取运动分享文章分类 
-	* @author liyanlong
-	* @param  int $parentId  运动类别父ID
-	* @return array $categoryList  子运动类别
 	*/
-	public function getArticleCategoryList($parentId){
-		
+	public function getUserCollectList($intUserId,$first,$last){
+		$where["uid"] = $intUserId;
+		$listData = M('article_collects')
+					->where("hyd_article_collects.uid = '$intUserId' ")  //筛选
+					->join('hyd_articles  ON  hyd_article_collects.article_id = hyd_articles.article_id ')
+					->join('hyd_users ON hyd_article_collects.uid = hyd_users.uid')
+					->limit($first,$last)   //查询 限制
+					->getField('hyd_article_collects.article_id,hyd_article_collects.uid,uid_name,title,sub_title,publish_time,ref_contents,ref_image,article_tag,article_counts');  //
+					
+		return $listData;		
 	}
 }

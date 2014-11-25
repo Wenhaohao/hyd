@@ -24,7 +24,7 @@
 				<div class="module-app" id="content">
 					<div class="module-app-share">
 					     <div class="page-header">
-    							<h3>{$info.title}<small>{$info.sub_title}</small></h3>
+    							<h3 >{$info.title}<small>{$info.sub_title}</small></h3>
                   <div class="judge-result">
                     <span class="btn btn-small btn-info">赞同:15</span>
                     <span class="btn btn-small">反对:10</span>
@@ -50,9 +50,16 @@
                   <div class="pull-left well well-small">---如果发现文章涉及黄色,暴力
                     <a href="#">点击举报</a></div>
                   <div class="pull-right ">
-                     <span class="btn btn-info collection">收藏:15</span>
+                   
+                     <a class="btn btn-primary collect-btn"  data-id="{$info.article_id}" 
+                     data-action="{$status?'uncollect':'collect'}"   data-collect-text="取消收藏" data-uncollect-text="收藏" data-loading-text="请稍后..." data-error-text="操作失败" >
+                      {$status?'取消收藏':'收藏'}
+                     </a>
+                    <span class="label">已收藏 <span id="article_counts">{$info.article_counts}</span></span>
                   </div>
+
                 </div>
+                
 					</div>
 				</div>
         <!-- 评论 -->
@@ -208,7 +215,11 @@
 	</div>
 
 </div>
-  
+
+
+<!-- 文章收藏结束 -->
+    <button type="button" class="btn collect-btn" data-complete-text="finished!" >...</button>
+   
 <include file="Public:footer" />
 </body>
 
@@ -224,13 +235,40 @@
         var ue = UE.getEditor('editor',config);
           
       });
-      /* 注册 事件 */
-   
-        $("#reset").bind("click",function(){
+      /* 注册 清空编辑器事件 */
+      $("#reset").bind("click",function(){
             var ue = UE.getEditor('editor');
             ue.setContent(""); //清空 编辑器内容
-          
       });
+      /*注册 收藏按钮 事件*/
+
+      $(".collect-btn").on("click",function(){
+              $btn =  $(this);
+              $.ajax("{:U('Info/uploadArticleCollect')}",{
+                type : "post",
+                data : { "article_id" : $btn.data("id") ,"action" : $btn.data("action") },
+                dataType:"json",               
+                beforeSend :function(){
+                   $btn.button('loading');
+                },
+                success : function(data){   //成功后回调函数
+                  var action = $btn.data("action");
+                  if( data!=null  && data.status == true){  //收藏成功
+                       $("#article_counts").text(data.article_counts);  //收藏数
+                       $btn.button(action);              //当前操作后文字显示
+                       $btn.data("action",data.action);  //下一次的 操作
+                  }else{
+                       alert(data.msg);
+                       console.log(data.data);
+                       $btn.button("reset");
+                  }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown) {
+                       $btn.button("error");  //收藏失败
+                }
+              });
+      });
+
       (function(){
         var replyMsg =["查看回复","收起回复"];
         $("[data-toggle=reply-message]").bind("click",function(){

@@ -92,7 +92,8 @@ class PassportController extends CommonController{
 	}
 	 
 	/**
-	 *	验证注册用户名是否存在
+	 *	验证注册用户名是否存在 
+	 *  @return boolean  用户是否存在标识   
 	 */
 	public function checkUserName(){
 		if(IS_POST){

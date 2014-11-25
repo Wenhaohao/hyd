@@ -44,6 +44,7 @@ class ListController extends CommonController {
 		$this->assign('category',$arrParentCate);
 		$this->assign('list',$listData);
 		$this->assign('page',$list);
+		
 		$this->display();
 	}
 
