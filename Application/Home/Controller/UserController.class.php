@@ -25,6 +25,9 @@ class UserController extends CheckController {
 		$this->assign('userData',$arrUserData); // User控制器 附加的右栏 
 	}
 	
+	/**
+	 *	用户中心首页
+	 */
 	public function index(){
 		$intUserId = $this->uid;
 		$arrUserData = D('User','Service')->getUserInfo($intUserId);
