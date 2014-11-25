@@ -16,7 +16,7 @@ use Think\Controller;	//表示引入Think\Controller明明空间便于直接使�
 class TalkController extends Controller {
 	
     /**
-     * 首页输出  -- 运动说说
+     * 首页输出  -- 运动计划
      * @param 
      * @return 
      */
@@ -25,13 +25,13 @@ class TalkController extends Controller {
     	$this->display();
     }
 
-    //编辑说说
+    //编辑计划
     public function  createTalk(){
 
     	$this->display();
     }
 
-    // 发表说说
+    // 发表计划
     public function uploadTalk(){
 
         dump(I('post.'));

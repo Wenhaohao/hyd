@@ -21,7 +21,7 @@ class HealthService extends CommonService{
 	 * 运动健康指南文章总数
 	 */
 	public function getCount(){
-		$intHealthCount = M('health_articles')->count();
+		$intHealthCount = M('sports')->count();
 		return $intHealthCount;
 	}
 	
@@ -31,8 +31,7 @@ class HealthService extends CommonService{
 	 * @param int $last 每页多少条数据
 	 */
 	public function getList($first,$last){
-		$arrHealth = M('health_articles')
-					->order('publis_time desc')
+		$arrHealth = M('sports')
 					->limit($first,$last)
 					->select();
 		return $arrHealth;
