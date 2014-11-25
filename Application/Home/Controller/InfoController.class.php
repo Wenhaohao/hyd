@@ -94,9 +94,9 @@ class InfoController extends CommonController {
 				$collectData["is_collected"] = 1;
 				$result = $infoService->saveArticleCollect($collectData);
 			}else if($action=="uncollect"){
-
 				$collectData["is_collected"] = 0;
 				$result = $infoService->saveArticleCollect($collectData);
+			
 			}
 		}
 		//如果 操作成功 进行更新收藏数
@@ -107,7 +107,7 @@ class InfoController extends CommonController {
 		if(isset($result)&&$result == true){
 			$action = ($action=="collect")?"uncollect":"collect";
 			$actionText= ($action=="collect")?"取消收藏":"收藏";
-			$return  = array("status" => true,"article_counts"=>$counts,"action"=>$action,"action_text");
+			$return  = array("status" => true,"article_counts"=>$counts,"action"=>$action,"action_text"=>$actionText);
 		}else{
 			$return  = array("status" => false,"msg"=>"服务器繁忙","action"=>$action);
 		}

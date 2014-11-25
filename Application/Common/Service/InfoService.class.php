@@ -46,9 +46,11 @@ class InfoService extends CommonService{
 	*   保存文章 收藏记录
 	*/
 	public function saveArticleCollect($collectData){
-
-		$model = M('article_collects');
-		$result = $model->save($collectData);
+		$where['uid'] =$collectData['uid'];
+		$where['article_id']=$collectData['article_id'];
+		$result = M('article_collects')
+				  ->where($where)
+				 ->setField('is_collected',$collectData['is_collected']);
 		if($result!=false){	
 			return true;
 		}else{
@@ -66,9 +68,7 @@ class InfoService extends CommonService{
 		$model = M('article_collects');
 		$result = $model->add($collectData);	
 		if($result){
-			$counts = $model
-					  ->where(array('article_id'=>$collectData['article_id'],'is_collected'=>1))
-					  ->count();
+			
 			return true;
 		}else{
 			return false;
