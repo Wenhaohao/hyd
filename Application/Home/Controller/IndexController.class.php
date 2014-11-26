@@ -23,17 +23,13 @@ class IndexController extends CommonController {
     public function index(){
    		$listService = D('List','Service');
 		
-		// 翻页
+		// 首页列表 默认显示最新的10条记录 不显示长度及翻页
 		$listCount = $listService->getCount();
-		$page = new \Think\Page($listCount,2);
-		$first = $page->firstRow;
-		$last = $page->listRows;
-		$listPage = $page->show();
-		$listData = $listService->getList($first,$last);
-		
-// 		dump(session('name'));
+		$page = new \Think\Page($listCount,10);
+		$first = 1;
+		$last = $page->listRows;	
+		$listData = $listService->getList($first,$last);	
     	$this->assign('list',$listData);
-		$this->assign('page',$listPage);
 		$this->display();
     }
     /**

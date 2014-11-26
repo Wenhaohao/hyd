@@ -22,19 +22,25 @@ class UserController extends CheckController {
 		parent::__construct();
 		$intUserId = $this->uid;
 		$arrUserData = I("session.name");   //从session 调取
-		$this->assign('userData',$arrUserData); // User控制器 附加的右栏 
-	}
-	
+
+        $pathInfo   = I('server.REQUEST_URI');
+     
+        $pattern = "/\/([^\/\?\&\=\.]+)/i";   //使用正则表达式 提取 获取actionName
+        preg_match($pattern, $pathInfo, $matches, PREG_OFFSET_CAPTURE, 1); //捕抓指定匹配
+      
+        $this->assign('nameAction',$matches[1][0]); //  第1个 下标1 表示 括号抓捕的第一个数据数组 第2个下标0表示抓捕的字符串    
+        $this->assign('userData',$arrUserData); // User控制器 附加的右栏 
+
+    }
 	/**
-	 *	用户中心首页
-	 */
+    *   个人资料
+    *
+    */
 	public function index(){
+        
 		$intUserId = $this->uid;
 		$arrUserData = D('User','Service')->getUserInfo($intUserId);
-// 		dump($arrUserData);
-// 		exit();
 		$this->assign('user',$arrUserData);
-		$this->assign('nameAction','index');
 		$this->display();
 	}
 	
@@ -58,7 +64,7 @@ class UserController extends CheckController {
 
 		$this->assign('list',$arrUserArticle);
 		$this->assign('page',$listPage);
-		$this->assign('nameAction','article');
+		
 		$this->display();
 	}
 	
@@ -156,7 +162,7 @@ class UserController extends CheckController {
     	$intUserId = $this->uid;
     	$arrUserData = D('User','Service')->getUserInfo($intUserId);
     	$this->assign('user',$arrUserData);
-    	$this->assign('nameAction','index');
+    	
         $this->display();
     }
 	
@@ -174,7 +180,13 @@ class UserController extends CheckController {
     		$where['description'] = I('post.ref_contents');
     		$where['head_url'] = I('ref_image');
     		$result = D('User','Service')->saveUserInfo($where);
+
     		if($result){
+                //修改session  对应的 列          
+                foreach ($where as $key => $value) {
+                    $_SESSION['name'][$key] = $value;  // 直接修改session值
+                }
+
     			$this->success('修改资料成功','/User/index');
     		}else{
     			$this->error('修改资料失败','/User/editor');
@@ -190,11 +202,38 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
-		$this->assign('nameAction','friends');
+		
 		$this->display();
 	}
 
-  
+    /**
+    *   用户文章收藏
+    *
+    */
 
+    public function collection(){
+        // 获取用户所有收藏
+       $user = I('session.name');
+       $userService = D('User','Service');
+       $listCount =  $userService->getUserCollectsCount($user["uid"]); 
+       //分页查询
+       $page  = new \Think\Page($listCount,2);
+       $first = $page->firstRow;     //第一行
+       $last  = $page->listRows;     //最后一行
+
+       $listData = $userService->getUserCollectList($user['uid'],$first,$last);
+
+       $list = $page->show();       // 分页导航样式
+       $this->assign('list',$listData);
+       $this->assign('page',$list);
+       $this->display();
+    }
+  
+	/**
+	 * 	运动计划发表
+	 */
+	public function plan(){
+		$this->display();
+	}
 
 }

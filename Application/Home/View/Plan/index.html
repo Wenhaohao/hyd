@@ -63,8 +63,8 @@
 
 				<!-- 说说列表 -->
 				<ul class="talk-list">
+				<volist name="list" id="vo">
 					<li>
-
 						<div class="talk-wrap-white row-fluid">
 							<div class="span4">
 								<a class="thumbnail talk-img-box" href="#" >
@@ -73,20 +73,25 @@
 							</div>
 							<div class="span8">
 								<div class="talk-name">
-									<a href="#">liyanlong</a>
+									<a href="#">{$vo.uid_name}</a>
 								</div>
 								<div class="talk-info">
-									<span>10月16日</span>
-									<span class="divider">|</span>
-									<span>湖北省</span>
+									<span>运动时间：</span>
+									<span>{$vo.start_time}</span>
 									<span class="divider">-</span>
-									<span>武汉市</span>
-									<span class="divider">-</span>
-									<span >洪山区</span>
+									<span>{$vo.end_time}</span>
+								</div>
+								<div class="talk-info">
+									<span>运动地点：</span>
+									<span>{$vo.address}</span>
+								</div>
+								<div class="talk-info">
+									<span>发表时间：</span>
+									<span>{$vo.publish_time}</span>
 								</div>
 								
 								<div class="talk-contents">
-									请给自己加油。希望永远是自己给的
+									{$vo.contents}
 								</div>
 							</div>
 						</div>
@@ -105,10 +110,9 @@
 									
 								</ul>
 							</div>
-							
 						</div>
-					
 					</li>
+				</volist>
 				</ul>
 				<div class="p-wrap"></div>
 				<div class="text-center">

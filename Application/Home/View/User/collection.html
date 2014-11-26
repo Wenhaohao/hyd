@@ -29,26 +29,28 @@
 					</h4>
 
 				<ul class="media-list module-app-list">
-					<li class="media item"> 
+					
+				<volist name="list" id="vo">
+				<li class="media item"> 
 					<a class="pull-left thumbnail" href="#">
-					<img  class="media-object item-img img-rounded" alt="128x128" data-src="" src="http://img1.cache.netease.com/catchpic/4/40/4040B55FC99377F96DACE2B94EDE6057.jpg">
+					<img  class="media-object item-img img-rounded" alt="128x128" data-src="" src="{$vo.ref_image}">
 					</a>
 					<div class="media-body">
 						<h4 class="media-heading page-header">
-							<a href='/Info/index/id/1.html'>
-								李克强给安徽金寨县希望小学师生回信
-							</a>
+							<a href="{:U('Info/index')}?id={$vo.article_id}">
+							{$vo.title}</a>
 							<div class="pull-right">
-								<span class="label-middle">20</span>&nbsp;<i class="myicon myicon-star-full"></i>
+								<span class="label-middle">{$vo.article_counts}</span>&nbsp;<i class="myicon myicon-star-full"></i>
 							</div>
 						</h4>
 						<div class="item-nav">
 							<a href="#">
-								<span class="label label-info">liyanlong	
+								<span class="label label-info">{$vo.uid_name}	
 								</span>
 							</a>
 							<span class="label-time">
-								2014-10-31 17:15:02							</span>
+								{$vo.publish_time}
+							</span>
 							<div class="pull-right">
 								<span class="label ">已阅读:200</span>		
 								<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
@@ -57,17 +59,20 @@
 							</div>
 						</div>
 							<div class="media">
-								一段往事
-
-李克强为金寨希望小学选址
-
-“25年了，总理没有忘记我们，总理和咱山里娃娃心连心”。金寨县希望小学校长陈德武激动地说，金寨希望小学是全国第一所希望小学，当年，时任团中央书记处书记的李克强同...							</div>
+								
+								{$vo.ref_contents}
+							</div>
 					</div>
-				</li>			
+				</li>
+			</volist>		
 				</ul>
-				<div class="text-center">
-						<div class="btn">查看更多</div>
-				</div>
+				<div class="pagination">
+				    <ul class="pull-right">
+				    	{$page}
+				    </ul>
+   				 </div>
+   				 <div class="p-wrap"></div>
+				
 			
 			</div>
 			

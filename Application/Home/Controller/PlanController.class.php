@@ -20,8 +20,22 @@ class PlanController extends Controller {
      * @param 
      * @return 
      */
-    
     public function index(){
+    	$objPlanService = D('Plan','Service');
+    	$intCount = $objPlanService->getCount();
+    	
+    	// 翻页
+    	$page = new \Think\Page($intCount,2);
+    	$first = $page->firstRow;
+    	$last = $page->listRows;
+    	$planPage = $page->show();
+    	
+    	$arrPlanData = $objPlanService->getList($first,$list);
+    	
+//     	dump($arrPlanData);
+//     	exit();
+    	$this->assign('list',$arrPlanData);
+    	$this->assign('page',$planPage);
     	$this->display();
     }
 
