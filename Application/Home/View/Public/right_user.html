@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<ul class="nav nav-list">
-				    <li <if condition="$nameAction eq 'index'">class="active"</if>>
+				    <li <if condition="($nameAction eq 'index') OR ($nameAction eq 'editor')">class="active"</if>>
 				    	<a href="/User/index">
 							<i class="icon-chevron-left"></i>
 				    		个人资料
@@ -52,12 +52,7 @@
 				    	文章留言</a>
 				    </li>
 				     <li class="divider"></li>
-				    <li <if condition="$nameAction eq 'talk'" >
-				    class="active" </if> >
-				    	<a href="/User/talk">
-				    	<i class="icon-chevron-left"></i>
-				    	运动说说</a>
-				    </li>
+
 				    <li <if condition="$nameAction eq 'plan'">
 				    class="active" </if> >
 				    	<a href="/User/plan">

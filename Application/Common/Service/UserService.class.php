@@ -99,7 +99,11 @@ class UserService extends CommonService {
 	}
 	
 	/**
-	*
+	*	获取用户收藏文章列表
+	*	@param int $intUserId    用户ID
+	*	@param int $first        查询起始行
+	*	@param int $last         查询长度
+	*	@return array $listData  查询结果数组
 	*/
 	public function getUserCollectList($intUserId,$first,$last){
 		$where["uid"] = $intUserId;
@@ -112,4 +116,64 @@ class UserService extends CommonService {
 					
 		return $listData;		
 	}
+
+
+	/**
+	*
+	*  判断 用户uid  是否关注 focusUid
+	*  @param   int  $uid
+	*  @param   int  $focusUid
+	*/
+	public function isUserFocus($uid,$focusUid){
+		
+		$focusData  = $this->getUserFocus($uid, $focusUid);
+		if($focusData !=null && $focusData['is_focused']!=0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	/**
+	*  获取两个用户之间的关系
+	*  @param   int  $uid
+	*  @param   int  $focusUid
+	*/
+	public function getUserFocus($uid,$focusUid){
+		$where['uid'] = $uid;
+		$where['focus_uid'] = $focusUid;
+		$focusData = M('user_focus')
+		->where($where)
+		->find();
+		return $focusData;
+	}
+
+	/**
+	*	添加关注
+	*
+	*/
+	public function createUserFocus($focusData){
+
+		$result = M('user_focus')->data($focusData)->add();
+		if($result !=false){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	/**
+	*  更改关注状态
+	*/
+	public function saveUserFocus($focusData){
+		//$condition = array("uid"=>$focusData["uid"],"focus_uid"=>$focusData["focus_uid"]);
+		//$data["is_collected"] = $focusData["is_collected"];
+		$result =  M('user_focus')->save($focusData);
+
+		if($result!=false){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }

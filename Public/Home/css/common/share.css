@@ -6,7 +6,7 @@
 .article-author,
 .article-time{color: #999;}
 .article-author > label,
-.article-time > label{color:#333; display: inline-block;margin-right:5px;}
+.article-time > label{ display: inline-block;margin-right:5px;}
 .article-author a{color: #999;}
 .article-ref{margin-top: -40px;}
 .article-ref .article-ref-content{padding-top: 50px;float: left;display: inline-block;width: 74%;}
