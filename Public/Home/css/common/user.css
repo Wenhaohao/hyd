@@ -17,9 +17,11 @@
 /* User friends */
 .friend-list {overflow: hidden;padding: 10px 5px;}
 .friend-list .thumbnail{width: 98px; float: left;cursor:pointer;margin-bottom:15px;margin-right: 15px;position: relative;}
-.friend-list .thumbnail .friend-tooltip{position: absolute;box-sizing:border-box;width:100%;bottom: 0px;left: 5px; z-index: 2;padding: 5px 0px; }
+.friend-list .thumbnail .friend-tooltip{position: absolute;box-sizing:border-box;width:100%;height:100%;bottom: 0px;left: 5px; z-index: 2;padding: 5px 0px; }
+.friend-tooltip .tooltip-label{position:absolute;bottom: 3px;}
+.friend-tooltip .focus-btn{position: absolute;right: 7px;top:3px;opacity: 0.8;}
 
-.friend-list img{width:98px;height: 98px;}
+.friend-list img{width: 80px;height: 80px;margin-bottom: 20px;}
 
 /* User  article */
 .module-app .module-app-share .page-header{margin:10px 0px;}

@@ -166,6 +166,7 @@ background-color: #fff;
 .module-app-share  .textarea{width: 90%;height: 100px;resize:none;}
 .module-app-share  .upload{position: absolute;right:20px;top:65px;overflow: hidden;}
 .module-app-share  .upload-img{width: 128px;height: 128px;}
+.module-app-share .upload-img > img{width: 128px;height: 128px;}
 .module-app-share  .upload-info{width:100%;padding: 5px 10px; box-sizing: border-box;}
 
 .module-app-share  .upload-click{position: absolute;left: 0px;bottom: 0px;width:100%;background: #FF0000; opacity: 0.8;}

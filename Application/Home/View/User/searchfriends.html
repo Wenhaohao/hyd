@@ -36,32 +36,28 @@
 					 	
 						<div class="alert alert-info">搜索结果如下</div>
 						<div class="friend-list">
-								<a  class="thumbnail" >
-									<img src="" alt="">
-										
-									<div class="friend-tooltip">
-										<span class="label">李彦龙</span>
-										<span class="label label-success">关注</span>
-									</div>
 
-								</a>
-								<a  class="thumbnail" >
-									<img src="" alt="">
-								</a>
-								<a  class="thumbnail" >
-									<img src="" alt="">
-								</a>
+						
 							<volist name="list" id="vo">
 								<a  class="thumbnail" >
-									<img src="" alt="">
+									<img src="{$vo.head_url}" alt="">
 									<div class="friend-tooltip">
-										<span class="label">李彦龙</span>
-										<span class="label">关注</span>
+										<span class="label tooltip-label">{$vo.uid_name}</span>							
+										<if condition="($vo.is_focused eq null) OR ($vo.is_focused eq 0)" >
+										<span class="label label-success focus-btn" data-focus-uid="{$vo.uid}">关注</span>
+										<else/>
+										<span class="label label-success focus-btn" data-focus-uid="{$vo.uid}">取消关注</span>
+										</if>
 									</div>						
 								</a>
 							</volist>
 						</div>	
-
+						<div class="pagination">
+				  			  <ul class="pull-right">
+				   			 	{$page}
+				   			 </ul>
+   						 </div>
+   						 <div class="p-wrap"></div>
 
 						<else/>
 						 <div class="alert alert-info">
@@ -85,6 +81,38 @@
 
 <include file="Public:footer" />
 </body>
+<script>
 
+window.onload=function(){
+	  /*注册用户关注 取消关注事件*/
+$(".focus-btn").on("click",function(){
+    $btn  =  $(this);
+     $.ajax("{:U('User/uploadFocus')}",{
+        type : "post",
+        data : { "focus_uid" : $btn.data("focus-uid") },
+        dataType:"json",               
+        beforeSend :function(){
+           $btn.html('请稍后');
+        },
+        success : function(data){   //成功后回调函数
+         
+          if( data!=null  && data.status == true){        
+               //关注成功
+               $btn.html(data.msg);                 
+          }else{
+               alert(data.msg);
+          }
+        },
+        error : function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus);  
+        }
+      });
+});
+
+
+
+};
+     
+</script>
 
 </html>

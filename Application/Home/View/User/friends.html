@@ -19,7 +19,7 @@
 			<!--  内容选项卡 -->
 			<div  class="module-app" id="myTab">
 				<div class="btn-toolbar">
-    				<a class="btn active"   href="javascript:void(0)">关注</a>
+    				<a class="btn active"   href="javascript:void(0)">已关注</a>
     				<a class="btn"   href="{:U('User/searchfriends')}">搜索好友</a>
   		  		</div>
 			</div>
@@ -32,9 +32,10 @@
 							<volist  name="list" id="vo">
 								
 								<a  class="thumbnail" >
-									<img src="{$vo.ref_images}" alt="uid:{$vo.uid}">
+									<img src="{$vo.head_url}" alt="uid:{$vo.uid}">
 									<div class="friend-tooltip">
-										<span class="label">{$vo.uid_name}</span>
+										<span class="label tooltip-label">{$vo.uid_name}</span>
+
 									</div>	
 								</a>
 							</volist>
