@@ -28,7 +28,7 @@
 				    		个人资料
 				    	</a>
 				    </li>
-				    <li <if condition="$nameAction eq 'friends'">class="active"</if>>
+				    <li <if condition="($nameAction eq 'friends') OR ($nameAction eq 'searchfriends')">class="active"</if>>
 				    	<a href="/User/friends">
 						<i class="icon-chevron-left"></i>
 				    	关注好友
@@ -50,6 +50,11 @@
 				    	<a href="/User/chart">
 				    	<i class="icon-chevron-left"></i>
 				    	文章留言</a>
+				    </li>
+				    <li <if condition="$nameAction eq 'createarticle'">class="active"</if>>
+				    	<a href="/User/createarticle">
+				    	<i class="icon-chevron-left"></i>
+				    	文章发表</a>
 				    </li>
 				     <li class="divider"></li>
 

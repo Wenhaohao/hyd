@@ -201,20 +201,40 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
-		$keywords = I('get.keywords');  //  查询好友
+	
+        $user     = I('session.name'); 
+        //获取用户关注列表
+        $userService = D('User','Service');
+        $focusCount      = $userService->getUserFocusCount($user["uid"]);
 
-        if(strcmp($keywords, "")!=0){
-            $method = "get";
-
-
-        }else{
-
-        }
-
-        $this->assign("method",$method);
+        //好友分页
+        $page  = new \Think\Page($focusCount,20);
+        $first = $page->firstRow;
+        $last  = $page->listRows;
+        $listPage = $page->show();
+        $listData = $userService->getUserFocusList($user["uid"],$first,$last);
+        $this->assign('list',$listData);
+        $this->assign("page",$listPage);
 		$this->display();
 	}
 
+    public function searchFriends(){
+        $keywords = I('get.keywords');  //  查询好友
+
+        if(isset($keywords)&&$keywords!=''){
+             $userService = D('User','Service');
+             $focusCount      = $userService->getUsersCount($keywords);
+             $page  = new \Think\Page($focusCount,20);
+             $first = $page->firstRow;
+             $last  = $page->listRows;
+             $listData =  $userService->getUsersList($keywords,$first,$last);
+             $listPage = $page->show();
+        }
+ 
+        $this->assign('list',$listData);
+        $this->assign("page",$listPage);
+        $this->display();
+    }
     /**
     *   个人社区   用户文章收藏
     *
@@ -256,6 +276,12 @@ class UserController extends CheckController {
             $this->ajaxReturn($return);
             return;
         }
+        if($focusUid  == $user["uid"]){
+            $return  = array('status' =>false ,"msg"=>"用户无法关注本身" );
+            $this->ajaxReturn($return);
+            return;
+        }
+
         $userService = D('User','Service');
         $focusData = $userService->getUserFocus($user["uid"],$focusUid);
 

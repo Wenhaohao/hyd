@@ -34,7 +34,8 @@
    						 <div class="article-author">
                   <label>作者:</label>                 
                   <a href="javascript:void(0)">{$info.uid_name}</a>
-                  <if condition="$Think.session.name neq NULL">
+                  <!-- 用户登录  并且 文章发表并非登录用户 -->
+                  <if condition="$Think.session.name neq NULL and $info.uid neq $Think.session.name.uid ">
                       <if condition="$status['focused'] eq 1  ">
                         <a  class="label label-important focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)">取消关注</a>
                         <else />

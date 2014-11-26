@@ -19,71 +19,40 @@
 			<!--  内容选项卡 -->
 			<div  class="module-app" id="myTab">
 				<div class="btn-toolbar">
-    				<a class="btn "  data-toggle="tab"    href="#friend">关注</a>
-    				<a class="btn "  data-toggle="tab"    href="#search">搜索好友</a>
+    				<a class="btn active"   href="javascript:void(0)">关注</a>
+    				<a class="btn"   href="{:U('User/searchfriends')}">搜索好友</a>
   		  		</div>
 			</div>
-			<div class="tab-content">
+	
 
-				<div class="module-app   tab-pane <if condition="$method neq 'get' ">active</if> "  id="friend">
+				<div class="module-app"  id="friend">
 				<div class="module-app-share">			
 						<div class="friend-list">
-							<a  class="thumbnail" >
-								<img src="" alt="">
-								<div class="friend-tooltip">
-									<span class="label">李彦龙</span>
-								</div>						
-							</a>
-							<a  class="thumbnail" >
-								<img src="" alt="">
-							</a>
-							<a  class="thumbnail" >
-								<img src="" alt="">
-							</a>
+							
+							<volist  name="list" id="vo">
+								
+								<a  class="thumbnail" >
+									<img src="{$vo.ref_images}" alt="uid:{$vo.uid}">
+									<div class="friend-tooltip">
+										<span class="label">{$vo.uid_name}</span>
+									</div>	
+								</a>
+							</volist>
+							<if condition="$list eq null">
+								  <div class="alert alert-info">
+								    很抱歉，暂无任何好友关注
+								 </div>		
+							</if>
 						</div>		
 
 				</div>
 				<div class="pagination">
 					    <ul class="pull-right">
-					    <li ><a href="#">上一页</a></li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
-					    <li><a href="#">下一页</a></li>
+					   		{$page}
 					    </ul>
 	   			</div>
 				</div>
-				
-				<div class="module-app tab-pane <if condition="$method eq 'get' ">active</if> " id="search">
-					 <div class="search-box">
-					 	 <form class="form-search" action="{:U('User/friends')}" method="get">
-  						  <input type="text" class="input-medium search-query" name="keywords" value="{$Think.get.keywords}">
-  						  <button type="submit" class="btn">Search</button>
-  					 	 </form>
-					 </div>
-					<div class="alert alert-info">搜索结果如下</div>
-					 <div class="friend-list">
-							<a  class="thumbnail" >
-								<img src="" alt="">
-								<div class="friend-tooltip">
-									<span class="label">李彦龙</span>
-								</div>						
-							</a>
-							<a  class="thumbnail" >
-								<img src="" alt="">
-							</a>
-							<a  class="thumbnail" >
-								<img src="" alt="">
-							</a>
-						</div>		
-
-
-				</div>
-			
-			</div>
-
+	
 		</section>
 	
 			<!-- 网站旁白 -->

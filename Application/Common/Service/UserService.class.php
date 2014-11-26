@@ -148,6 +148,51 @@ class UserService extends CommonService {
 		return $focusData;
 	}
 
+
+	/**
+	*  获取用户的好友数
+	*  @param   int  $intUserId  用户关注总数
+	*  
+	*/
+	public function getUserFocusCount($intUserId){
+		$where['uid'] = $intUserId;
+		$where['is_focused'] = 1;
+		$focusCount = M('user_focus')
+						->where($where)
+						->count();
+					
+		return $focusCount;
+	}
+	/**
+	*  获取用户被关注总数
+	*  @param   int  $intUserId  用户被关注总数
+	*/
+	public function getUserFocusedCount($focusUid){
+		$where['focus_uid'] = $focusUid;
+		$where['is_focused'] = 1;
+		$focusedCount = M('user_focus')
+						->where($where)
+						->count();				
+		return $focusedCount;
+	}
+
+	/**
+	*  获取用户的好友列表
+	*  @param   int  $intUserId  用户关注总数
+	*  
+	*/
+	public function getUserFocusList($intUserId,$first,$last){
+		$where["hyd_user_focus.uid"] = $intUserId;
+		$where["is_focused"] = 1;
+		$listData = M('user_focus')
+					->where($where)  //筛选
+					->join('hyd_users  ON  hyd_user_focus.focus_uid = hyd_users.uid')
+					->limit($first,$last)   //查询 限制
+					->getField("hyd_users.uid,uid_name,head_url,sex,description");
+		return $listData;
+	}
+
+
 	/**
 	*	添加关注
 	*
@@ -176,4 +221,30 @@ class UserService extends CommonService {
 		}
 	}
 
+	/**
+	*	根据关键字获取用户数目
+	*/
+
+	public function getUsersCount($keywords){
+		$where['_string'] = '(uid_name like "%'.$keywords.'%")';  //关键字查询
+		
+		$count =M('users')
+				->where($where)
+				->count();
+
+				return $count;
+	}
+	/**
+	*	根据关键字获取用户列表
+	*/
+	public function getUsersList($keywords,$first,$last){
+
+		$where['_string'] = '(uid_name like "%'.$keywords.'%")';
+		
+		$listData =M('users')
+				->where($where)
+				->select();
+		
+		return $listData;
+	}
 }
