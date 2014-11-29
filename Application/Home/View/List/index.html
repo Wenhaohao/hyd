@@ -13,7 +13,7 @@
 			<div id="navbar">
 		    	<ul class="breadcrumb">
 				 <li><a href="#">首页</a> <span class="divider">/</span></li>
-				  <li><a href="#">运动健康分享</a> <span class="divider">/</span></li>
+				  <li><a href="{:U('List/index')}">运动健康分享</a> <span class="divider">/</span></li>
 				<li class="active">文章</li>
 				</ul>
 			</div>
@@ -24,9 +24,9 @@
 						<div class="module-app-category">
 							<div class="category-head"><h4>{$vo.ch_name}</h4></div>
 							<div class="category-list">
-							<a class="active <if condition="empty($categoryId)">label label-info</if>">全部</a>
+							<a class="active <if condition="($categoryId eq $vo['category_id']) OR (empty($categoryId))">label label-info</if>"  href="{:U('List/index',array('cid'=>$vo['category_id']))}">全部</a>
 							<volist name="vo['child']" id="val">
-								<a class="active <if condition="$categoryId eq $val['category_id']">label label-info</if>" href="{:U('List/index')}?cid={$val.category_id}">
+								<a class="active <if condition="$categoryId eq $val['category_id'] ">label label-info</if>" href="{:U('List/index',array('cid'=>$val['category_id']))}">
 									{$val.ch_name}
 								</a>
 							</volist>

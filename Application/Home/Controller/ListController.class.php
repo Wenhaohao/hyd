@@ -20,17 +20,19 @@ class ListController extends CommonController {
 	*/
 	public function index(){
 		$intCategoryId = I('get.cid');
-// 		dump($intCategoryId);
-// 		exit();
-		$listService = D('List','Service');
 		
+		if($intCategoryId!=null){
+			$where['category_id'] = $intCategoryId;
+		}
+		$listService = D('List','Service');
 		// 翻页
-		$listCount = $listService->getCount();
+		$listCount = $listService->getCount($where);
 		$page = new \Think\Page($listCount,2);
 		$first = $page->firstRow;
 		$last = $page->listRows;
 		$list = $page->show();
-		$listData = $listService->getList($first,$last);
+		
+		$listData = $listService->getList($first,$last,$where);
 		
 		// 分类
 		$categoryData = $listService->getCategorys();
@@ -41,11 +43,10 @@ class ListController extends CommonController {
 		foreach ($arrParentCate as $key=>$val){
 			$arrParentCate[$key]['child'] = $this->getCate($categoryData,$val['category_id']);
 		}	
-			
-// 		dump($arrParentCate);
-// 		exit();
+
 		$this->assign('category',$arrParentCate);
 		$this->assign('list',$listData);
+
 		$this->assign('page',$list);
 		$this->assign('categoryId',$intCategoryId);
 		$this->display();
