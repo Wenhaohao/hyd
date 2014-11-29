@@ -100,12 +100,12 @@ class InfoController extends CommonController {
 		//如果 操作成功 进行更新收藏数
 		if($result == true){
 		 	$counts = $infoService->getArticleCounts($articleId);
-			$infoService->saveArticleInfo(array("article_id"=>$articleId,"article_counts"=>$counts));
+			$infoService->saveArticleInfo(array("article_id"=>$articleId,"collect_counts"=>$counts));
 		}
 		if(isset($result)&&$result == true){
 			$action = ($action=="collect")?"uncollect":"collect";
 			$actionText= ($action=="collect")?"取消收藏":"收藏";
-			$return  = array("status" => true,"article_counts"=>$counts,"action"=>$action,"action_text"=>$actionText);
+			$return  = array("status" => true,"collect_counts"=>$counts,"action"=>$action,"action_text"=>$actionText);
 		}else{
 			$return  = array("status" => false,"msg"=>"服务器繁忙","action"=>$action);
 		}
@@ -114,4 +114,49 @@ class InfoController extends CommonController {
 		$this->ajaxReturn($return);
 
 	}
+
+
+	//投票前检查
+	public function _before_uploadArticleVote(){
+		$user = I("session.name");
+		if($user ==null ){
+			$return =  array("status"=>false,"msg"=>"请用户先登录");
+			$this->ajaxReturn($return); 
+	
+		}
+
+	}
+	//更新投票  -- 一旦投票 便无法再修改
+	public function uploadArticleVote(){
+		$user = I("session.name");
+		//$this->ajaxReturn($user);	
+		//判断是否已投过票
+		
+		$articleId  =	I("post.article_id");
+		$action     =   I("post.action");
+		//检查是否存在投票
+		$infoService  = D('Info','Service');
+		$voteData    = $infoService->getUserInfoVote($user["uid"],$articleId);
+		if($voteData != null){
+			$return  = array('status' =>  false,'msg'=>'你已经投过票');
+			$this->ajaxReturn($return);
+		}
+		$voteData["uid"] = $user["uid"];
+		$voteData["article_id"] = $articleId;
+		if($action == "unsupport"){
+			$voteData["is_support"] = 0;
+		}else{
+			$voteData["is_support"] = 1;
+ 		}
+ 		$result  = $infoService->saveUserInfoVote($voteData);
+ 		if($result){
+ 			$return  = array("status"=>true,"msg"=>"success");
+
+ 		}else{
+ 			$return  = array("status"=>false,"msg"=>"服务器繁忙");
+ 		}
+
+		$this->ajaxReturn($return);
+	}
+
 }

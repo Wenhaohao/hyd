@@ -26,8 +26,8 @@
 					     <div class="page-header">
     							<h3 >{$info.title}<small>{$info.sub_title}</small></h3>
                   <div class="judge-result">
-                    <span class="btn btn-small btn-info">赞同:15</span>
-                    <span class="btn btn-small">反对:10</span>
+                    <span class="btn btn-small btn-info vote-btn" data-article-id="{$info.article_id}"  data-action="support" data-text="赞同"  data-num="{$info.support_counts}"> 赞同:{$info.support_counts}</span>
+                    <span class="btn btn-small vote-btn"  data-article-id="{$info.article_id}" data-action="unsupport" data-text="反对" data-num="{$info['vote_counts']-$info['support_counts']}">反对:{$info["vote_counts"]-$info["support_counts"]}</span>
 
                   </div>
    						 </div>
@@ -66,7 +66,7 @@
                      data-action="{$status['collected']?'uncollect':'collect'}"   data-collect-text="取消收藏" data-uncollect-text="收藏" data-loading-text="请稍后..." data-error-text="操作失败" >
                       {$status['collected']?'取消收藏':'收藏'}
                      </a>
-                    <span class="label">已收藏 <span id="article_counts">{$info.article_counts}</span></span>
+                    <span class="label">已收藏 <span id="collect_counts">{$info.collect_counts}</span></span>
                   </div>
 
                 </div>
@@ -266,7 +266,7 @@
                 success : function(data){   //成功后回调函数
                   var action = $btn.data("action");
                   if( data!=null  && data.status == true){  //收藏成功
-                       $("#article_counts").text(data.article_counts);  //收藏数
+                       $("#collect_counts").text(data.collect_counts);  //收藏数
                        $btn.button(action);              //当前操作后文字显示
                        $btn.data("action",data.action);  //下一次的 操作
                   }else{
@@ -280,6 +280,38 @@
                 }
               });
       });
+      /*注册 投票按钮事件 */
+      $(".vote-btn").on("click",function(){
+            //禁止重复点击行为
+            $(".vote-btn").attr("disabled",true);
+              $btn =  $(this);              
+              $.ajax("{:U('Info/uploadArticleVote')}",{
+                type : "post",
+                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action") },
+                dataType:"json",               
+                beforeSend :function(){
+
+                   $btn.html('请稍后...');
+                },
+                success : function(data){   //成功后回调函数
+                   if( data!=null  && data.status == true){      //投票成功                      
+                       $btn.data("num",parseInt($btn.data("num")+1)); 
+                  }else{
+                       alert(data.msg);               //投票失败
+                  }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown) {
+                       alert(textStatus);              //投票失败  服务器异常
+
+                },
+                complete:function(){
+                    $btn.html($btn.data("text")+":"+$btn.data("num"));
+                    $(".vote-btn").attr("disabled",false);
+                }
+              });          
+      });
+
+<if condition="$Think.session.name neq NULL and $info.uid neq $Think.session.name.uid ">
       /*注册用户关注 取消关注事件*/
       $(".focus-btn").on("click",function(){
             $btn  =  $(this);
@@ -304,6 +336,8 @@
                 }
               });
       });
+
+</if>
       (function(){
         var replyMsg =["查看回复","收起回复"];
         $("[data-toggle=reply-message]").bind("click",function(){

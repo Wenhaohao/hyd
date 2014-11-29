@@ -114,6 +114,42 @@ class InfoService extends CommonService{
 	}
 
 
+	/**
+	*
+	*	判断用户是否已经投票
+	*	@param  int $articleId
+	*	@param 
+	*/
+	public function getUserInfoVote($uid,$articleId){
+			$condition["uid"] = $uid;
+			$condition["article_id"] = $articleId;
+			$voteData =  M("article_votes")->where($condition)->find();
+			return $voteData;
+	}
+	/**
+	*   保存用户投票
+	*
+	*/
+	public function saveUserInfoVote($voteData){
+		$result = M('article_votes')->add($voteData);
+
+		if($result !=false){
+			//1.查询 并修改
+			$articleData =  M('articles')->field("vote_counts,support_counts")->where('article_id = %d',$voteData['article_id'])->find();
+			$articleData["vote_counts"] += 1;
+			if($voteData["is_support"]==1){
+				$articleData["support_counts"] +=1;
+			}
+
+			$result =  M('articles')->where('article_id = %d',$voteData['article_id'])
+						->data($articleData)->save();
+			if($result !=false){
+				return true;
+			}
+
+		}
+		return false;			
+	}
 }
 
 ?>
