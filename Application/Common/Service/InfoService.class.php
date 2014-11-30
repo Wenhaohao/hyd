@@ -150,6 +150,7 @@ class InfoService extends CommonService{
 		}
 		return false;			
 	}
+
 }
 
 ?>

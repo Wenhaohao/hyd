@@ -1,0 +1,18 @@
+<ul>
+	<volist name="list" id="vo" key="k">
+		<li>
+			<span class="rank  
+			<switch name="k">    
+				<case value="1">rank-top</case>    
+				<case value="2">rank-middle</case>  
+				<case value="3">rank-third</case>  
+				<default />
+			</switch>
+			">{$k}</span>
+			<a href="#" title="标题:{$vo.title}&#13;副标题:{$vo.sub_title}&#13;作者:{$vo.uid_name}&#13;时间:{$vo.publish_time|strtotime|date='Y-m-d',###}&#13;投票数:{$vo.vote_counts}&nbsp;支持数:{$vo.support_counts}"
+			>{$vo.title|mb_substr=###,0,14,"utf-8"}<?php if( mb_strlen($vo["title"],"utf-8") >= 14 ) echo  '...' ; ?></a>
+		</li>	
+
+	</volist>
+
+</ul>
