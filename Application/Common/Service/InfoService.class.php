@@ -41,6 +41,19 @@ class InfoService extends CommonService{
 					   ->find();
 		return $collectData;
 	}
+	/**
+	*  判断文章是否收藏
+	*	@param  long int  $uid       用户id
+	*	@param  long int  $articleId 运动分享文章id
+	*/
+	public function isUserArticleCollect($uid,$articleId){
+		 $collectData = $this->getUserArticleCollect($uid,$articleId);
+		 if($collectData !=null && $collectData["is_collected"]!=0){
+		 	return true;
+		 }else{
+		 	return false;
+		 }
+	}
 
 	/**
 	*   保存文章 收藏记录
@@ -99,6 +112,7 @@ class InfoService extends CommonService{
 					  ->count();
 		return $counts;
 	}
+
 
 }
 

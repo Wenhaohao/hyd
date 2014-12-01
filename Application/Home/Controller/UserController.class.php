@@ -202,12 +202,42 @@ class UserController extends CheckController {
     *
     */
 	public function friends(){
-		
+	
+        $user     = I('session.name'); 
+        //获取用户关注列表
+        $userService = D('User','Service');
+        $focusCount      = $userService->getUserFocusCount($user["uid"]);
+
+        //好友分页
+        $page  = new \Think\Page($focusCount,20);
+        $first = $page->firstRow;
+        $last  = $page->listRows;
+        $listPage = $page->show();
+        $listData = $userService->getUserFocusList($user["uid"],$first,$last);
+        $this->assign('list',$listData);
+        $this->assign("page",$listPage);
 		$this->display();
 	}
 
+    public function searchFriends(){
+        $keywords = I('get.keywords');  //  查询好友
+
+        if(isset($keywords)&&$keywords!=''){
+             $userService = D('User','Service');
+             $focusCount      = $userService->getUsersCount($keywords);
+             $page  = new \Think\Page($focusCount,20);
+             $first = $page->firstRow;
+             $last  = $page->listRows;
+             $listData =  $userService->getUsersList($keywords,$first,$last);
+             $listPage = $page->show();
+        }
+ 
+        $this->assign('list',$listData);
+        $this->assign("page",$listPage);
+        $this->display();
+    }
     /**
-    *   用户文章收藏
+    *   个人社区   用户文章收藏
     *
     */
 
@@ -218,8 +248,8 @@ class UserController extends CheckController {
        $listCount =  $userService->getUserCollectsCount($user["uid"]); 
        //分页查询
        $page  = new \Think\Page($listCount,2);
-       $first = $page->firstRow;     //第一行
-       $last  = $page->listRows;     //最后一行
+       $first = $page->firstRow;     //起始行
+       $last  = $page->listRows;     //
 
        $listData = $userService->getUserCollectList($user['uid'],$first,$last);
 
@@ -235,5 +265,66 @@ class UserController extends CheckController {
 	public function plan(){
 		$this->display();
 	}
+	
+    /**
+    *   用户添加取消关注
+    * 
+    */
+    public function  uploadFocus(){
+
+       $user = I('session.name');
+       if($user==null){
+            $return  = array("status"=>false,"msg"=>"请用户登录");
+            $this->ajaxReturn($return);
+            return;
+       }
+        $focusUid = I('post.focus_uid');
+        if($focusUid == null || !is_numeric($focusUid)){
+            $return  = array('status' =>false ,"msg"=>"非法参数格式" );
+            $this->ajaxReturn($return);
+            return;
+        }
+        if($focusUid  == $user["uid"]){
+            $return  = array('status' =>false ,"msg"=>"用户无法关注本身" );
+            $this->ajaxReturn($return);
+            return;
+        }
+
+        $userService = D('User','Service');
+        $focusData = $userService->getUserFocus($user["uid"],$focusUid);
+
+        $result = false;
+        if($focusData==null){
+            //添加关注
+            $focusData["uid"] =  $user["uid"];
+            $focusData["focus_uid"] = $focusUid;
+            $result = $userService->createUserFocus($focusData);
+            if($result  == true){
+                $return = array("status"=>true,"msg"=>"取消关注");
+            }
+        }else{
+            //更新关注
+
+            $focusData["is_focused"]=(($focusData["is_focused"]==0)? 1 : 0);
+
+
+            $result =  $userService->saveUserFocus($focusData);
+
+            if($result  == true){
+                $return['status'] = true;
+                if($focusData["is_focused"]==0){
+                    $return['msg'] = "关注";
+                }else{
+                    $return['msg'] = "取消关注";
+                }
+            } 
+        }
+        if($result == false){
+            $return  =array("status"=>false,"msg"=>"服务器繁忙");
+            return;
+        }
+        $this->ajaxReturn($return);
+    }
+
 
 }

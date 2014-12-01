@@ -30,15 +30,13 @@ class InfoController extends CommonController {
 		$infoData = $infoService->getArticle($articleId);
 		$this->assign('info',$infoData);
 		
-		//查看文章是否被用户收藏
+		//查看文章是否被用户收藏  查看文章用户是否被用户关注
 		if(isset($user)&&!empty($user["uid"])){
-			$collectData =  $infoService->getUserArticleCollect($user["uid"],$articleId);
+			$status['collected'] =  $infoService->isUserArticleCollect($user["uid"],$articleId);  
+			$status['focused'] = D('User','Service')->isUserFocus($user["uid"],$articleId);
 		}
-		if($collectData !=null && $collectData["is_collected"]==1){
-			$this->assign('status',true);
-		}else{
-			$this->assign('status',false);
-		}
+
+		$this->assign('status',$status);
 		$this->display();
 	}
 

@@ -99,7 +99,11 @@ class UserService extends CommonService {
 	}
 	
 	/**
-	*
+	*	获取用户收藏文章列表
+	*	@param int $intUserId    用户ID
+	*	@param int $first        查询起始行
+	*	@param int $last         查询长度
+	*	@return array $listData  查询结果数组
 	*/
 	public function getUserCollectList($intUserId,$first,$last){
 		$where["uid"] = $intUserId;
@@ -111,5 +115,136 @@ class UserService extends CommonService {
 					->getField('hyd_article_collects.article_id,hyd_article_collects.uid,uid_name,title,sub_title,publish_time,ref_contents,ref_image,article_tag,article_counts');  //
 					
 		return $listData;		
+	}
+
+
+	/**
+	*
+	*  判断 用户uid  是否关注 focusUid
+	*  @param   int  $uid
+	*  @param   int  $focusUid
+	*/
+	public function isUserFocus($uid,$focusUid){
+		
+		$focusData  = $this->getUserFocus($uid, $focusUid);
+		if($focusData !=null && $focusData['is_focused']!=0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	/**
+	*  获取两个用户之间的关系
+	*  @param   int  $uid
+	*  @param   int  $focusUid
+	*/
+	public function getUserFocus($uid,$focusUid){
+		$where['uid'] = $uid;
+		$where['focus_uid'] = $focusUid;
+		$focusData = M('user_focus')
+		->where($where)
+		->find();
+		return $focusData;
+	}
+
+
+	/**
+	*  获取用户的好友数
+	*  @param   int  $intUserId  用户关注总数
+	*  
+	*/
+	public function getUserFocusCount($intUserId){
+		$where['uid'] = $intUserId;
+		$where['is_focused'] = 1;
+		$focusCount = M('user_focus')
+						->where($where)
+						->count();
+					
+		return $focusCount;
+	}
+	/**
+	*  获取用户被关注总数
+	*  @param   int  $intUserId  用户被关注总数
+	*/
+	public function getUserFocusedCount($focusUid){
+		$where['focus_uid'] = $focusUid;
+		$where['is_focused'] = 1;
+		$focusedCount = M('user_focus')
+						->where($where)
+						->count();				
+		return $focusedCount;
+	}
+
+	/**
+	*  获取用户的好友列表
+	*  @param   int  $intUserId  用户关注总数
+	*  
+	*/
+	public function getUserFocusList($intUserId,$first,$last){
+		$where["hyd_user_focus.uid"] = $intUserId;
+		$where["is_focused"] = 1;
+		$listData = M('user_focus')
+					->where($where)  //筛选
+					->join('hyd_users  ON  hyd_user_focus.focus_uid = hyd_users.uid')
+					->limit($first,$last)   //查询 限制
+					->getField("hyd_users.uid,uid_name,head_url,sex,description");
+		return $listData;
+	}
+
+
+	/**
+	*	添加关注
+	*
+	*/
+	public function createUserFocus($focusData){
+
+		$result = M('user_focus')->data($focusData)->add();
+		if($result !=false){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	/**
+	*  更改关注状态
+	*/
+	public function saveUserFocus($focusData){
+		//$condition = array("uid"=>$focusData["uid"],"focus_uid"=>$focusData["focus_uid"]);
+		//$data["is_collected"] = $focusData["is_collected"];
+		$result =  M('user_focus')->save($focusData);
+
+		if($result!=false){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	/**
+	*	根据关键字获取用户数目
+	*/
+
+	public function getUsersCount($keywords){
+		$where['_string'] = '(uid_name like "%'.$keywords.'%")';  //关键字查询
+		
+		$count =M('users')
+				->where($where)
+				->count();
+
+				return $count;
+	}
+	/**
+	*	根据关键字获取用户列表
+	*/
+	public function getUsersList($keywords,$first,$last){
+
+		$where['_string'] = '(uid_name like "%'.$keywords.'%")';
+		
+		$listData =M('users')
+				->where($where)
+				->select();
+		
+		return $listData;
 	}
 }

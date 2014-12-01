@@ -1,0 +1,90 @@
+<include file="Public:header" title="更新个人资料" />
+<!-- 个人空间 -->
+<link rel="stylesheet" href="__PUBLIC__Home/css/common/user.css">
+<div class="container" id="pagewrap">
+	<div class="module-show">
+	
+	</div>
+
+	<!-- 编辑内容-->
+	<div class="container">
+		<div class="row">	
+		<section class="module-left pull-left span9">
+			<ul class="breadcrumb">
+    			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
+	    		<li><a href="/User/index">个人社区</a> <span class="divider">/</span></li>
+    			<li class="#">好友关注<span class="label "></span></li>
+    		</ul>
+			<div class="p-wrap-mini"></div>
+			<!--  内容选项卡 -->
+			<div  class="module-app" id="myTab">
+				<div class="btn-toolbar">
+    				<a class="btn "     href="{:U('User/friends')}">关注</a>
+    				<a class="btn active"      href="javascript:void(0)">搜索好友</a>
+  		  		</div>
+			</div>
+			
+				
+				<div class="module-app" id="search">
+					 <div class="search-box">
+					 	 <form class="form-search" action="{:U('User/searchfriends')}" method="get">
+  						  <input type="text" class="input-medium search-query" name="keywords" value="{$Think.get.keywords}">
+  						  <button type="submit" class="btn">Search</button>
+  					 	 </form>
+					 </div>
+					 <if condition="$Think.get.keywords neq '' ">
+					 	
+						<div class="alert alert-info">搜索结果如下</div>
+						<div class="friend-list">
+								<a  class="thumbnail" >
+									<img src="" alt="">
+										
+									<div class="friend-tooltip">
+										<span class="label">李彦龙</span>
+										<span class="label label-success">关注</span>
+									</div>
+
+								</a>
+								<a  class="thumbnail" >
+									<img src="" alt="">
+								</a>
+								<a  class="thumbnail" >
+									<img src="" alt="">
+								</a>
+							<volist name="list" id="vo">
+								<a  class="thumbnail" >
+									<img src="" alt="">
+									<div class="friend-tooltip">
+										<span class="label">李彦龙</span>
+										<span class="label">关注</span>
+									</div>						
+								</a>
+							</volist>
+						</div>	
+
+
+						<else/>
+						 <div class="alert alert-info">
+								    请输入关键字查询
+						  </div>		
+					 </if>
+					
+
+
+				</div>
+			
+		
+
+		</section>
+	
+			<!-- 网站旁白 -->
+		<include file="Public:right_user"/>
+	    </div>
+	</div>  <!-- row end  -->
+</div> 
+
+<include file="Public:footer" />
+</body>
+
+
+</html>

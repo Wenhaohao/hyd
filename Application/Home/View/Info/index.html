@@ -31,7 +31,18 @@
 
                   </div>
    						 </div>
-   						 <div class="article-author"><label>作者:</label><a href="">{$info.uid_name}</a></div>
+   						 <div class="article-author">
+                  <label>作者:</label>                 
+                  <a href="javascript:void(0)">{$info.uid_name}</a>
+                  <!-- 用户登录  并且 文章发表并非登录用户 -->
+                  <if condition="$Think.session.name neq NULL and $info.uid neq $Think.session.name.uid ">
+                      <if condition="$status['focused'] eq 1  ">
+                        <a  class="label label-important focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)">取消关注</a>
+                        <else />
+                        <a class="label label-important focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)">关注</a>
+                      </if>                    
+                  </if>
+                </div>
    						 <div class="article-time"><label>时间:</label>{$info.publish_time}</div>
 						   <div class="article-ref">
 							   <div class="article-ref-content">
@@ -52,8 +63,8 @@
                   <div class="pull-right ">
                    
                      <a class="btn btn-primary collect-btn"  data-id="{$info.article_id}" 
-                     data-action="{$status?'uncollect':'collect'}"   data-collect-text="取消收藏" data-uncollect-text="收藏" data-loading-text="请稍后..." data-error-text="操作失败" >
-                      {$status?'取消收藏':'收藏'}
+                     data-action="{$status['collected']?'uncollect':'collect'}"   data-collect-text="取消收藏" data-uncollect-text="收藏" data-loading-text="请稍后..." data-error-text="操作失败" >
+                      {$status['collected']?'取消收藏':'收藏'}
                      </a>
                     <span class="label">已收藏 <span id="article_counts">{$info.article_counts}</span></span>
                   </div>
@@ -228,18 +239,19 @@
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.config.js"></script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__ueditor.all.min.js"></script>
 <script type="text/javascript" charset="UTF-8"  src="__UEDITOR__lang/zh-cn/zh-cn.js"></script>
+
 <script>
   window.onload=function(){
       require(["ueditor/comment"],function(config){
-      
+  
         var ue = UE.getEditor('editor',config);
-          
-      });
-      /* 注册 清空编辑器事件 */
-      $("#reset").bind("click",function(){
-            var ue = UE.getEditor('editor');
+          /* 注册 清空编辑器事件 */
+         $("#reset").bind("click",function(){
+           
             ue.setContent(""); //清空 编辑器内容
+        });    
       });
+     
       /*注册 收藏按钮 事件*/
 
       $(".collect-btn").on("click",function(){
@@ -268,7 +280,30 @@
                 }
               });
       });
-
+      /*注册用户关注 取消关注事件*/
+      $(".focus-btn").on("click",function(){
+            $btn  =  $(this);
+             $.ajax("{:U('User/uploadFocus')}",{
+                type : "post",
+                data : { "focus_uid" : $btn.data("focus-uid") },
+                dataType:"json",               
+                beforeSend :function(){
+                   $btn.html('请稍后...');
+                },
+                success : function(data){   //成功后回调函数
+                 
+                  if( data!=null  && data.status == true){        
+                       //关注成功
+                       $btn.html(data.msg);                 
+                  }else{
+                       alert(data.msg);
+                  }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);  //收藏失败
+                }
+              });
+      });
       (function(){
         var replyMsg =["查看回复","收起回复"];
         $("[data-toggle=reply-message]").bind("click",function(){
@@ -282,4 +317,5 @@
   }
 
 </script>
+
 </html>
