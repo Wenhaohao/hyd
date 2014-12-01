@@ -180,22 +180,13 @@
 			<div class="module-app">
 
             <ul class="nav nav-tabs no-margin-bottom">
-            <li class="active"><a href="#hot" data-toggle="tab">热门指南</a></li>
+            <li class="active"><a href="#hotguider" data-toggle="tab">热门指南</a></li>
             <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
-
             </ul>
             <div class="tab-content">
-                <div class="ref-article tab-pane active" id="hot">     
-                        <div class="thumbnail">
-                          <img src="__STATIC__img/default/basketball.png" alt="300x200">
-                          <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                            </p>
-                          </div>
-                        </div>
+                <div class="ref-article tab-pane active" id="hotguider"> 
+                	{/文章旁白/}
+                  
                 </div>
                 <div class="ref-article tab-pane" id="recommend">     
                         <div class="thumbnail">
@@ -221,80 +212,14 @@
 				    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
     		</ul>
     		<div class="tab-content module-app-rank">
-			<section class="tab-pane   active" id="new"><ul>
-				<li>
-					<span class="rank rank-top">1</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				<li>
-					<span class="rank rank-middle">2</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-				</li>
-				<li>
-					<span class="rank rank-third">3</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-					
-				</li>
-				<li>
-					<span class="rank">4</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>	
-				</li>
-				<li>
-					<span class="rank ">5</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				<li>
-					<span class="rank ">6</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				
-				<li>
-					<span class="rank ">7</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				
-				<li>
-					<span class="rank ">8</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				
-			</ul>
+			<section class="tab-pane   active" id="new">
+				   {:W('Rank/articleRank',array(null,array("publish_time"=>"desc")))}
 			</section>
 			<section class="tab-pane " id="hot">
-				<ul>
-				<li>
-					<span class="rank rank-top">1</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				<li>
-					<span class="rank rank-middle">2</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-				</li>
-				<li>
-					<span class="rank rank-third">3</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-					
-				</li>
-				<li>
-					<span class="rank ">4</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>	
-				</li>
-			 </ul>
-
+					{:W('Rank/articleRank',array(null,array("vote_counts"=>"desc")))}
 			</section>
 			<section class="tab-pane" id="recommend">
-				<ul>
-				<li>
-					<span class="rank rank-top">1</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a></li>
-				<li>
-					<span class="rank rank-middle">2</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-				</li>
-				<li>
-					<span class="rank rank-third">3</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>
-					
-				</li>
-				<li>
-					<span class="rank ">4</span>
-					<a href="#">“凹凸共享租车”A轮融资近千万美... </a>	
-				</li>
-			</ul>
+				    {:W('Rank/articleRank',array(null,array("support_counts"=>"desc")))}
 			</section>
 			</div>
 			</div>

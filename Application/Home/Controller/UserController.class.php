@@ -214,24 +214,27 @@ class UserController extends CheckController {
         $last  = $page->listRows;
         $listPage = $page->show();
         $listData = $userService->getUserFocusList($user["uid"],$first,$last);
+
         $this->assign('list',$listData);
         $this->assign("page",$listPage);
 		$this->display();
 	}
 
     public function searchFriends(){
-        $keywords = I('get.keywords');  //  查询好友
-
+        $keywords = I('get.keywords');  //  查询好友   
+        $user     = I('session.name'); 
         if(isset($keywords)&&$keywords!=''){
              $userService = D('User','Service');
              $focusCount      = $userService->getUsersCount($keywords);
              $page  = new \Think\Page($focusCount,20);
              $first = $page->firstRow;
              $last  = $page->listRows;
-             $listData =  $userService->getUsersList($keywords,$first,$last);
+             $listData  =  $userService->getUsersList($keywords,$first,$last);
+             $listData  =  $userService->getUsersFocusStatus($user["uid"],$listData);
              $listPage = $page->show();
         }
- 
+        
+
         $this->assign('list',$listData);
         $this->assign("page",$listPage);
         $this->display();

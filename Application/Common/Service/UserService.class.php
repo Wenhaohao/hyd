@@ -243,8 +243,35 @@ class UserService extends CommonService {
 		
 		$listData =M('users')
 				->where($where)
+				->limit($first,$last)
 				->select();
+
+
 		
 		return $listData;
 	}
+
+	/**
+	*	根据搜索的用户列表查找 与 当前用户列表的关系
+	*/
+
+	public function getUsersFocusStatus($intUserId,$listData){
+		 $condition['uid'] =$intUserId;
+		 $condition['focus_uid']=array("in");
+		foreach ($listData as $key => $value) {
+			  $condition['focus_uid'][] = $value['uid'];
+		}
+		$focusListData = M('user_focus')->where($condition)->select();
+        foreach ($listData as $key=>$user) {
+         	 foreach ($focusListData as $user_focus) {
+            	if($user["uid"] == $user_focus["focus_uid"]){
+	            	$listData[$key]["is_focused"] =$user_focus["is_focused"];
+	           		break;
+            	}
+            }
+         }
+		return $listData;
+	}
+
+
 }
