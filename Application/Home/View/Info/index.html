@@ -24,11 +24,10 @@
 				<div class="module-app" id="content">
 					<div class="module-app-share">
 					     <div class="page-header">
-    							<h3 >{$info.title}<small>{$info.sub_title}</small></h3>
+    							<h3 >{$info.title}&nbsp;<small>{$info.sub_title}</small></h3>
                   <div class="judge-result">
                     <span class="btn btn-small btn-info vote-btn" data-article-id="{$info.article_id}"  data-action="support" data-text="赞同"  data-num="{$info.support_counts}"> 赞同:{$info.support_counts}</span>
                     <span class="btn btn-small vote-btn"  data-article-id="{$info.article_id}" data-action="unsupport" data-text="反对" data-num="{$info['vote_counts']-$info['support_counts']}">反对:{$info["vote_counts"]-$info["support_counts"]}</span>
-
                   </div>
    						 </div>
    						 <div class="article-author">
@@ -285,9 +284,9 @@
             //禁止重复点击行为
             $(".vote-btn").attr("disabled",true);
               $btn =  $(this);              
-              $.ajax("{:U('Info/uploadArticleVote')}",{
+              $.ajax("{:U('Info/uploadVote')}",{
                 type : "post",
-                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action") },
+                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action"),"type":"guide_article" },
                 dataType:"json",               
                 beforeSend :function(){
 

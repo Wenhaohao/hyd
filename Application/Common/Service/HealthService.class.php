@@ -20,8 +20,12 @@ class HealthService extends CommonService{
 	/**
 	 * 运动健康指南文章总数
 	 */
-	public function getCount(){
-		$intHealthCount = M('sports')->count();
+	public function getCount($where){
+
+		$intHealthCount = M('guide_articles')
+						  ->join('hyd_sports on hyd_guide_articles.sport_id = hyd_sports.sport_id')
+						  ->where($where)
+						  ->count();
 		return $intHealthCount;
 	}
 	
@@ -30,12 +34,42 @@ class HealthService extends CommonService{
 	 * @param int $first 起始页
 	 * @param int $last 每页多少条数据
 	 */
-	public function getList($first,$last){
-		$arrHealth = M('sports')
+	public function getList($first,$last,$where){
+
+		$arrHealth = M('guide_articles')
+					->join('hyd_sports on hyd_guide_articles.sport_id = hyd_sports.sport_id')
+					->join('hyd_users on  hyd_guide_articles.uid = hyd_users.uid')
+					->field('hyd_users.uid,uid_name,sport_name,health_article_id,condition_text,sport_ref_image,title,sub_title,hyd_guide_articles.name, tablePrefix, connection,introduce,publish,hyd_sports.sport_id,hyd_sports.category_id')
+					->where($where)
 					->limit($first,$last)
 					->select();
 		return $arrHealth;
 	}
+	/**
+	*
+	*  获取运动 分类
+	*
+	*/
+	public function getSportsCategoryList(){
+		$listData = M('sport_categories')
+					->select();
+		return $listData;
+	}
+
+	/**
+	*
+	* 根据运动分类获取运动
+	*
+	*/
+	public function getSportsList($category_id){
+		$where["category_id"]=$category_id;
+		$sportsData = M('sports')
+					  ->field("sport_id,sport_name")
+					  ->where($where)
+					  ->select();
+	    return $sportsData;
+	}
+
 	
 }
 ?>

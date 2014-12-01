@@ -41,6 +41,7 @@ class InfoController extends CommonController {
 	}
 
 
+
 	/**
 	*	infoHealth 显示健康文章信息
 	*	@author liynalong@sina.com
@@ -48,7 +49,14 @@ class InfoController extends CommonController {
 	*	@return
 	*/
 	public function health(){
-		$this->display();
+		$tid =  I('get.tid');
+		if($tid == null){
+			$this->error('404 NOT FOUND',U('/Health/index'));
+		}
+		$infoData =D('Info','Service')->getHealthArticle($tid);
+
+		$this->assign('info',$infoData);
+    	$this->display();
 	}	
 
 	/**
@@ -117,7 +125,7 @@ class InfoController extends CommonController {
 
 
 	//投票前检查
-	public function _before_uploadArticleVote(){
+	public function _before_uploadVote(){
 		$user = I("session.name");
 		if($user ==null ){
 			$return =  array("status"=>false,"msg"=>"请用户先登录");
@@ -126,37 +134,61 @@ class InfoController extends CommonController {
 		}
 
 	}
-	//更新投票  -- 一旦投票 便无法再修改
-	public function uploadArticleVote(){
+	//用户投票
+	public function uploadVote(){
 		$user = I("session.name");
 		//$this->ajaxReturn($user);	
 		//判断是否已投过票
-		
 		$articleId  =	I("post.article_id");
 		$action     =   I("post.action");
+		$type       =   I("post.type");
 		//检查是否存在投票
 		$infoService  = D('Info','Service');
-		$voteData    = $infoService->getUserInfoVote($user["uid"],$articleId);
-		if($voteData != null){
-			$return  = array('status' =>  false,'msg'=>'你已经投过票');
-			$this->ajaxReturn($return);
-		}
-		$voteData["uid"] = $user["uid"];
-		$voteData["article_id"] = $articleId;
-		if($action == "unsupport"){
-			$voteData["is_support"] = 0;
-		}else{
-			$voteData["is_support"] = 1;
- 		}
- 		$result  = $infoService->saveUserInfoVote($voteData);
- 		if($result){
- 			$return  = array("status"=>true,"msg"=>"success");
+		if($type=="article"){
+		
+			$voteData    = $infoService->getArticleVote($user["uid"],$articleId);
+			if($voteData != null){
+				$return  = array('status' =>  false,'msg'=>'你已经投过票');
+				$this->ajaxReturn($return);
+			}
+			$voteData["uid"] = $user["uid"];
+			$voteData["article_id"] = $articleId;
+			if($action == "unsupport"){
+				$voteData["is_support"] = 0;
+			}else{
+				$voteData["is_support"] = 1;
+	 		}
+	 		//保存投票
+	 		$result  = $infoService->saveArticleVote($voteData);
+	 
 
- 		}else{
- 			$return  = array("status"=>false,"msg"=>"服务器繁忙");
- 		}
+		}else if($type=="guide_article"){
+			//检查是否投过票
+			$voteData    = $infoService->getGuideArticleVote($user["uid"],$articleId);
+			if($voteData != null){
+				$return  = array('status' =>  false,'msg'=>'你已经投过票');
+				$this->ajaxReturn($return);
+			}
+			$voteData["uid"] = $user["uid"];
+			$voteData["guide_article_id"] = $articleId;
+			if($action == "unsupport"){
+				$voteData["is_support"] = 0;
+			}else{
+				$voteData["is_support"] = 1;
+	 		}
+	 		$result  = $infoService->saveGuideArticleVote($voteData);
+		}else{
+			$result  = false;
+		}	
+			if($result){
+	 			$return  = array("status"=>true,"msg"=>"success");
+	 		}else{
+	 			$return  = array("status"=>false,"msg"=>"服务器繁忙");
+	 		}
 
 		$this->ajaxReturn($return);
 	}
+
+
 
 }
