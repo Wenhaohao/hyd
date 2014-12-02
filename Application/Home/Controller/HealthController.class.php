@@ -57,6 +57,7 @@ class HealthController extends CommonController {
     	$last = $page->listRows;
     	$listPage = $page->show();
     	$listData = $healthService->getList($first,$last,$where);
+      
         $this->assign('list',$listData);
     	$this->assign('page',$listPage);
     	$this->display();

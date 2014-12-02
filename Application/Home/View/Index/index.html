@@ -37,7 +37,7 @@
 			        <div class="imgtit">
 			        	<a href="">
 			        		<strong>老年人身体健康注意事项</strong>
-			        		专家指出,游泳可以适当缓解心脏病，高血压等疾病
+			        		1.注意防寒.2.做轻微运动
 			        	</a>
 			        </div>	
 			    </li>
@@ -53,78 +53,8 @@
 		<section class="module-left pull-left">
 			<div class="module-app">
 				<h4 class="module-app-title">运动健康指南<span class="divider">|</span><small><a href="{:U('Health/index')}">最新</a></small></h4>
-				    <div class="row-fluid health-list-row">
-	   				<div class="span4">
-	   					<div class="thumbnail">
-		                  <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                          		
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                              <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="right" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                      
-                          </div>                 
-						</div>
-	   				</div>
-	    			<div class="span4 ">
-	    				 <div class="thumbnail">
-                          <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                             <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="top" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                          </div>
-                        </div>   
-	    			</div>
-	    			<div class="span4 ">
-	    				<div class="thumbnail">
-                         <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                          
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                                <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="left" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                         
-                          </div>
-                        </div>
-	    			</div>
-	    			</div>
-	    			    <div class="row-fluid health-list-row">
-	   				<div class="span4">
-	   					<div class="thumbnail">
-		                  <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                          		
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                                <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="right" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                        
-                          </div>                 
-						</div>
-	   				</div>
-	    			<div class="span4 ">
-	    				 <div class="thumbnail">
-                          <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                                <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="top" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                           
-                          </div>
-                        </div>   
-	    			</div>
-	    			<div class="span4 ">
-	    				<div class="thumbnail">
-                         <img src="__STATIC__img/default/sport_128.png"  alt="300x200" />
-                          <div class="caption">
-                            <h4>Thumbnail label</h4>
-                          	  
-                              <a href="/Info/health" class="btn btn-primary">阅读</a> 
-                                <a data-original-title="内容简介" href="javascript:void(0)" class="btn Popover" data-placement="left" data-content="Cras justo odio, dapibus ac facilisis in, egestas eget quam. " >简介</a>
-                          </div>
-                        </div>
-	    			</div>
-	    			</div>
+				    {:W('Guide/sportslist',array(6))}
+	    			
 			</div>
 
 			<!-- 运动文章分享 -->
@@ -176,34 +106,24 @@
 
 		<!-- 网站旁白 -->
 		<aside class="module-aside pull-right">
-			<!-- 热门 指南 -->
+			<!--  指南 -->
 			<div class="module-app">
 
-            <ul class="nav nav-tabs no-margin-bottom">
-            <li class="active"><a href="#hotguider" data-toggle="tab">热门指南</a></li>
-            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="ref-article tab-pane active" id="hotguider"> 
-                	{/文章旁白/}
-                  
-                </div>
-                <div class="ref-article tab-pane" id="recommend">     
-                        <div class="thumbnail">
-                          <img src="__STATIC__img/default/football.png"  alt="300x200">
-                          <div class="caption">
-                            <h3>hot</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
-                </div>
-                 
-            </div>
+	            <ul class="nav nav-tabs no-margin-bottom">
+	            <li class="active"><a href="#hotguider" data-toggle="tab">热门指南</a></li>
+	            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="ref-article tab-pane active" id="hotguider"> 
+	                  {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+	                </div>
+	                <div class="ref-article tab-pane" id="recommend">     
+	                  {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
+	                </div>
+	                 
+	            </div>
 
-    			</div>  <!-- 文章结束 -->
+    		</div> 
 			<!--　article module -->
 			<div class="module-app">			
 			<ul class="nav nav-tabs ">
@@ -213,13 +133,13 @@
     		</ul>
     		<div class="tab-content module-app-rank">
 			<section class="tab-pane   active" id="new">
-				   {:W('Rank/articleRank',array(null,array("publish_time"=>"desc")))}
+				   {:W('Article/articleRank',array(null,array("publish_time"=>"desc")))}
 			</section>
 			<section class="tab-pane " id="hot">
-					{:W('Rank/articleRank',array(null,array("vote_counts"=>"desc")))}
+					{:W('Article/articleRank',array(null,array("vote_counts"=>"desc")))}
 			</section>
 			<section class="tab-pane" id="recommend">
-				    {:W('Rank/articleRank',array(null,array("support_counts"=>"desc")))}
+				    {:W('Article/articleRank',array(null,array("support_counts"=>"desc")))}
 			</section>
 			</div>
 			</div>

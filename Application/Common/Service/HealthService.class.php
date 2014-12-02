@@ -39,7 +39,7 @@ class HealthService extends CommonService{
 		$arrHealth = M('guide_articles')
 					->join('hyd_sports on hyd_guide_articles.sport_id = hyd_sports.sport_id')
 					->join('hyd_users on  hyd_guide_articles.uid = hyd_users.uid')
-					->field('hyd_users.uid,uid_name,sport_name,health_article_id,condition_text,sport_ref_image,title,sub_title,introduce,publish,hyd_sports.sport_id,hyd_sports.category_id')
+					->field('hyd_users.uid,uid_name,sport_name,health_article_id,condition_text,sport_ref_image,title,sub_title,introduce,desc,publish,hyd_sports.sport_id,hyd_sports.category_id')
 					->where($where)
 					->limit($first,$last)
 					->select();
@@ -69,6 +69,7 @@ class HealthService extends CommonService{
 					  ->select();
 	    return $sportsData;
 	}
+
 
 	
 }

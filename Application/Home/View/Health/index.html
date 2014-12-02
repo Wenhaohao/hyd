@@ -79,10 +79,10 @@
 							<assign name="humanid" value="$Think.get.hid" />
 							<foreach name="humanlist" item="vo" key="k" >
 							  <if condition="($humanid eq $k) OR ((empty($humanid)) AND ($k eq 0 ))">
-							  	<a  class="active  label label-info" href="#"> {$k}{$vo}</a>
+							  	<a  class="active  label label-info" href="#">{$vo}</a>
 								<else/>
 								 <a href="{:U('Health/index',array('cid'=>$sportcid,'sid'=>$sportid,'hid'=>$k))}" class=" btn btn-link">
-									 {$k}|{$vo}
+									{$vo}
 							  	  </a> 
 							  </if>
 							 
@@ -111,8 +111,9 @@
 
 	                            <h4 title="标题:{$vo.title}  <if condition="$vo['sub_title'] neq '' " >（{$vo['sub_title']}）</if>&#13;时间:{$vo.publish|strtotime|date='Y-m-d h:i:s',###}">{$vo.title}</h4>
 	                            <p>发表人:{$vo.uid_name}</p>
-	                         
+	                        	<p >时间: <span  class="prettydate" data-date-format="Y-m-d h:m:s" > {$vo.publish|strtotime|date='Y-m-d h:m:s',###}</span></p>
 	                            <p>
+
 	                              <a href="{:U('Info/health',array('tid'=>$vo['health_article_id']))}" class="btn btn-primary">阅读</a> 
 	                                <a data-original-title="运动指南简介" href="javascript:void(0)" class="btn Popover" data-placement="right" data-content="{$vo.desc|mb_substr=###,0,80,"utf-8"}<?php if( mb_strlen($vo["desc"],"utf-8") >= 80 ) echo  '...' ; ?>" >简介</a>
 	                            </p>
@@ -142,6 +143,32 @@
 
 		<!-- 网站旁白 -->
 		<aside class="module-aside pull-right">
+
+						<!-- 热门 指南 -->
+			
+    		<div class="module-app">
+	            <ul class="nav nav-tabs no-margin-bottom">
+	            <li class="active"><a href="#hot-guider" data-toggle="tab">热门指南</a></li>
+	            <li><a href="#recommend-guider" data-toggle="tab">推荐指南</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="ref-article tab-pane active" id="hot-guider">     
+	                      {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+	                </div>
+		            <div class="ref-article tab-pane" id="recommend-guider">     
+		                    <div class="thumbnail">
+		                      <img src="__STATIC__img/default/football.png"   alt="300x200">
+		                      <div class="caption">
+		                        <h3>hot</h3>
+		                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+		                        <p>
+		                          <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
+		                         </p>
+		                      </div>
+		                    </div>
+		            </div>       
+	            </div>
+			</div>  <!-- 指南结束 -->
 			<div class="module-app">
 			<ul class="nav nav-tabs ">
 				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
@@ -150,54 +177,18 @@
     		</ul>
     		<div class="tab-content module-app-rank">
 			<section class="tab-pane   active" id="new">
-				  {:W('Rank/articleRank',array(null,array("publish_time"=>"desc")))}
+				  {:W('Article/articleRank',array(null,array("publish_time"=>"desc")))}
 			</section>
 			<section class="tab-pane " id="hot">
-				  {:W('Rank/articleRank',array(null,array("vote_counts"=>"desc")))}
+				  {:W('Article/articleRank',array(null,array("vote_counts"=>"desc")))}
 			</section>
 			<section class="tab-pane" id="recommend">
-				  {:W('Rank/articleRank',array(null,array("support_counts"=>"desc")))}
+				  {:W('Article/articleRank',array(null,array("support_counts"=>"desc")))}
 			</section>
 			</div>
 			</div>
 
-			<!-- 热门 指南 -->
-			<!--  其他公告 -->
-    			<div class="module-app">
-            <ul class="nav nav-tabs no-margin-bottom">
-            <li class="active"><a href="#hot-guider" data-toggle="tab">热门指南</a></li>
-            <li><a href="#recommend-guider" data-toggle="tab">推荐指南</a></li>
 
-            </ul>
-            <div class="tab-content">
-                <div class="ref-article tab-pane active" id="hot-guider">     
-                        <div class="thumbnail">
-                          <img src="__STATIC__img/default/basketball.png"  data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                            </p>
-                          </div>
-                        </div>
-                </div>
-                <div class="ref-article tab-pane" id="recommend-guider">     
-                        <div class="thumbnail">
-                          <img src="__STATIC__img/default/football.png"   alt="300x200">
-                          <div class="caption">
-                            <h3>hot</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
-                </div>
-                 
-            </div>
-
-    			</div>  <!-- 文章结束 -->
 		</aside>
 	</div>
 
@@ -206,6 +197,8 @@
 <include file="Public:footer" />
 </body>
 <script type="javascript" src="__STATIC__js/bootstrap/popover.js"></script>
+<script type="javascript" src="__STATIC__js/prettydate.js"></script>
+<script type="javascript" src="__STATIC__js/prettydate.zh-CN.js"></script>
 <script>
 	window.onload=function(){
 
@@ -214,7 +207,9 @@
 			var options = {trigger:"hover"};
 			$('.Popover').popover(options);
 		})();
-	
+		require(["jquery","STATIC/prettydate","STATIC/prettydate.zh-CN"],function($){
+				$(".prettydate").prettydate();
+		});
 		
 	};
 </script>

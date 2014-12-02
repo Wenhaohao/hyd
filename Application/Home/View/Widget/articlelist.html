@@ -1,0 +1,22 @@
+
+<volist name="list" id="vo"  >
+  <div class='<if condition="$i eq 1 "> active</if>  item'>
+    <h4 title="标题:{$vo.title}&#13;副标题:{$vo.sub_title}">{$vo.title}</h4>
+    <div class="item-content">
+      <p title="简介:{$vo.ref_contents}">{$vo.ref_contents|mb_substr=###,0,50,"utf-8"}<?php if( mb_strlen($vo["ref_contents"],"utf-8") >= 50 ) echo  '...' ; ?></p>
+      <span class="label-middle"><span  class="label label-info">投票数</span>:{$vo.vote_counts}</span>&nbsp;
+      <span class="label-middle"><span  class="label label-success">支持数</span>:{$vo.support_counts}</span>
+    </div>
+    <div class="toolbar ">
+      <span  class="pull-left">
+        <a href="{:U('Info/index',array('tid'=>$vo['article_id']))}" target="_blank" class="btn btn-primary btn-small">阅读</a>   
+      </span>
+      <span class="pull-right">
+        <span class="label-middle">收藏:</span>
+        <i class=" myicon myicon-star-full"></i>
+        <span class="label-middle">{$vo.collect_counts}</span>    
+      </span>
+    </div>
+</div>
+
+</volist>

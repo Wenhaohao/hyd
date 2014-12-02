@@ -156,12 +156,11 @@ class InfoService extends CommonService{
 	*  获取 专家指南文章内容
 	*
 	*/
-	public function getHealthArticle($tid){
-		 $where['health_article_id']= $tid;
+	public function getGuideArticleInfo($tid){
+		$where['health_article_id']= $tid;
 		$healthData = M('guide_articles')
 					->join('hyd_sports on hyd_guide_articles.sport_id = hyd_sports.sport_id')
 					->join('hyd_users on  hyd_guide_articles.uid = hyd_users.uid')
-					
 					->where($where)
 					->find();
 		return $healthData;

@@ -138,28 +138,10 @@
             </ul>
             <div class="tab-content">
                 <div class="ref-article tab-pane active" id="hot">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                            </p>
-                          </div>
-                        </div>
+                           {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
                 </div>
                 <div class="ref-article tab-pane" id="recommend">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>hot</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
+                        {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
                 </div>
                  
             </div>
@@ -180,36 +162,10 @@
                 <div class="health-chart-box">
                     <!-- 热门运动分享列表 -->
                     <div id="myCarousel" class="carousel slide">
-
-                    <!-- Carousel items -->
+                    <!-- 运动健康分享组件 -->
                     <div class="carousel-inner">
-                    <div class="active item">
-                        <h4>李克强给安徽金寨县希望小学师生回信
-                            <small class=""><span>-----</span>ssss</small>
-                        </h4>
-                        <div class="item-content">
-                        
-                          <p>一段往事 李克强为金寨希望小学选址 “25年了，总理没有忘记我们，总理和咱山里娃娃心连心”。......
-                          </p>
-                          <span class="label-middle"><span  class="label">查看数</span>111次</span>
-                        </div>
-                        <div class="toolbar ">
-                          <span  class="pull-left">
-                            <a href="#" class="btn btn-primary btn-small">阅读</a>
-                            
-                          </span>
-                          <span class="pull-right">
-                            <span class="label-middle">收藏:</span>
-                            <i class=" myicon myicon-star-full"></i>
-                            <span class="label-middle">60</span>
-                            
-                          </span>
-                        </div>
+                     {:W('Article/artcileInfo',array(null,array('publish_time'=>'desc'),3))}          
                     </div>
-                    <div class="item">…</div>
-                    <div class="item">…</div>
-                    </div>
-
                   </div>
                 </div>
               </div>

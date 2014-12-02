@@ -92,6 +92,26 @@
 
 		<!-- 网站旁白 -->
 		<aside class="module-aside pull-right">
+			<!--  指南 -->
+			<div class="module-app">
+
+	            <ul class="nav nav-tabs no-margin-bottom">
+	            <li class="active"><a href="#hotguider" data-toggle="tab">热门指南</a></li>
+	            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="ref-article tab-pane active" id="hotguider"> 
+	                  {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+	                </div>
+	                <div class="ref-article tab-pane" id="recommend">     
+	                  {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
+	                </div>
+	                 
+	            </div>
+
+    		</div> 
+
+
 			<div class="module-app">
 			<ul class="nav nav-tabs ">
 				    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
@@ -100,13 +120,13 @@
     		</ul>
     		<div class="tab-content module-app-rank">
 			<section class="tab-pane   active" id="new">	   
-				{:W('Rank/articleRank',array(null,array("publish_time"=>"desc")))}
+				{:W('Article/articleRank',array(null,array("publish_time"=>"desc")))}
 			</section>
 			<section class="tab-pane " id="hot">
-				{:W('Rank/articleRank',array(null,array("vote_counts"=>"desc")))}
+				{:W('Article/articleRank',array(null,array("vote_counts"=>"desc")))}
 			</section>
 			<section class="tab-pane" id="recommend">
-				{:W('Rank/articleRank',array(null,array("support_counts"=>"desc")))}
+				{:W('Article/articleRank',array(null,array("support_counts"=>"desc")))}
 			</section>
 			</div>
 			</div>
@@ -117,25 +137,5 @@
 
 <include file="Public:footer" />
 </body>
-<script type="text/javascript">
 
-/*
-	$(function(){
-
-		$(".tabs a").click(function(e){
-				 e.preventDefault();		 
-				 $(".tab-pane").removeClass("show")
-				 .filter($(this).attr("href")).addClass("show");
-		});
-		//
-		$(".category-list a").bind("click",function(e){
-			 e.preventDefault();
-			 	if(!$(this).hasClass("label")){
-						$(this).addClass("label label-info");
-				 }
-				 $(this).siblings().removeClass("label label-info");
-		});
-	});*/
-
-</script>
 </html>

@@ -53,7 +53,7 @@ class InfoController extends CommonController {
 		if($tid == null){
 			$this->error('404 NOT FOUND',U('/Health/index'));
 		}
-		$infoData =D('Info','Service')->getHealthArticle($tid);
+		$infoData =D('Info','Service')->getGuideArticleInfo($tid);
 
 		$this->assign('info',$infoData);
     	$this->display();
