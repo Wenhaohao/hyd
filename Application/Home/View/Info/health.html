@@ -27,36 +27,35 @@
 				<div class="module-app" id="content">
 					<div class="module-app-share">
 					     <div class="page-header">
-    							<h3>Example page headerExample page header Example page header  <small>Subtext for header</small></h3>
+    							<h3>{$info.title}&nbsp;<small>{$info.sub_title}</small></h3>
                   <div class="judge-result">
-                    <span class="btn btn-small btn-primary">赞同:15</span>
-                    <span class="btn btn-small">反对:10</span>
+                    <span class="btn btn-small btn-info vote-btn" data-article-id="{$info.health_article_id}"  data-action="support" data-text="赞同"  data-num="{$info.support_counts}"> 赞同:{$info.support_counts}</span>
+                    <span class="btn btn-small vote-btn"  data-article-id="{$info.health_article_id}" data-action="unsupport" data-text="反对" data-num="{$info['vote_counts']-$info['support_counts']}">反对:{$info["vote_counts"]-$info["support_counts"]}</span>
                   </div>
    						 </div>
-   						 <div class="article-author"><label>作者:</label><a href="">李彦龙</a></div>
-   						 <div class="article-time"><label>时间:</label>2014-11-12 15:30:11</div>
+   						 <div class="article-author">
+                  <label>作者:</label><a href="">{$info.uid_name}</a>
+                  
+               </div>
+   						 <div class="article-time"><label>时间:</label>{$info.publish}</div>
 						   <div class="article-ref">
 							   <div class="article-ref-content">
 								   <label class="article-ref-label">导语:</label>
-							   	<p>
-									创业者都很忙，每天都需要管理企业，你一定没有时间去测试市场上的所有相关应用。我们选出了应用市场上最优秀的一些企业管理应用供你选择。
-								 </p>
+							   	<p>{$info.desc}</p>
 							   </div>
-							    <div class="article-ref-img"><img src="" alt="" /></div>
+							    <div class="article-ref-img"><img src="{$info.sport_ref_image}" alt="" /></div>
 
 						   </div>
 						   <div class="clearfix clearfix-double"></div>				
-	             <div class="article-notice-img"><img src="#" alt=""></div>
+	            
                <div class="article-content">
-                  <p>日前,在广州市海珠区,有车主因其购买的某品牌汽车有质量问题,为了引起社会关注,他纠结39名同品牌汽车车主,集体驾车游街一个多小时,影响了正常交通秩序。广州警方29日通报称,事件中的7名组织者被警方处以行政拘留处罚,33名参与者被处以警告处罚。</p> 
-                  <p>日前,在广州市海珠区,有车主因其购买的某品牌汽车有质量问题,为了引起社会关注,他纠结39名同品牌汽车车主,集体驾车游街一个多小时,影响了正常交通秩序。广州警方29日通报称,事件中的7名组织者被警方处以行政拘留处罚,33名参与者被处以警告处罚。</p> 
+                  <p>{$info.contents}</p> 
+               
                </div>
                <div class="article-footer">
                   <div class="pull-left well well-small">---如果发现文章涉及黄色,暴力
                     <a href="#">点击举报</a></div>
-                  <div class="pull-right ">
-                     <span class="btn btn-primary collection">收藏:15</span>
-                  </div>
+                  
                    
                 </div>
 					</div>
@@ -139,28 +138,10 @@
             </ul>
             <div class="tab-content">
                 <div class="ref-article tab-pane active" id="hot">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                            </p>
-                          </div>
-                        </div>
+                           {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
                 </div>
                 <div class="ref-article tab-pane" id="recommend">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>hot</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
+                        {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
                 </div>
                  
             </div>
@@ -181,36 +162,10 @@
                 <div class="health-chart-box">
                     <!-- 热门运动分享列表 -->
                     <div id="myCarousel" class="carousel slide">
-
-                    <!-- Carousel items -->
+                    <!-- 运动健康分享组件 -->
                     <div class="carousel-inner">
-                    <div class="active item">
-                        <h4>李克强给安徽金寨县希望小学师生回信
-                            <small class=""><span>-----</span>ssss</small>
-                        </h4>
-                        <div class="item-content">
-                        
-                          <p>一段往事 李克强为金寨希望小学选址 “25年了，总理没有忘记我们，总理和咱山里娃娃心连心”。......
-                          </p>
-                          <span class="label-middle"><span  class="label">查看数</span>111次</span>
-                        </div>
-                        <div class="toolbar ">
-                          <span  class="pull-left">
-                            <a href="#" class="btn btn-primary btn-small">阅读</a>
-                            
-                          </span>
-                          <span class="pull-right">
-                            <span class="label-middle">收藏:</span>
-                            <i class=" myicon myicon-star-full"></i>
-                            <span class="label-middle">60</span>
-                            
-                          </span>
-                        </div>
+                     {:W('Article/artcileInfo',array(null,array('publish_time'=>'desc'),3))}          
                     </div>
-                    <div class="item">…</div>
-                    <div class="item">…</div>
-                    </div>
-
                   </div>
                 </div>
               </div>
@@ -237,7 +192,37 @@
         var ue = UE.getEditor('editor',config);
           
       });
- 
+
+       /*注册 投票按钮事件 */
+      $(".vote-btn").on("click",function(){
+            //禁止重复点击行为
+            $(".vote-btn").attr("disabled",true);
+              $btn =  $(this);              
+              $.ajax("{:U('Info/uploadVote')}",{
+                type : "post",
+                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action") ,"type":"guide_article"},
+                dataType:"json",               
+                beforeSend :function(){
+
+                   $btn.html('请稍后...');
+                },
+                success : function(data){   //成功后回调函数
+                   if( data!=null  && data.status == true){      //投票成功                      
+                       $btn.data("num",parseInt($btn.data("num")+1)); 
+                  }else{
+                       alert(data.msg);               //投票失败
+                  }
+                },
+                error : function (XMLHttpRequest, textStatus, errorThrown) {
+                       alert(textStatus);              //投票失败  服务器异常
+
+                },
+                complete:function(){
+                    $btn.html($btn.data("text")+":"+$btn.data("num"));
+                    $(".vote-btn").attr("disabled",false);
+                }
+              });          
+      });
 
   }
 

@@ -1,0 +1,10 @@
+ <div class="thumbnail">
+  <a  class="text-center" href="{:U('Health/index',array('cid'=>$info['category_id'],'sid'=>$info['sport_id']))}" style="display:block;"><img src="{$info.sport_ref_image}"  alt="300x200" title="运动名称:{$info.sport_name}&#13;运动条件:{$info.condition_text}&#13;介绍:{$info.introduce}"></a>
+  <div class="caption">
+    <h3 title="{$info.title} ({$info.sub_title})">{$info.title}</h3>
+    <p>{$info.desc|mb_substr=###,0,80,"utf-8"}<?php if( mb_strlen($info["desc"],"utf-8") >= 80 ) echo  '...' ; ?></p>
+    <p>
+      <a href="{:U('Info/Health',array('tid'=>$info['health_article_id']))}"  target="_blank" class="btn btn-primary">阅读</a> 
+    </p>
+  </div>
+ </div>

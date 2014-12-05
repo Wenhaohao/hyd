@@ -120,7 +120,7 @@ class InfoService extends CommonService{
 	*	@param  int $articleId
 	*	@param 
 	*/
-	public function getUserInfoVote($uid,$articleId){
+	public function getArticleVote($uid,$articleId){
 			$condition["uid"] = $uid;
 			$condition["article_id"] = $articleId;
 			$voteData =  M("article_votes")->where($condition)->find();
@@ -130,7 +130,7 @@ class InfoService extends CommonService{
 	*   保存用户投票
 	*
 	*/
-	public function saveUserInfoVote($voteData){
+	public function saveArticleVote($voteData){
 		$result = M('article_votes')->add($voteData);
 
 		if($result !=false){
@@ -151,6 +151,53 @@ class InfoService extends CommonService{
 		return false;			
 	}
 
+
+	/**
+	*  获取 专家指南文章内容
+	*
+	*/
+	public function getGuideArticleInfo($tid){
+		$where['health_article_id']= $tid;
+		$healthData = M('guide_articles')
+					->join('hyd_sports on hyd_guide_articles.sport_id = hyd_sports.sport_id')
+					->join('hyd_users on  hyd_guide_articles.uid = hyd_users.uid')
+					->where($where)
+					->find();
+		return $healthData;
+	}
+
+	/**
+	*  获取用户对专家指导投票
+	*
+	*/
+	public function getGuideArticleVote($uid,$healthArticleId){
+			$condition["uid"] = $uid;
+			$condition["guide_article_id"] = $healthArticleId;
+			$voteData =  M("guide_article_votes")->where($condition)->find();
+			return $voteData;
+	}
+
+	public function saveGuideArticleVote($voteData){
+		$result = M('guide_article_votes')->add($voteData);
+		if($result !=false){
+			//1.查询 并修改
+			$articleData =  M('guide_articles')
+							->field("vote_counts,support_counts")
+							->where('health_article_id = %d',$voteData['guide_article_id'])
+							->find();
+			$articleData["vote_counts"] += 1;
+			if($voteData["is_support"]==1){
+				$articleData["support_counts"] +=1;
+			}
+			$result =  M('guide_articles')->where('health_article_id = %d',$voteData['guide_article_id'])
+						->data($articleData)->save();
+			if($result !=false){
+				return true;
+			}
+
+		}
+		return false;			
+	}
 }
 
 ?>

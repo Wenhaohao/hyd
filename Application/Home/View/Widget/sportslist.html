@@ -1,0 +1,34 @@
+
+
+<?php $list_length = count($list);?>
+<volist name="list" id="vo">
+  
+  <?php
+    if($i == 1 || $i % 4 ==0){
+      echo '<div class="row-fluid health-list-row">';
+      $start = $i;
+
+    }
+  ?>
+  <div class="span4">
+    <div class="thumbnail">
+              <a  class="text-center"  style="display:block;" href="{:U('Health/index',array('cid'=>$vo['category_id'],'sid'=>$vo['sport_id']))}" title="运动:{$vo.sport_name}&#13;运动条件:{$vo.condition_text}&#13;支持数:{$vo.introduce|mb_substr=0,100,"utf-8"}<?php if( mb_strlen($vo["introduce"],"utf-8") >= 100 ) echo  '...' ; ?>"><img src="{$vo.sport_ref_image}"  alt="300x200" /></a>
+                <div class="caption">
+                  <h4 >{$vo.sport_name}指南</h4>
+                  <p>
+                    <a href="{:U('Health/index',array('cid'=>$vo['category_id'],'sid'=>$vo['sport_id']))}" class="btn btn-primary">查看</a> 
+                      <a data-original-title="运动简介" href="javascript:void(0)" class="btn Popover" data-placement="right" data-content="{$vo.introduce|mb_substr=###,0,80,"utf-8"}<?php if( mb_strlen($vo["introduce"],"utf-8") >= 80 ) echo  '...' ; ?>" >简介</a>
+                  </p>
+                </div>                 
+  </div>    
+</div>  
+  <?php
+    if(($start %3 ==0) || ($i==$list_length)){
+      for($j=0;$j<($start%3);$j++){
+          echo '<div class="span4" style="display:none;"></div>';
+      } 
+      echo '</div>';
+    }
+      
+  ?>
+</volist>

@@ -7,10 +7,10 @@
 // | 2014-11-29
 // +----------------------------------------------------------------------
 
-namespace Home\Widget;
+namespace Home\Widget;	//声明为 组件 空间
 use Think\Controller;
 
-class RankWidget extends Controller {  
+class ArticleWidget extends Controller {  
 
  /**
  *  文章排行
@@ -23,4 +23,16 @@ class RankWidget extends Controller {
 	  $this->display("Widget/articlerank");
 	
   }
+
+  /**
+  *  相似文章分享
+  *
+  */
+  public function artcileInfo($where,$order,$count){
+  	 $listData  =	D('widget','Service')->getArticleInfoList($where,$order,$count);
+  	 $this->assign('list',$listData);
+  	 $this->display("Widget/articlelist");
+  }
+
+ 
 }

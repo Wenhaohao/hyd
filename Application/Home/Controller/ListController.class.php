@@ -87,6 +87,7 @@ class ListController extends CommonController {
 
         if(S('categorysAll') == null){  // 从缓存 获取 分类
             $categoryData = D('List','Service')->getCategorys();
+            S('categorysAll',$categoryData); //缓存赋值
         }else{
              $categoryData = S('categorysAll');
         }
