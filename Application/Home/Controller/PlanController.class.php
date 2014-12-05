@@ -13,7 +13,7 @@
 namespace Home\Controller;	//表示当前类是Home模块下的控制器类
 use Think\Controller;	//表示引入Think\Controller明明空间便于直接使用
 
-class PlanController extends Controller {
+class PlanController extends CommonController {
 	
     /**
      * 首页输出  -- 运动计划
