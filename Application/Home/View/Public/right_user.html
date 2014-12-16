@@ -18,7 +18,7 @@
 					</div>					
 				</div>
 				<div class=" thumbnail header-img">
-					<img src="{$rightUser.head_url}" class="img-circle"/>
+					<img src="{$userData.head_url}" class="img-circle"/>
 				</div>
 			</div>
 			<ul class="nav nav-list">
@@ -40,6 +40,11 @@
 				    	<i class="icon-chevron-left"></i>
 				    	分享文章</a>
 				    </li>
+				    <li <if condition="$nameAction eq 'createarticle'">class="active"</if>>
+				    	<a href="/User/createarticle">
+				    	<i class="icon-chevron-left"></i>
+				    	文章发表</a>
+				    </li>
 				    <li <if condition="$nameAction eq 'collection'">class="active"</if>>
 				    	<a href="/User/collection">
 				    	<i class="icon-chevron-left"></i>
@@ -51,18 +56,16 @@
 				    	<i class="icon-chevron-left"></i>
 				    	文章留言</a>
 				    </li>
-				    <li <if condition="$nameAction eq 'createarticle'">class="active"</if>>
-				    	<a href="/User/createarticle">
-				    	<i class="icon-chevron-left"></i>
-				    	文章发表</a>
-				    </li>
-				     <li class="divider"></li>
-
-				    <li <if condition="$nameAction eq 'plan'">
-				    class="active" </if> >
+				    <li class="divider"></li>
+				    <li <if condition="$nameAction eq 'plan'">class="active" </if> >
 				    	<a href="/User/plan">
 				    	<i class="icon-chevron-left"></i>
 				    	运动计划</a>
+				    </li>
+				      <li <if condition="$nameAction eq 'plan'">class="active" </if> >
+				    	<a href="/User/createplan">
+				    	<i class="icon-chevron-left"></i>
+				    	发表运动计划</a>
 				    </li>
     		</ul>
     		

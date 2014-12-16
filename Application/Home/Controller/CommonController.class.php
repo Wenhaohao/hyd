@@ -17,8 +17,13 @@ class CommonController extends Controller{
 	
 	public function __construct(){
 		parent::__construct();
+		
+		$arrCrumbs = C('crumbs');
+// 		dump($arrCrumbs);
+// 		exit();
 		$userName = $_SESSION['name'];
 		$this->assign('userName',$userName);
+		$this->assign('crumbs',$arrCrumbs);
 // 		$auth = "power by thinkphp";
 // 		$this->assign('auth',$auth);
 	}

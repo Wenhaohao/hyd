@@ -22,6 +22,7 @@ class UserController extends CheckController {
 		parent::__construct();
 		$intUserId = $this->uid;
 		$arrUserData = I("session.name");   //从session 调取
+
         $pathInfo   = I('server.REQUEST_URI');
      
         $pattern = "/\/([^\/\?\&\=\.]+)/i";   //使用正则表达式 提取 获取actionName
@@ -261,6 +262,13 @@ class UserController extends CheckController {
        $this->display();
     }
   
+	/**
+	 * 	运动计划发表
+	 */
+	public function plan(){
+		$this->display();
+	}
+	
     /**
     *   用户添加取消关注
     * 
