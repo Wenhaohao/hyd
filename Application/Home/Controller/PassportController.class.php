@@ -23,6 +23,10 @@ class PassportController extends CommonController{
 	 *	登录控制器
 	 */
 	public function login(){
+		$user= I("session.name");
+		if(!empty($user)){
+			$this->redirect("/Index/index");
+		}
 		$this->returnUrl();
 		$this->display();
 	}
@@ -40,7 +44,6 @@ class PassportController extends CommonController{
 			if(empty($refURL)){
 				$refURL = '/User';
 			}
-			
 			if($checkLogin){
 				$this->success('登陆成功',$refURL);
 			}else{
@@ -54,10 +57,19 @@ class PassportController extends CommonController{
 	 */
 	public function  returnUrl(){
 		$referer = parse_url($_SERVER['HTTP_REFERER']);  // 控制器
-		$refererPath = $referer['path'];
+		
+		if(empty($referer['query'])){
+			$refererPath = $referer['path'];
+		}else{
+			$refererPath = $referer['path'].'?'.$referer['query'];
+		}
+		
 		$refererHost = $referer['host'];
+
 		if(in_array($refererHost,array('121.40.173.194','www.hyd.com','127.0.0.1')) && !in_array($refererPath, array('/Passport/index','/Passport/login'))){
+	
 			session("HYD_LOGIN_REFURL", $refererPath);
+			
 		}else{
 			session("HYD_LOGIN_REFURL", null);
 		}
@@ -87,8 +99,14 @@ class PassportController extends CommonController{
 		if(IS_POST){
 			$dataRegister = I('post.');  //获取 post 全部变量
 			$checkRegister = D('Passport','Service')->checkRegister($dataRegister);
-			$this->show($checkRegister);  // 显示  结果
 		}
+
+		if(($checkRegister=="注册成功")){
+			$this->success($checkRegister,'/Index/index');
+		}else{
+			$this->error($checkRegister);  // 显示  结果
+		}
+			
 	}
 	 
 	/**

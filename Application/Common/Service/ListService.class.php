@@ -25,13 +25,20 @@ class ListService extends CommonService{
 			$condition["_logic"] ="or";
 			$categorysData   = M('article_categorys')->field("category_id")->where($condition)->getField("category_id",true);			
 			$where= array("category_id"=>array("in",$categorysData));
+		}else{
+			$where = array();
 		}		
+
+		$where  = array_merge($where,array("hyd_articles.is_deleted"=>0));  //未被删除的 文章
+
 		$listData = M('articles')
 					->join('hyd_users ON hyd_articles.uid = hyd_users.uid')
 					->order('publish_time desc')
 					->where($where)
 					->limit($first,$last)
 					->select();
+
+					
 		return $listData;		
 	}
 	
@@ -45,10 +52,15 @@ class ListService extends CommonService{
 			$condition["_logic"] ="or";
 			$categorysData   = M('article_categorys')->field("category_id")->where($condition)->getField("category_id",true);			
 			$where= array("category_id"=>array("in",$categorysData));
-		}		
+		}else{	
+			$where = array();
+		}	
+		$where  = array_merge($where,array("hyd_articles.is_deleted"=>0));  //未被删除的 文章
+		
 		$listCount = M('articles')
 						->where($where)
 						->count();
+				
 		return $listCount;
 	}
 	
@@ -61,9 +73,8 @@ class ListService extends CommonService{
 		return $categoryData;
 	}
 	
-    
-    
-	
+   
 }
+	
 
 ?>

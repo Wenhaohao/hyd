@@ -32,8 +32,10 @@ const URL_COMPAT        =   3;  // 兼容模式
 const EXT               =   '.class.php'; 
 
 // 系统常量定义
-defined('THINK_PATH')   or define('THINK_PATH',     __DIR__.'/');
+defined('THINK_PATH')   or define('THINK_PATH',     __DIR__.'/');// __DIR__ 当前文件的目录
 defined('APP_PATH')     or define('APP_PATH',       dirname($_SERVER['SCRIPT_FILENAME']).'/');
+//var_dump($_SERVER);
+//exit;
 defined('APP_STATUS')   or define('APP_STATUS',     ''); // 应用状态 加载对应的配置文件
 defined('APP_DEBUG')    or define('APP_DEBUG',      false); // 是否调试模式
 

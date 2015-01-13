@@ -19,6 +19,10 @@ class WidgetService extends CommonService{
 	 *	获取文章排行
 	 */
 	public function getArticleRank($where,$order,$rows){
+		if($where == null){
+			$where= array();
+		}
+		$where = array_merge($where,array('hyd_articles.is_deleted'=> 0));
 		$rankData = M('articles')
 					->join('hyd_users ON hyd_articles.uid = hyd_users.uid')
 					->field("hyd_users.uid,title,sub_title,uid_name,publish_time,vote_counts,support_counts")
@@ -72,11 +76,32 @@ class WidgetService extends CommonService{
 					  ->getField('sport_id',true);  //获取 数组  
    		$condition['sport_id']  = array('in',$sportsList);
 		$sportsData = M('sports')
-					  ->where($condition)
-					  
+					  ->where($condition)	  
 					  ->select();
 	    return $sportsData;
 	}
+
+    /**
+	*	获取文章留言
+	*/
+	public function getCommentList($model,$where,$order,$page,$length){
+		$db_prefix = C('DB_PREFIX');
+		$list =	M($model)
+				->join("{$db_prefix}users on {$db_prefix}{$model}.uid = {$db_prefix}users.uid")
+				->where($where)
+				->order($order)->page($page,$length)
+				->field("{$db_prefix}{$model}.*,uid_name,head_url")
+				->select();
+		
+		return $list;
+	}
+	public function getCommentCount($model,$where){
+			return M($model)->where($where)->count();
+	}
+
+	/**
+	*  获取 关注列表
+	*/
 }
 
 ?>

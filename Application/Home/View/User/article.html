@@ -49,9 +49,11 @@
 									{$vo.publish_time}
 								</span>
 								<div class="pull-right">
-									<span class="label ">已阅读:200</span>		
 									<span class="label-middle"><i class=" icon icon-thumbs-up"></i>
-											<span>8</span>
+										<span>{$vo.support_counts}</span>
+									</span>
+									<span class="label-middle"><i class=" icon icon-thumbs-down"></i>
+										<span>{$vo['vote_counts']-$vo['support_counts']}</span>
 									</span>
 								</div>
 							</div>

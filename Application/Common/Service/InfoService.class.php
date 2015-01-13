@@ -105,10 +105,9 @@ class InfoService extends CommonService{
 	*	获取文章收藏counts
 	*/
 
-	public function getArticleCounts($articleId){
+	public function getCollectedCounts($articleId){
 		$model = M('article_collects');
-		$counts = $model
-					  ->where(array('article_id'=>$articleId,'is_collected'=>1))
+		$counts = $model->where(array('article_id'=>$articleId,'is_collected'=>1))
 					  ->count();
 		return $counts;
 	}
@@ -131,6 +130,7 @@ class InfoService extends CommonService{
 	*
 	*/
 	public function saveArticleVote($voteData){
+
 		$result = M('article_votes')->add($voteData);
 
 		if($result !=false){
@@ -198,6 +198,6 @@ class InfoService extends CommonService{
 		}
 		return false;			
 	}
-}
 
+}
 ?>

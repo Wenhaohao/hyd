@@ -142,3 +142,6 @@ function cutStr($str,$cutLength){
 	$result = mb_substr($str,0,$cutLength,'utf-8')."...";
 	return $result;
 }
+/**
+*	判断是否登录
+*/

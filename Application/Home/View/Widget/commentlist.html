@@ -1,0 +1,57 @@
+<!-- 评论 -->
+<div class="module-app-share">
+  <div id="chart-room">
+  <h4 class="title-new">评论 <small class="message-rows">({$count})条</small></h4>
+
+  <ul class="chart-message-ul">  
+    <volist name="list" id="vo" >
+      <li>
+          <div class="user-face">
+              <img src="{$vo.head_url}">
+        </div>
+        <div class="user-title">
+          <span><a class="user-name">{$vo.uid_name}</a></span>
+            <span class="date">{$vo.comment_time}</span>
+            <div class="option-box">
+                <span class="floor">{$count-$i-$offsetFloor}楼</span>
+              {/* <!-- <a class="btn btn-mini"><i class="icon-thumbs-up"></i></a>
+                <span class="agreed-data">100</span>
+              --> */}
+            </div>
+        </div>
+        
+        <div class="content">  
+            <!-- 自身 评论  的 内容 -->
+          <div class="comment-text-wrap">
+              {$vo.contents} 
+          </div>
+        </div>
+        <!--
+        <div class="ref-content">
+            <div class="reply-count">
+              <a class="reply"  data-toggle="reply-message">查看回复</a><span>(1)</span>   </div>
+            <ul class="reply-message-ul">
+              <li>
+                 <div class="reply-user">
+                    <img src="http://oimagea4.ydstatic.com/image?id=1317141146510868599&amp;product=cube&amp;w=50">
+                </div>
+                <div class="user-title">
+                  <span><a class="user-name">贝给樟</a></span>
+                    <span class="date">2013-11-28 19:50:05</span>
+                   
+                </div>
+                <div class="reply-content">user终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！
+                </div>
+              </li>
+             
+            </ul>
+        </div>
+      -->
+      </li>
+
+
+    </volist>
+    
+   </ul>     
+ </div>
+</div>

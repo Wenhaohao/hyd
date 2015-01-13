@@ -15,21 +15,26 @@
 			<include file="Public:crumbs"/>
 			<!-- 网站 说说  -->
 			<div id="navbar">
+		    	<form action="{:U('/Plan/index')}" method="get">
 		    	<ul class="breadcrumb">
 		    	 <li><span>地区</span></li>
 		    	 <li><span class="divider">:</span></li>
 				 <li>
-				 	<select class="input-small" type="text" name="province" id="province" data-value="{$user.province}">
+				 	<select class="input-small" type="text" name="province" id="province"
+					 data-value=<empty name="$Think.get.province">"{$userName.province}"<else />"{$Think.get.province}"</empty>
+				 	>
 		            </select> <span class="divider">-</span></li>
-				 <li><select class="input-small" type="text" name="city" id="city" data-value="{$user.city}"></select><span class="divider">-</span></li>
-				 <li ><select  class="input-small" type="text" name="county" id="county" data-value="{$user.county}" ></select></li>
+				 <li><select class="input-small" type="text" name="city" id="city" data-value=<empty name="$Think.get.city">"{$userName.city}"<else />"{$Think.get.city}"</empty>
+				 	></select><span class="divider">-</span></li>
+				 <li ><select  class="input-small" type="text" name="county" id="county" data-value=<empty name="$Think.get.county">"{$userName.county}"<else />"{$Think.get.county}"</empty> ></select></li>
 				 <li><span class="divider"></span></li>
-				 <li><button class="btn btn-small">查询</button></li>
+				 <li><button  type="submit" class="btn btn-small">查询</button></li>
 				 <li class="pull-right">
 				 	
 				 </li>
 
 				</ul>
+				</form>
 			</div>
 			<!-- 分类 -->			
 			<div class="module-app">
@@ -49,7 +54,7 @@
 							<ul class="nav pull-right">
 								<li>
 									<div class="publish-talk">
-										<a class="btn btn-small btn-primary " href="{:U('Plan/createtalk')}">发表运动计划</a>
+										<a class="btn btn-small btn-primary " href="{:U('Plan/createPlan')}">发表运动计划</a>
 									</div>
 								</li>
 								<li class="divider-vertical"></li>
@@ -70,7 +75,7 @@
 						<div class="talk-wrap-white row-fluid">
 							<div class="span4">
 								<a class="thumbnail talk-img-box" href="#" >
-									<img src="/Public/Home/images/test.jpg" alt="" style="width:175px;height:140px">
+									<img src="http://api.map.baidu.com/staticimage?center={$vo.lng},{$vo.lat}&width=175&height=140&zoom=18&markers={$vo.lng},{$vo.lat}" alt="" style="width:175px;height:140px">
 								</a>
 							</div>
 							<div class="span8">
@@ -78,10 +83,10 @@
 									<a href="#">{$vo.uid_name}</a>
 								</div>
 								<div class="talk-info">
-									<span>运动时间：</span>
-									<span>{$vo.start_time}</span>
+									<span>运动时间：</span>								
+									<span>{$vo.start_time|strtotime|date='Y-m-d H:m',###}</span>
 									<span class="divider">-</span>
-									<span>{$vo.end_time}</span>
+									<span>{$vo.end_time|strtotime|date='Y-m-d H:m',###}</span>
 								</div>
 								<div class="talk-info">
 									<span>运动地点：</span>
@@ -89,11 +94,11 @@
 								</div>
 								<div class="talk-info">
 									<span>发表时间：</span>
-									<span>{$vo.publish_time}</span>
+									<span  class="prettydate" data-date-format="Y-m-d h:m:s" > {$vo.publish_time}</span>
 								</div>
 								
 								<div class="talk-contents">
-									{$vo.contents}
+									内容:{$vo.contents}
 								</div>
 							</div>
 						</div>
@@ -126,27 +131,67 @@
 
 		<!-- 网站旁白 -->
 		<aside class="module-aside pull-right">
-			
-		<div class="module-app share-sidenav" >
+{// 运动计划模块旁白  根据用户是否登录切换旁白内容}	
+	
+		<if  condition="$Think.session.name eq null ">
+				<!--  指南 -->
+				<div class="module-app">
+		            <ul class="nav nav-tabs no-margin-bottom">
+		            <li class="active"><a href="#hotguider" data-toggle="tab">热门指南</a></li>
+		            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
+		            </ul>
+		            <div class="tab-content">
+		                <div class="ref-article tab-pane active" id="hotguider"> 
+		                  {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+		                </div>
+		                <div class="ref-article tab-pane" id="recommend">     
+		                  {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
+		                </div>		                 
+		            </div>
+
+	    		</div> 
+
+
+				<div class="module-app">
+				<ul class="nav nav-tabs ">
+					    <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
+					    <li><a href="#hot" data-toggle="tab">热门文章</a></li>
+					    <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
+	    		</ul>
+	    		<div class="tab-content module-app-rank">
+				<section class="tab-pane   active" id="new">	   
+					{:W('Article/articleRank',array(null,array("publish_time"=>"desc")))}
+				</section>
+				<section class="tab-pane " id="hot">
+					{:W('Article/articleRank',array(null,array("vote_counts"=>"desc")))}
+				</section>
+				<section class="tab-pane" id="recommend">
+					{:W('Article/articleRank',array(null,array("support_counts"=>"desc")))}
+				</section>
+				</div>
+				</div>
+
+			<else />
+{//  如果用户已经登陆}
+
+
+	
+			<div class="module-app share-sidenav" >
 			<!--  用户头像 简介 -->
 			<div class="module-app-header noborder">
 				<div class="header-info">
 					<div class="header-row">
 						<span class="label label-info">用户名:</span>
-						<span>李彦龙</span>
+						<span>{$userName.uid_name}</span>
 					</div>
 					<div class="header-row">
 						<span class="label label-info">粉丝:</span>
-						<span>0个</span>	
+						<span>{$userName.user_fans}个</span>	
 					</div>
-
-					<div class="header-row">
-						<span class="label label-info">说说:</span>
-						<span>15篇</span>
-					</div>					
+		
 				</div>
 				<div class=" thumbnail header-img">
-					<img src="" class="img-circle">
+					<img src="{$userName.head_url}" class="img-circle">
 				</div>
 			</div>
 
@@ -158,77 +203,7 @@
                 <h5 class="text-center">
 	                <span>我关注的好友</span>	
                </h5>
-                <div class="friend-list">
-                	<ul class="text-center">
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                		<li class="user-item ">
-                			<div class="user-avatar">
-                				<a href="">
-                					<img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                				</a>
-                			</div>
-                			<div class="user-name user-name-bg">
-                				<span>李彦龙</span>
-                			</div>
-                			<a href="#" class="add-friend">关心</a>
-                		</li>
-                	</ul>
-          
-                </div>
+              	{:W('Common/focusList',array(0,9))}
                 <div class="clearfix"></div>
                 <div class="toolbar  text-center">
                     <a href="{:U('User/friends')}" class="btn btn-primary btn-small">查看更多</a>
@@ -238,23 +213,30 @@
 
             </div>
 
-                 
-
-		</aside>
-	</div>
+          </div>       
+		</if>
+	</aside>
+	
 
 </div>
-  
+
+</div>
 <include file="Public:footer" />
 </body>
-
-<script>
+<script type="text/javascript"> 
 window.onload=function(){
 	     // 加载 地址插件
      requirejs(["jquery","jsAddress"],function($){
      	
      	 addressInit('province', 'city', 'county',$("#province").data("value"),$("#city").data("value"),$("#county").data("value"));
      });
-};	
+
+
+};
+$(function(){
+		require(["jquery","STATIC/prettydate","STATIC/prettydate.zh-CN"],function($){
+				$(".prettydate").prettydate();
+		});	
+});	
 </script>
 </html>

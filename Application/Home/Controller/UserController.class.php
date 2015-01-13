@@ -295,7 +295,6 @@ class UserController extends CheckController {
 
         $userService = D('User','Service');
         $focusData = $userService->getUserFocus($user["uid"],$focusUid);
-
         $result = false;
         if($focusData==null){
             //添加关注
@@ -312,7 +311,7 @@ class UserController extends CheckController {
 
 
             $result =  $userService->saveUserFocus($focusData);
-
+       
             if($result  == true){
                 $return['status'] = true;
                 if($focusData["is_focused"]==0){
@@ -329,5 +328,27 @@ class UserController extends CheckController {
         $this->ajaxReturn($return);
     }
 
+    /*  用户留言 */
+    public function uploadComment(){
 
+        if(!IS_POST){
+            $this->error('404 Not Found','/Index/index');
+            return ;
+        }
+        // 数据banding
+        $modelType =  I('post.commentType');
+        if(!empty($this->userName)&&!empty($modelType)){
+            $data = M($modelType)->create($_POST);
+            $data['uid'] = $this->userName['uid'];
+        }else{
+            $this->ajaxReturn(null);
+        }
+        // 评论写入
+        $result =  D('User','Service')->saveComment($modelType,$data);
+        if($result){
+            $this->success('添加留言成功');
+        }else{
+            $this->error('添加留言失败');
+        }
+    }
 }

@@ -50,9 +50,9 @@ class PassportService extends CommonService{
 		$data['email'] = $dataRegister['email'];
 		
 		if(M('users')->add($data)){
-			return "注册成功！";
+			return "注册成功";
 		}else{
-			return "注册失败!";
+			return "注册失败";
 		}
 	}
 	

@@ -7,6 +7,7 @@
 <div class="container" id="pagewrap">
 	<div class=" module-show">
 				<!-- 流动公告 -->
+     
 	</div>
 
 	<!-- 文章内容  -->
@@ -16,53 +17,54 @@
 			<div id="navbar">
 		    	<ul class="breadcrumb">
 				 	<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="{:U('Plan/index')}">运动说说</a> <span class="divider">/</span></li>
-    			<li class="#">发表说说<span class="label "></span></li>
+	    		<li><a href="{:U('Plan/index')}">运动计划</a> <span class="divider">/</span></li>
+    			<li class="#">发表运动计划<span class="label "></span></li>
 				</ul>
 			</div>
       <div class="module-app ">
         <div class="module-app-share">      
-      <form class="form-horizontal" name="editor" id="uploadTalk"  data-error="control-group" action="__URL__/uploadTalk" method="post">
+      <form class="form-horizontal" name="editor" id="uploadTalk"  data-error="control-group" action="__URL__/uploadPlan" method="post">
          <fieldset>
           <div id="legend" class="">
-            <legend>发表运动说说</legend>
+            <legend>发表运动计划</legend>
           </div>
           <div class="control-group">
-            <script id="editor" type="text/plain" style="width:100%;height:200px;"></script>
+            <script id="editor" type="text/plain" style="width:100%;height:200px;"></script> 
+            
           </div>
-
+        
           <div class="control-group">
               <!-- Text input-->
               <label class="control-label" >时间</label>
               <div class="controls">
-                <input placeholder="开始时间" class="input" type="text" name="startTime" id="start-time" data-value=""  autocomplete="off" />
+                <input placeholder="开始时间" class="input" type="text" name="start_time" id="start-time" data-value=""  autocomplete="off" />
                 <span>-</span>
-                <input placeholder="结束时间" class="input" type="text" name="endTime" id="end-time" data-value=""  autocomplete="off" />
+                <input placeholder="结束时间" class="input" type="text" name="end_time" id="end-time" data-value=""  autocomplete="off" />
                </div>
           </div>
          <div class="control-group">
               <!-- Text input-->
               <label class="control-label" >所在地址</label>
               <div class="controls">
-                <select class="input-small" type="text" name="province" id="province" data-value="">
+                <select class="input-small" type="text" name="province" id="province" data-value="{$userName.province}">
                 </select>
                 <span>-</span>
-                <select class="input-small" type="text" name="city" id="city" data-value="" ></select>
+                <select class="input-small" type="text" name="city" id="city" data-value="{$userName.city}" ></select>
                 <span>-</span>
-                <select  class="input-small" type="text" name="country" id="country" data-value="" ></select>
+                <select  class="input-small" type="text" name="county" id="county" data-value="{$userName.county}" ></select>
                </div>
             </div>
             <div class="control-group ">
               <label class="control-label" >详细地址</label>
               <div class="controls">
-                <input placeholder="" class="input-large" type="text" name="mapAddress" id="mapAddress" data-BMap="text" /> 
+                <input placeholder="" class="input-large" type="text" name="address" id="mapAddress" data-BMap="text" /> 
                 <span class="btn"  id="searchAddress" onclick="searchAddress()">查询</span>
               </div>
           </div>
           <div class="control-group">
             <div id="sitemap"></div>
-              <input type="hidden" name="lat" id="lat" /> <!-- 经度 --> 
-              <input type="hidden" name="lng" id="lng" />   <!-- 纬度 -->
+              <input type="hidden" name="lat" id="lat" /> <!-- 经度 id限定 --> 
+              <input type="hidden" name="lng" id="lng" />   <!-- 纬度 id限定 -->
           </div>
           
         
@@ -87,27 +89,25 @@
 
 <!-- 网站旁白 -->
     <aside class="module-aside pull-right">
-      
-    <div class="module-app share-sidenav" >
+     
+
+  
+      <div class="module-app share-sidenav" >
       <!--  用户头像 简介 -->
       <div class="module-app-header noborder">
         <div class="header-info">
           <div class="header-row">
             <span class="label label-info">用户名:</span>
-            <span>李彦龙</span>
+            <span>{$userName.uid_name}</span>
           </div>
           <div class="header-row">
             <span class="label label-info">粉丝:</span>
-            <span>0个</span> 
+            <span>{$userName.user_fans}个</span> 
           </div>
-
-          <div class="header-row">
-            <span class="label label-info">说说:</span>
-            <span>15篇</span>
-          </div>          
+    
         </div>
         <div class=" thumbnail header-img">
-          <img src="" class="img-circle">
+          <img src="{$userName.head_url}" class="img-circle">
         </div>
       </div>
 
@@ -119,77 +119,7 @@
                 <h5 class="text-center">
                   <span>我关注的好友</span> 
                </h5>
-                <div class="friend-list">
-                  <ul class="text-center">
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                    <li class="user-item ">
-                      <div class="user-avatar">
-                        <a href="">
-                          <img src="http://qlogo2.store.qq.com/qzone/295697141/295697141/100?1404284651" alt="">
-                        </a>
-                      </div>
-                      <div class="user-name user-name-bg">
-                        <span>李彦龙</span>
-                      </div>
-                      <a href="#" class="add-friend">关心</a>
-                    </li>
-                  </ul>
-          
-                </div>
+                  {:W('Common/focusList',array(0,9))}
                 <div class="clearfix"></div>
                 <div class="toolbar  text-center">
                     <a href="{:U('User/friends')}" class="btn btn-primary btn-small">查看更多</a>
@@ -199,7 +129,7 @@
 
             </div>
 
-                 
+          </div>
 
     </aside>
 	</div>
@@ -218,11 +148,12 @@
 
 window.onload=function(){
 
-       // 加载 地址插件
-     requirejs(["jsAddress"],function(){
-       addressInit('province', 'city', 'country');
+    // 加载 地址插件
+     requirejs(["jquery","jsAddress"],function($){
+      
+       addressInit('province', 'city', 'county',$("#province").data("value"),$("#city").data("value"),$("#county").data("value"));
      });
-
+     // 百度 UEditor插件
       require(["ueditor/comment"],function(config){
       
         var ue = UE.getEditor('editor',config);
@@ -260,6 +191,7 @@ window.onload=function(){
       });
    //  requirejs(["http://api.map.baidu.com/api?v=2.0&ak=vyCakEhavFN13iGT8i0NDSd3","app/talk/hydMap.js"]);
 }
+
 </script>
 <!-- 引用 api  -->
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vyCakEhavFN13iGT8i0NDSd3"></script>

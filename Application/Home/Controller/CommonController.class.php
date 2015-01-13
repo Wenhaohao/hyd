@@ -19,8 +19,7 @@ class CommonController extends Controller{
 		parent::__construct();
 		
 		$arrCrumbs = C('crumbs');
-// 		dump($arrCrumbs);
-// 		exit();
+	
 		$userName = $_SESSION['name'];
 		$this->assign('userName',$userName);
 		$this->assign('crumbs',$arrCrumbs);

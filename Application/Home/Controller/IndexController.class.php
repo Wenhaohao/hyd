@@ -28,7 +28,7 @@ class IndexController extends CommonController {
 		$page = new \Think\Page($listCount,10);
 		$first = 1;
 		$last = $page->listRows;	
-		$listData = $listService->getList($first,$last);
+		$listData = $listService->getList($first,$last,null);
     	$this->assign('list',$listData);
 		$this->display();
     }

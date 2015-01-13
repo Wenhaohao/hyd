@@ -34,5 +34,7 @@ class ArticleWidget extends Controller {
   	 $this->display("Widget/articlelist");
   }
 
+
  
 }
+?>

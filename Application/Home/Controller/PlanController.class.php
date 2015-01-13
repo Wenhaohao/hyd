@@ -22,33 +22,52 @@ class PlanController extends CommonController {
      */
     public function index(){
     	$objPlanService = D('Plan','Service');
-    	$intCount = $objPlanService->getCount();
-    	
-    	// 翻页
-    	$page = new \Think\Page($intCount,2);
-    	$first = $page->firstRow;
-    	$last = $page->listRows;
-    	$planPage = $page->show();
-    	
-    	$arrPlanData = $objPlanService->getList($first,$list);
-    	
-//     	dump($arrPlanData);
-//     	exit();
+//    	$intCount = $objPlanService->getCount();
+//    	$page = new \Think\Page($intCount,2);
+//    	$first = $page->firstRow;
+//    	$last = $page->listRows;
+//    	$planPage = $page->show();
+
+    	$arrPlanData = $objPlanService->getList($first,10);
     	$this->assign('list',$arrPlanData);
-    	$this->assign('page',$planPage);
+//    	$this->assign('page',$planPage);
     	$this->display();
     }
 
     //编辑计划
-    public function  createTalk(){
-
-    	$this->display();
+    public function  createPlan(){
+        // 判断是否登录
+       if(!empty($this->userName)){
+              // 设置表单令牌
+                md5(date());
+              $this->display();
+       }else{
+            echo 'error';
+            $this->error('请先登录后发表运动计划','/Passport/login');
+       }
     }
 
     // 发表计划
-    public function uploadTalk(){
+    public function uploadPlan(){
 
-        dump(I('post.'));
+        $user = $this->userName;
+    
+        if(IS_POST&&isset($user)){
+            $data    =   M('plans')->create($_POST);
+            $data['uid'] = $user['uid'];
+
+            $result  =   D('Plan','Service')->savePlan($data);
+        }else{
+            //跳回首页
+            $this->redirect('/Index/index');
+            return ;
+        }
+
+        if($result){
+            $this->success('运动计划添加成功','/Plan/index');
+        }else{
+            $this->error('运动计划添加失败','/Plan/createplan');
+        }
     }
      public function  demo(){
 

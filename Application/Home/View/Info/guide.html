@@ -19,8 +19,8 @@
 			
 			<ul class="breadcrumb">
     			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="/List/health">健康指南</a> <span class="divider">/</span></li>
-    			<li class="#">文章名称<span class="label "></span></li>
+	    		<li><a href="{:U('Guide/index')}">专家指导</a> <span class="divider">/</span></li>
+    			<li class="#">{$info.title}<span class="label "></span></li>
     		</ul>
 				
 	
@@ -62,54 +62,16 @@
 				</div>
 
                 <!-- 评论 -->
-        <div class="module-app-share">
-          <div id="chart-room">
-          <h4 class="title-new">
-            <span>指南评论</span> 
-
-            <small class="message-rows">(10)条</small>
- 
-          </h4>
-      
-          <ul class="chart-message-ul">  
-            <li>
-              <div class="user-face">
-                  <img src="http://oimagea4.ydstatic.com/image?id=1317141146510868599&amp;product=cube&amp;w=50">
-            </div>
-            <div class="user-title">
-              <span><a class="user-name">@贝给樟</a></span>
-                <span class="date">2013-11-28 19:50:05</span>
-                <div class="option-box">
-                    <span class="floor">120楼</span>
-                    <a class="btn btn-mini"><i class="icon-thumbs-up"></i></a>
-                    <span class="agreed-data">100</span>
-                </div>
-            </div>
-            
-            <div class="content">  
-                <!-- 自身 评论  的 内容 -->
-              <div class="comment-text-wrap">
-                     <p>终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！</p>
-                     <p>终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！</p>
-                     终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！
-
-              </div>
-            </div>
-
-          </li>
-           </ul>
-     
-      </div>
-
-
-        </div>
+        {:W('Common/commentList',array('guide_comments',array("health_article_id"=>$info['health_article_id']),10))}
+       
         <!-- 模块评价  只评论文章模块 -->
         <div class="module-app">
            <h4>评论:</h4>
           <form action="/User/uploadcomment" name="uploadComment" id="uploadComment" method="post" class="form-horizontal">
              <fieldset>
-                  <input type="hidden" name="articleId" value=""/>
-                 
+      
+                  <input type="hidden" name="commentType" value="guide_comments" />
+                  <input type="hidden" name="health_article_id" value="{$info.health_article_id}" />
                   <div class="comment">
                      <script id="editor" type="text/plain" style="width:97%;height:200px;"></script>
                   </div>
@@ -130,23 +92,21 @@
     		<aside class="module-aside pull-right span3">
     	
     			<!--  其他公告 -->
-    			<div class="module-app">
-            <ul class="nav nav-tabs no-margin-bottom">
-            <li class="active"><a href="#hot" data-toggle="tab">热门指南</a></li>
-            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
-
-            </ul>
-            <div class="tab-content">
-                <div class="ref-article tab-pane active" id="hot">     
-                           {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
-                </div>
-                <div class="ref-article tab-pane" id="recommend">     
-                        {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
-                </div>
-                 
-            </div>
-
-    			</div>  <!-- 文章结束 -->
+    		<div class="module-app">
+	            <ul class="nav nav-tabs no-margin-bottom">
+	            <li class="active"><a href="#hot" data-toggle="tab">热门指南</a></li>
+	            <li><a href="#recommend" data-toggle="tab">推荐指南</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="ref-article tab-pane active" id="hot">     
+	                           {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+	                </div>
+	                <div class="ref-article tab-pane" id="recommend">     
+	                        {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
+	                </div>
+	                 
+	            </div>
+    		</div>  <!-- 文章结束 -->
           <!-- 留言模块 -->
           <div class="module-app">
               <div class="module-app-share">

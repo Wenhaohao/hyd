@@ -1,0 +1,18 @@
+<div class="friend-list">
+        <ul class="text-center">
+                <volist name="list" id="vo"  >
+        	<li class="user-item ">
+        		<div class="user-avatar">
+        			<a href="" title="简介:$vo.description">
+        				<img src="{$vo.head_url}" alt="">
+        			</a>
+        		</div>
+        		<div class="user-name user-name-bg">
+        			<span class="label label-success" style="opacity:0.8">{$vo.uid_name}</span>
+        		</div>
+        		
+        	</li>
+                </volist>
+        </ul>
+          
+</div>

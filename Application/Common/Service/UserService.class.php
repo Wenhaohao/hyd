@@ -212,13 +212,10 @@ class UserService extends CommonService {
 	public function saveUserFocus($focusData){
 		//$condition = array("uid"=>$focusData["uid"],"focus_uid"=>$focusData["focus_uid"]);
 		//$data["is_collected"] = $focusData["is_collected"];
-		$result =  M('user_focus')->save($focusData);
-
-		if($result!=false){
-			return true;
-		}else{
-			return false;
-		}
+		$where['uid']  = $focusData['uid'];
+		$where['focus_uid']  = $focusData['focus_uid'];
+		$result =  M('user_focus')->where($where)->save($focusData);
+		return $result;
 	}
 
 	/**
@@ -273,5 +270,17 @@ class UserService extends CommonService {
 		return $listData;
 	}
 
+	// 留言写入
 
+	public function  saveComment($model,$data){
+	
+		$result =  M($model)->data($data)->add();
+		
+		if($result!=false){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
 }

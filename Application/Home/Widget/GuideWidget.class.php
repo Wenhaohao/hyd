@@ -32,4 +32,6 @@ class GuideWidget extends Controller {
 
  	 	$this->display("Widget/sportslist");
  }
+ 
+
 }

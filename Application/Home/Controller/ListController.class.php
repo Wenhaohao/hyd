@@ -26,8 +26,9 @@ class ListController extends CommonController {
 		}
 		$listService = D('List','Service');
 		// 翻页
+
 		$listCount = $listService->getCount($where);
-		$page = new \Think\Page($listCount,2);
+		$page = new \Think\Page($listCount,3);
 		$first = $page->firstRow;
 		$last = $page->listRows;
 		$list = $page->show();

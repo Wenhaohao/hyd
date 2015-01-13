@@ -18,8 +18,8 @@
 			
 			<ul class="breadcrumb">
     			<li><a href="http://www.hyd.com">首页</a> <span class="divider">/</span></li>
-	    		<li><a href="{:U('List/index')}">运动健康分享</a> <span class="divider">/</span></li>
-    			<li class="#">文章名称<span class="label "></span></li>
+	    		<li><a href="{:U('List/index')}">运动健康指南</a> <span class="divider">/</span></li>
+    			<li class="#">{$info.title}<span class="label "></span></li>
     		</ul>
 				<div class="module-app" id="content">
 					<div class="module-app-share">
@@ -36,11 +36,12 @@
                   <!-- 用户登录  并且 文章发表并非登录用户 -->
                   <if condition="$Think.session.name neq NULL and $info.uid neq $Think.session.name.uid ">
                       <if condition="$status['focused'] eq 1  ">
-                        <a  class="label label-important focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)">取消关注</a>
+                        <a  class="label  focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)" style="color:white;">取消关注</a>
                         <else />
-                        <a class="label label-important focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)">关注</a>
+                        <a class="label label-success focus-btn" data-focus-uid="{$info.uid}" href="javascript:void(0)" style="color:white;">关注</a>
                       </if>                    
                   </if>
+
                 </div>
    						 <div class="article-time"><label>时间:</label>{$info.publish_time}</div>
 						   <div class="article-ref">
@@ -72,88 +73,15 @@
                 
 					</div>
 				</div>
-        <!-- 评论 -->
-        <div class="module-app-share">
-          <div id="chart-room">
-          <h4 class="title-new">最新评论 <small class="message-rows">(10)条</small></h4>
-      
-          <ul class="chart-message-ul">  
-            <li>
-              <div class="user-face">
-                  <img src="http://oimagea4.ydstatic.com/image?id=1317141146510868599&amp;product=cube&amp;w=50">
-            </div>
-            <div class="user-title">
-              <span><a class="user-name">@贝给樟</a></span>
-                <span class="date">2013-11-28 19:50:05</span>
-                <div class="option-box">
-                    <span class="floor">120楼</span>
-                    <a class="btn btn-mini"><i class="icon-thumbs-up"></i></a>
-                    <span class="agreed-data">100</span>
-                </div>
-            </div>
-            
-            <div class="content">  
-                <!-- 自身 评论  的 内容 -->
-              <div class="comment-text-wrap">
-                     <p>终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！</p>
-                     <p>终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！</p>
-                     终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！
-
-              </div>
-            </div>
-            <div class="ref-content">
-                <div class="reply-count">
-                  <a class="reply"  data-toggle="reply-message">查看回复</a><span>(15)</span>   </div>
-                <ul class="reply-message-ul">
-                  <li>
-                     <div class="reply-user">
-                        <img src="http://oimagea4.ydstatic.com/image?id=1317141146510868599&amp;product=cube&amp;w=50">
-                    </div>
-                    <div class="user-title">
-                      <span><a class="user-name">贝给樟</a></span>
-                        <span class="date">2013-11-28 19:50:05</span>
-                        <div class="option-box">
-                            <a class="btn btn-mini"><i class="icon-thumbs-up"></i></a>
-                            <span class="agreed-data">100</span>
-                      </div>
-                    </div>
-                    <div class="reply-content">   
-                        .reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！
-                    </div>
-                  </li>
-                  <li>
-                     <div class="reply-user">
-                        <img src="http://oimagea4.ydstatic.com/image?id=1317141146510868599&amp;product=cube&amp;w=50">
-                    </div>
-                    <div class="user-title">
-                      <span><a class="user-name">贝给樟</a></span>
-                        <span class="date">2013-11-28 19:50:05</span>
-                        <div class="option-box">
-                            <a class="btn btn-mini"><i class="icon-thumbs-up"></i></a>
-                            <span class="agreed-data">100</span>
-                      </div>
-                    </div>
-                    <div class="reply-content">   
-                        .reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user.reply-user终于等来了啊！赞一个！太给力了！以后得多介绍海淘的宝贝啊！
-                    </div>
-                  </li>
-                </ul>
-            </div>
-          </li>
-           </ul>
-     
-      </div>
-
-
-        </div>
-        
+{// 留言}
+        {:W('Common/commentList',array('article_comments',array("article_id"=>$info['article_id']),10))}
         <!-- 模块评价  只评论文章模块 -->
         <div class="module-app">
            <h4>评论:</h4>
-          <form action="/User/uploadcomment" name="uploadComment" id="uploadComment" method="post" class="form-horizontal">
+          <form action="/User/uploadComment" name="uploadComment" id="uploadComment" method="post" class="form-horizontal">
              <fieldset>
-                  <input type="hidden" name="articleId" value=""/>
-                 
+                  <input type="hidden" name="commentType" value="article_comments" />
+                  <input type="hidden" name="article_id" value="{$info.article_id}" />
                   <div class="comment">
                      <script id="editor" type="text/plain" style="width:97%;height:200px;"></script>
                   </div>
@@ -172,54 +100,42 @@
 	
 			<!-- 网站旁白 -->
     		<aside class="module-aside pull-right span3">
-    	
-    			<!--  相似文章 -->
-    			<div class="module-app">
-            <ul class="nav nav-tabs no-margin-bottom">
-            <li class="active"><a href="#ref" data-toggle="tab">同类文章</a></li>
-            <li><a href="#hot" data-toggle="tab">热门文章</a></li>
-            <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="ref-article tab-pane active" id="ref">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>Thumbnail label</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                            </p>
-                          </div>
-                        </div>
-                </div>
-                <div class="ref-article tab-pane " id="hot">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>hot</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
-                </div>
-                 <div class="ref-article tab-pane" id="recommend">     
-                        <div class="thumbnail">
-                          <img src="#" style="width: 300px; height: 200px;" data-src="holder.js/300x200" alt="300x200">
-                          <div class="caption">
-                            <h3>recommend</h3>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p>
-                              <a href="#" class="btn btn-primary">阅读</a> <a href="#" class="btn">收藏</a>
-                             </p>
-                          </div>
-                        </div>
-                </div>
+{// 分享文章推荐}
+        <div class="module-app">
+            <ul class="nav nav-tabs ">
+                  <li class="active"><a href="#new" data-toggle="tab">最新文章</a></li>
+                  <li><a href="#hot" data-toggle="tab">热门文章</a></li>
+                  <li><a href="#recommend" data-toggle="tab">推荐文章</a></li>
+              </ul>
+              <div class="tab-content module-app-rank">
+            <section class="tab-pane   active" id="new">     
+              {:W('Article/articleRank',array(null,array("publish_time"=>"desc")))}
+            </section>
+            <section class="tab-pane " id="hot">
+              {:W('Article/articleRank',array(null,array("vote_counts"=>"desc")))}
+            </section>
+            <section class="tab-pane" id="recommend">
+              {:W('Article/articleRank',array(null,array("support_counts"=>"desc")))}
+            </section>
             </div>
-
-    			</div>
+        </div>
+{// 运动健康指南}
+        <div class="module-app">
+              <ul class="nav nav-tabs no-margin-bottom">
+              <li class="active"><a href="#guidehot" data-toggle="tab">热门指南</a></li>
+              <li><a href="#guiderecommend" data-toggle="tab">推荐指南</a></li>
+              </ul>
+              <div class="tab-content">
+                  <div class="ref-article tab-pane active" id="guidehot">     
+                          {:W('Guide/guideInfo',array(array("vote_counts"=>"desc")))}
+                  </div>
+            
+                  <div class="ref-article tab-pane" id="guiderecommend">     
+                          {:W('Guide/guideInfo',array(array("support_counts"=>"desc")))}
+                  </div>
+                 
+              </div>
+        </div>  <!-- 文章结束 -->
     		</aside>
 	    </div>
 	</div>
@@ -242,7 +158,7 @@
 <script>
   window.onload=function(){
       require(["ueditor/comment"],function(config){
-  
+        config
         var ue = UE.getEditor('editor',config);
           /* 注册 清空编辑器事件 */
          $("#reset").bind("click",function(){
@@ -286,7 +202,7 @@
               $btn =  $(this);              
               $.ajax("{:U('Info/uploadVote')}",{
                 type : "post",
-                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action"),"type":"guide_article" },
+                data : { "article_id" : $btn.data("article-id") ,"action" : $btn.data("action"),"type":"article" },
                 dataType:"json",               
                 beforeSend :function(){
 

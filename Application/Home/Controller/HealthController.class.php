@@ -15,11 +15,7 @@ use Home\Controller\CommonController;	//表示引入Think\Controller明明空间
 
 class HealthController extends CommonController {
 	
-    /**
-     * 首页输出
-     * @param 
-     * @return 
-     */
+   
     public function _before_index(){
         //分类筛选  年龄分类
         $categoryData  =  C('HUMAN_GROUP');

@@ -10,12 +10,14 @@
 					</div>
 					<div class="header-row">
 						<span class="label label-info">粉丝:</span>
-						<span>0</span>
+						<span>{$userData.user_fans}</span>
 					</div>
+{/*
 
 					<div class="header-row">
 						<button class="btn btn-warning">退出登录</button>
-					</div>					
+					</div>	
+*/}				
 				</div>
 				<div class=" thumbnail header-img">
 					<img src="{$userData.head_url}" class="img-circle"/>
@@ -63,7 +65,7 @@
 				    	运动计划</a>
 				    </li>
 				      <li <if condition="$nameAction eq 'plan'">class="active" </if> >
-				    	<a href="/User/createplan">
+				    	<a href="/Plan/createPlan">
 				    	<i class="icon-chevron-left"></i>
 				    	发表运动计划</a>
 				    </li>

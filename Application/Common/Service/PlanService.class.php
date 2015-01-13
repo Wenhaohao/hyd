@@ -31,9 +31,23 @@ class PlanService extends CommonService{
 	public function getList($first,$list){
 		$arrPlanData = M('plans')
 						->join('hyd_users ON hyd_plans.uid = hyd_users.uid')
+						->order('publish_time desc')
 						->limit($first,$list)
 						->select();
 		return $arrPlanData;
+	}
+	/**
+	*	添加运动计划
+	*/
+	public function savePlan($data){
+
+		$result = M('plans')->data($data)->add();
+		
+		if(isset($result) && $result > 0 ){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 ?>

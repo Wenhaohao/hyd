@@ -37,7 +37,7 @@
 		 		</div>
 		 	<ul class="nav " id="nav">  
 				<li><a href="/">首页</a></li>
-		 		<li><a  href="{:U('List/index')}">运动健康指南 </a></li>
+		 		<li><a  href="{:U('List/index')}">运动健康指南</a></li>
 		 		<li><a href="{:U('Plan/index')}">运动计划</a></li>
 		 		<li><a href="{:U('Guide/index')}">专家指导</a></li>
 		 		<li><a href="{:U('User/index')}">个人社区</a></li>
@@ -58,11 +58,11 @@
 
 					
 					<a class="dropdown-toggle head-tool-user" data-toggle="dropdown" data-target="#" id="headLabel" >
-						 <img  src="__PUBLIC__Home/images/default-user.png" alt="头像"  > 
+						 <img  src="{$Think.session.name.head_url}"   > 
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="headLabel">
 						<li><a tabindex="-1" href="{:U('User/createarticle')}">发表文章</a></li>
-						<li><a tabindex="-1" href="#">个人中心</a></li>
+						<li><a tabindex="-1" href="{:U('User/index')}">个人中心</a></li>
 						<li><a tabindex="-1" href="#">消息</a></li>
 						<li><a tabindex="-1" href="#">意见反馈</a></li>
 						<li class="divider"></li>

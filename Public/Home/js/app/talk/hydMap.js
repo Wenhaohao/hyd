@@ -19,10 +19,6 @@ var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 
     return document.getElementById(id);
   }
 
-  function searchAddress(){
-   var text   =   G(textId).value;  //查询按钮触发事件
-   local.search(text);
-  }
 
   var ac = new BMap.Autocomplete({              //建立一个自动完成的对象
      "input" : textId,
@@ -56,6 +52,7 @@ function showInfo(e){
     marker.enableDragging();
     marker.addEventListener("dragend",showInfo);  
     map.addOverlay(marker);
+
     //设置表单值
     G("lat").value=e.point.lat;
     G("lng").value=e.point.lng;
@@ -68,7 +65,13 @@ function showInfo(e){
       G(textId).value=( addComp.city  + addComp.district  + addComp.street  + addComp.streetNumber);
     });
 }
-
+window.searchAddress =function(){
+ 
+   var text   =   G(textId).value;  //查询按钮触发事件
+   var rs = local.search(text);
+  
+}
+//新增 监听事件
 map.addEventListener("click", showInfo);
 
 })({
